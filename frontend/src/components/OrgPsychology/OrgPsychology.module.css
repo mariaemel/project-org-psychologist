@@ -1,0 +1,98 @@
+.orgPsychology {
+    padding: 100px 20px;
+    background: #ffffff;
+    width: 1150px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .title {
+    top: 100px;
+    font-family: var(--font-raleway);
+    font-size: 60px;
+    font-weight: 500;
+    color: #1e1e1e;
+    line-height: 1.2;
+    margin-top: -60px;
+  }
+
+  .container {
+    max-width: 1150px;
+    margin: 0 auto;
+    display: flex;
+    gap: 40px; /* Отступ для заголовка */
+  }
+
+  .leftCard {
+    width: 10000px;
+    background: linear-gradient(180deg, #d18cf5 0%, #8000d7 100%);
+    border-radius: 20px;
+    padding: 40px;
+    font-family: var(--font-raleway);
+    font-size: 22px;
+    color: #ffffff;
+    line-height: 1.5;
+    margin-top: 10px;
+  }
+
+  .rightCards {
+    display: grid;
+    grid-template-areas:
+      "top top"
+      "middle empty"
+      "bottom empty";
+    gap: 20px;
+    width: 100%;
+  }
+
+  .rightTopCard {
+    grid-area: top;
+    background: #CA7EFF;
+    border-radius: 20px;
+    padding: 20px 30px;
+    font-family: var(--font-raleway);
+    font-size: 24px;
+    color: #FFFFFF;
+    width: 520px;
+    height: 100px;
+    align-self: start;
+    margin-top: -60px;
+  }
+
+  .rightMiddleCard {
+    grid-area: middle;
+    background: #CA7EFF;
+    border-radius: 20px;
+    padding: 20px 30px;
+    font-family: var(--font-raleway);
+    font-size: 20px;
+    color: #FFFFFF;
+    width: 400px;
+    height: 90px;
+  }
+
+  .rightBottomRow {
+    grid-area: bottom;
+    display: flex;
+    gap: 20px;
+  }
+
+  .rightBottomTextCard {
+    background: #CA7EFF;
+    border-radius: 20px;
+    padding: 20px 30px;
+    font-family: var(--font-raleway);
+    font-size: 20px;
+    color: #FFFFFF;
+    width: 400px;
+    height: 90px;
+  }
+
+  .rightBottomEmptyCard {
+    background: #8000d7;
+    border-radius: 20px;
+    width: 100px;
+    height: 200px; /* Вытянутый блок */
+    margin-top: -110px; /* Поднимаем блок вверх */
+  }
