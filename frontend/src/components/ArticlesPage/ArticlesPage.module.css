@@ -1,0 +1,69 @@
+.wrapper {
+    padding: 100px 20px;
+    background: linear-gradient(180deg, #DFBFFF 0%, #ffffff 700px);
+  }
+
+  .headingContainer {
+    display: flex;
+    justify-content: center;
+  }
+
+  .headingBox {
+    background-color: #B64EFF75;
+    border-radius: 30px 30px 0 0;
+    padding: 25px 140px;
+  }
+
+  .heading {
+    color: white;
+    font-size: 28px;
+    font-family: var(--font-raleway);
+    font-weight: 400;
+  }
+
+  .articleCard {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 24px;
+    padding: 60px 80px;
+    margin: 0px auto;
+    margin-bottom: 40px;
+    max-width: 1000px;
+    height: 200px;
+    box-shadow: 0 2px 0 #bb92e7;
+    gap: 67px;
+  }
+
+  .imagePlaceholder {
+    width: 210px;
+    height: 140px;
+    border-radius: 20px;
+    background-color: #fcd9e6;
+  }
+
+  .imageInner {
+    object-fit: cover;
+    border-radius: 20px;
+    width: 210px;
+    height: 140px;
+  }
+
+  .articleContent {
+    flex: 1;
+  }
+
+  .articleTitle {
+    font-family: var(--font-raleway);
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    color: #1e1e1e;
+  }
+
+  .articleDescription {
+    font-family: var(--font-raleway);
+    font-size: 16px;
+    color: #333;
+    line-height: 1.5;
+  }

@@ -5,11 +5,11 @@
     background: transparent;
     transition: transform 0.3s ease;
     z-index: 1000;
-  }
+}
 
-  .hidden {
-    transform: translateY(-100%);
-  }
+.hidden {
+  transform: translateY(-100%);
+}
   .nav {
     display: flex;
     justify-content: center;
@@ -20,6 +20,9 @@
     font-size: 16px;
   }
 
+  .nav a:hover {
+    font-weight: 600;
+  }
   .link {
     color: #1e1e1e;
     font-size: 14px;
@@ -30,4 +33,7 @@
 
   .link:hover {
     color: #5f00b6;
+  }
+  .active {
+    font-weight: 600;
   }

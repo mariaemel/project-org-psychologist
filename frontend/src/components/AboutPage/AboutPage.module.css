@@ -1,0 +1,279 @@
+  .wrapper {
+    padding: 120px 0;
+    background: linear-gradient(180deg, #DFBFFF 0%, #ffffff 700px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Raleway', sans-serif;
+  }
+
+  /* обо мне */
+  .heroSection {
+    width: 100%;
+    position: relative;
+    height: 700px;
+  }
+
+  .cards {
+    position: absolute;
+    top: 0px;
+    left: 180px;
+    width: 500px;
+    height: 480px;
+  }
+
+  .cardWhite,
+  .cardGray,
+  .cardLightGray {
+    border-radius: 30px;
+    position: absolute;
+    box-shadow: 0px 20px 60px rgba(0, 0, 0, 0.05);
+  }
+
+  .cardWhite {
+    background: white;
+    width: 290px;
+    height: 320px;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+  }
+
+  .cardGray {
+    background: #E5DFDF;
+    width: 280px;
+    height: 315px;
+    top: 90px;
+    left: 310px;
+    z-index: 2;
+  }
+
+  .cardLightGray {
+    background: #C2C0C0;
+    width: 280px;
+    height: 315px;
+    top: 240px;
+    left: 100px;
+    z-index: 3;
+  }
+
+  .introBox {
+    position: absolute;
+    top: 92px;
+    left: 870px;
+    background: #9900f0;
+    color: white;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: 62px;
+    max-width: 700px;
+    padding-left: 45px;
+    padding-top: 45px;
+    box-shadow: 0px 20px 60px rgba(0, 0, 0, 0.1);
+  }
+
+
+  .title {
+    font-size: 32px;
+    font-weight: 400;
+    padding-bottom: 15px;
+  }
+
+  .description {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+
+  /* образование*/
+  .educationSection {
+    padding: 0px 80px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 150px;
+  }
+
+  .educationLabel {
+    background: white;
+    padding: 36px 410px;
+    font-size: 26px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 20px #7000CC21;
+    font-weight: 500;
+    margin-bottom: 50px;
+    margin-left: 900px;
+    padding-left: 50px;
+  }
+
+  .educationContent {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    width: 100%;
+  }
+
+  .educationText {
+    flex: 1;
+    background: #A448FF;
+    color: white;
+    padding: 99px;
+    padding-top: 48px;
+    padding-left: 130px;
+    border-radius: 0 30px 30px 0;
+    font-size: 22px;
+    line-height: 1.6;
+    box-shadow: 0px 20px 60px rgba(0, 0, 0, 0.1);
+  }
+
+  .educationImage {
+    width: 370px;
+    height: 322px;
+    background: #d1d1d1;
+    border-radius: 30px;
+    margin-right: 259px;
+  }
+
+  /* опыт */
+.experienceSection {
+    padding: 100px 80px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 200px;
+    position: relative;
+  }
+  .circleBackground {
+    position: absolute;
+    width: 1300px;
+    height: 1100px;
+    border-radius: 50%;
+    background-color: rgba(112, 0, 204, 0.06);
+    top: 440px;
+    left: 180px;
+    z-index: 0;
+  }
+
+  .experienceBlock {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 170px;
+  }
+
+  .experienceLabel {
+    background: white;
+    padding: 36px 610px;
+    font-size: 30px;
+    border-radius: 30px 0 0 30px;
+    box-shadow: 0px 4px 20px #7000CC21;
+    font-weight: 500;
+    margin-bottom: 50px;
+    margin-left: 750px;
+    padding-left: 50px;
+  }
+
+  .experienceBadge {
+    background: #7101CD;
+    color: white;
+    border-radius: 30px;
+    padding: 30px;
+    width: 280px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 300px;
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  .experienceContent {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .years {
+    font-size: 70px;
+    font-weight: 400;
+    font-family: var(--font-raleway);
+  }
+
+  .label {
+    font-size: 30px;
+    margin-top: 20px;
+    font-family: var(--font-raleway);
+  }
+
+  .experienceText {
+    max-width: 500px;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #000;
+    margin-top: 20px;
+    font-family: var(--font-raleway);
+  }
+
+  /* методы работы */
+  .methodsSection {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 600px;
+  }
+
+  .methodsLabel {
+    background: white;
+    padding: 36px 592px;
+    font-size: 30px;
+    border-radius: 30px 0 0 30px;
+    box-shadow: 0px 4px 20px #7000CC21;
+    font-weight: 500;
+    margin-bottom: 50px;
+    margin-left: 600px;
+    padding-left: 50px;
+  }
+
+  /* картинка */
+  .paperSection {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+    margin-bottom: 150px;
+  }
+
+  .paperImage {
+    width: 100%;
+    height: auto;
+    box-shadow: 0px 15px 60px rgba(0, 0, 0, 0.1);
+  }
+
+  .paperButton {
+    position: absolute;
+    background: #540095;
+    color: white;
+    padding: 18px 50px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    font-weight: 400;
+    margin-top: 600px;
+  }
+
+  .paperButton:hover {
+    background: #8500d0;
+  }

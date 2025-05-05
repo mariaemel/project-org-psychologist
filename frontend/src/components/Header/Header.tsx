@@ -1,31 +1,35 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation'
 import styles from './Header.module.css'
+import { useEffect, useState } from 'react';
 
 export default function Header() {
-  const [hidden, setHidden] = useState(false)
+  const pathname = usePathname()
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY === 0) {
-        setHidden(false)
+        setVisible(true);
       } else {
-        setHidden(true)
+        setVisible(false);
       }
-    }
+    };
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  if (!visible) return null;
 
   return (
-    <header className={`${styles.header} ${hidden ? styles.hidden : ''}`}>
+    <header className={styles.header}>
       <nav className={styles.nav}>
-      <a href="#about" className={styles.link}>ОБО МНЕ</a>
-        <a href="#services" className={styles.link}>УСЛУГИ</a>
-        <a href="#articles" className={styles.link}>СТАТЬИ</a>
-        <a href="#faq" className={styles.link}>ВОПРОСЫ</a>
-        <a href="#contact" className={styles.link}>ОСТАВИТЬ ЗАЯВКУ</a>
+        <a href="/about" className={pathname === '/about' ? styles.active : ''}>ОБО МНЕ</a>
+        <a href="/services" className={pathname === '/services' ? styles.active : ''}>УСЛУГИ</a>
+        <a href="/articles" className={pathname === '/articles' ? styles.active : ''}>СТАТЬИ</a>
+        <a href="/faq" className={pathname === '/faq' ? styles.active : ''}>ВОПРОСЫ</a>
+        <a href="/contact" className={pathname === '/contact' ? styles.active : ''}>ОСТАВИТЬ ЗАЯВКУ</a>
       </nav>
     </header>
   )
