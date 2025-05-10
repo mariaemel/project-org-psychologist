@@ -24,13 +24,18 @@ export default function Header() {
 
   return (
     <header className={styles.header}>
-      <nav className={styles.nav}>
-        <a href="/about" className={pathname === '/about' ? styles.active : ''}>ОБО МНЕ</a>
-        <a href="/services" className={pathname === '/services' ? styles.active : ''}>УСЛУГИ</a>
-        <a href="/articles" className={pathname === '/articles' ? styles.active : ''}>СТАТЬИ</a>
-        <a href="/faq" className={pathname === '/faq' ? styles.active : ''}>ВОПРОСЫ</a>
-        <a href="/contact" className={pathname === '/contact' ? styles.active : ''}>ОСТАВИТЬ ЗАЯВКУ</a>
-      </nav>
+      <div className={styles.container}>
+        <div className={styles.left}>
+          <nav className={styles.nav}>
+            <a href="/">Главная</a>
+            <a href="/about" className={pathname === '/about' ? styles.active : ''}>Обо мне</a>
+            <a href="/services" className={pathname === '/services' ? styles.active : ''}>Услуги</a>
+            <a href="/articles" className={pathname === '/articles' ? styles.active : ''}>Статьи</a>
+            <a href="/faq" className={pathname === '/faq' ? styles.active : ''}>Вопросы</a>
+          </nav>
+        </div>
+        <button className={styles.cta}>Оставить заявку</button>
+      </div>
     </header>
   )
 }

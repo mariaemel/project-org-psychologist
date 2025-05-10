@@ -1,39 +1,116 @@
 .header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: transparent;
-    transition: transform 0.3s ease;
-    z-index: 1000;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  padding: 24px 0;
+  font-family: 'Inter', sans-serif;
 }
 
-.hidden {
-  transform: translateY(-100%);
+.container {
+  margin: 0 auto;
+  padding: 0 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-  .nav {
-    display: flex;
-    justify-content: center;
-    gap: 80px;
-    padding: 25px 0;
-    font-family: var(--font-raleway);
-    font-weight: 400;
-    font-size: 16px;
-  }
 
-  .nav a:hover {
-    font-weight: 600;
-  }
-  .link {
-    color: #1e1e1e;
-    font-size: 14px;
-    font-weight: 500;
+.left {
+  display: flex;
+  align-items: center;
+  padding-left: 200px;
+}
+
+
+.nav {
+  display: flex;
+  gap: 60px;
+
+  a {
+    color: #fff;
     text-decoration: none;
-    transition: color 0.3s;
+    font-size: 16px;
+    transition: opacity 0.3s;
+    font-family: var(--font-raleway);;
+    font-weight: 400;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}
+
+.cta {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 8px 16px;
+  transition: opacity 0.3s;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+/* 1440 */
+@media (max-width: 1440px) {
+  .container {
+    padding: 0 60px;
+    font-size: 25px;
+    margin-left: -150px;
   }
 
-  .link:hover {
-    color: #5f00b6;
+  .nav {
+    gap: 40px;
+
+    a {
+      font-size: 20px;
+    }
   }
-  .active {
-    font-weight: 600;
+
+  .cta {
+    font-size: 19px;
   }
+}
+
+/* 1024 */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 40px;
+    margin-left: -180px;
+  }
+
+  .nav {
+    gap: 24px;
+
+    a {
+      font-size: 20px;
+    }
+  }
+
+  .cta {
+    font-size: 19px;
+  }
+}
+
+/* 768 */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 40px;
+    margin-left: -240px;
+  }
+
+  .nav {
+    gap: 24px;
+
+    a {
+      font-size: 18px;
+    }
+  }
+
+  .cta {
+    font-size: 17px;
+  }
+}

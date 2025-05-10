@@ -1,6 +1,6 @@
   .wrapper {
-    padding: 120px 0;
-    background: linear-gradient(180deg, #DFBFFF 0%, #ffffff 700px);
+    padding-top: 120px;
+    background: #333333;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -63,8 +63,8 @@
     left: 870px;
     background: #9900f0;
     color: white;
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     padding: 62px;
@@ -95,14 +95,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 150px;
+    background-color: #ffffff;
+    height: 780px;
   }
 
   .educationLabel {
     background: white;
     padding: 36px 410px;
     font-size: 26px;
-    border-radius: 20px;
+    border-radius: 5px;
+    border: 3px solid #7000CC21;
     box-shadow: 0px 4px 20px #7000CC21;
     font-weight: 500;
     margin-bottom: 50px;
@@ -125,7 +127,7 @@
     padding: 99px;
     padding-top: 48px;
     padding-left: 130px;
-    border-radius: 0 30px 30px 0;
+    border-radius: 0 5px 5px 0;
     font-size: 22px;
     line-height: 1.6;
     box-shadow: 0px 20px 60px rgba(0, 0, 0, 0.1);
@@ -135,7 +137,7 @@
     width: 370px;
     height: 322px;
     background: #d1d1d1;
-    border-radius: 30px;
+    border-radius: 5px;
     margin-right: 259px;
   }
 
@@ -147,7 +149,6 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
-    margin-bottom: 200px;
     position: relative;
   }
   .circleBackground {
@@ -172,7 +173,8 @@
     background: white;
     padding: 36px 610px;
     font-size: 30px;
-    border-radius: 30px 0 0 30px;
+    border-radius: 5px 0 0 5px;
+    border: 3px solid #7000CC21;
     box-shadow: 0px 4px 20px #7000CC21;
     font-weight: 500;
     margin-bottom: 50px;
@@ -183,7 +185,7 @@
   .experienceBadge {
     background: #7101CD;
     color: white;
-    border-radius: 30px;
+    border-radius: 5px;
     padding: 30px;
     width: 280px;
     height: 250px;
@@ -228,17 +230,19 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
-    margin-bottom: 600px;
+    height: 920px;
+    background-color: #ffffff;
   }
 
   .methodsLabel {
     background: white;
     padding: 36px 592px;
     font-size: 30px;
-    border-radius: 30px 0 0 30px;
+    border-radius: 5px 0 0 5px;
+    border: 3px solid #7000CC21;
     box-shadow: 0px 4px 20px #7000CC21;
+    white-space: nowrap;
     font-weight: 500;
-    margin-bottom: 50px;
     margin-left: 600px;
     padding-left: 50px;
   }
@@ -250,8 +254,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 80px;
-    margin-bottom: 150px;
+    height: 700px;
+    background-color: white;
   }
 
   .paperImage {
@@ -267,11 +271,11 @@
     padding: 18px 50px;
     font-size: 18px;
     border: none;
-    border-radius: 30px;
+    border-radius: 5px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     font-weight: 400;
-    margin-top: 600px;
+    margin-top: 550px;
   }
 
   .paperButton:hover {

@@ -4,7 +4,7 @@ import styles from './OrgPsychology.module.css'
 export default function OrgPsychology() {
   return (
     <section className={styles.orgPsychology} id="psychology">
-        <h2 className={styles.title}>ОРГАНИЗАЦИОННАЯ<br/>ПСИХОЛОГИЯ?</h2>
+        <div className={styles.title}>ОРГАНИЗАЦИОННАЯ ПСИХОЛОГИЯ?</div>
         <div className={styles.container}>
             <div className={styles.leftCard}>
             <p>
@@ -12,18 +12,9 @@ export default function OrgPsychology() {
             </p>
             </div>
             <div className={styles.rightCards}>
-            <div className={styles.rightTopCard}>
-                Помогает находить баланс между интересами сотрудников
-            </div>
-            <div className={styles.rightMiddleCard}>
-                Оптимизация рабочих процессов снижает стресс и усталость
-            </div>
-            <div className={styles.rightBottomRow}>
-                <div className={styles.rightBottomTextCard}>
+                <p>Помогает находить баланс между интересами сотрудников</p>
+                <p>Оптимизация рабочих процессов снижает стресс и усталость</p>
                 Создание условий, в которых сотрудники работают с интересом
-                </div>
-                <div className={styles.rightBottomEmptyCard}></div>
-            </div>
             </div>
         </div>
     </section>
