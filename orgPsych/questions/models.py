@@ -30,7 +30,8 @@ class ClientQuestion(models.Model):
     client_type = models.CharField(
         max_length=50,
         choices=CLIENT_TYPE_CHOICES,
-        verbose_name='Тип клиента'
+        verbose_name='Тип клиента',
+        default = 'individual'
     )
     full_name = models.CharField(max_length=255, verbose_name='ФИО')
     question_topic = models.CharField(max_length=255, verbose_name='Тема вопроса')

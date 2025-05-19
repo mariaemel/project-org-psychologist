@@ -42,8 +42,9 @@ INSTALLED_APPS = [
     'main',
     'articles',
     'services',
-    'requests',
+    'application',
     'questions',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -64,7 +65,14 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny',
     ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10
+    'PAGE_SIZE': 10,
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema'
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Org-psych API',
+    'DESCRIPTION': 'Документация к REST API для обработки заявок и вопросов.',
+    'VERSION': '1.0.0',
 }
 
 CORS_ALLOWED_ORIGINS = [
