@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Kotta_One, Inter, Roboto, Victor_Mono, Ubuntu_Sans_Mono, Caveat, Raleway } from "next/font/google";
+import { Nunito_Sans, Kotta_One, Inter, Roboto, Victor_Mono, Ubuntu_Sans_Mono, Caveat, Raleway } from "next/font/google";
 import "./globals.css";
 import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
@@ -11,6 +11,7 @@ const raleway = Raleway({ subsets: ["latin", "cyrillic"], weight: ["400", "700"]
 const inter = Inter({subsets: ['latin', 'cyrillic'],variable: '--font-inter', display: 'swap'})
 const roboto = Roboto({subsets: ['latin', 'cyrillic'],variable: '--font-roboto', weight: ['400', '500', '700'],display: 'swap'})
 const kotta = Kotta_One({weight: '400', subsets: ['latin'], variable: "--font-kotta", display: 'swap'})
+const nunitoSans = Nunito_Sans({ subsets: ["latin", "cyrillic"], weight: ["400", "700", "900"], variable: "--font-nunito", display: "swap" });
 
 export const metadata: Metadata = {
   title: 'Василина Денисюк',
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ru" className={`${victorMono.variable} ${ubuntuMono.variable} ${caveat.variable} ${raleway.variable} ${inter.variable} ${roboto.variable} ${kotta.variable}`}>
+    <html lang="ru" className={`${nunitoSans.variable} ${victorMono.variable} ${ubuntuMono.variable} ${caveat.variable} ${raleway.variable} ${inter.variable} ${roboto.variable} ${kotta.variable}`}>
       <body>
         <div className="background">
           <Header />

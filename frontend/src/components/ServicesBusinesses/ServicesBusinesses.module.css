@@ -1,20 +1,26 @@
 .services {
-    padding: 120px 20px 0;
-    background: transparent;
+    padding: 120px 20px 200px;
+
+    @media (max-width: 1024px) {
+      padding: 120px 20px 0;
+    }
+
+    @media (max-width: 768px) {
+      padding: 0px 20px 0;
+    }
   }
 
   .backgroundOval {
     position: absolute;
-    top: 0;
+    top: 280px;
     left: 50%;
-    transform: translateX(-100%) translateY(-30%);
-    width: 2600px;
-    height: 2000px;
+    transform: translateX(-50%);
+    width: 2400px;
+    height: 1600px;
     background: #f2e8ff;
     border-radius: 50%;
     z-index: 0;
   }
-
 
   .title {
     text-align: center;
@@ -25,6 +31,14 @@
     margin-bottom: 60px;
     position: relative;
     z-index: 1;
+
+    @media (max-width: 1024px){
+      font-size: 30px;
+    }
+
+    @media (max-width: 768px){
+      font-size: 24px;
+    }
   }
 
   .cardsWrapper {
@@ -42,6 +56,10 @@
     justify-content: center;
     gap: 50px;
     width: 100%;
+
+    @media (max-width: 768px) {
+      gap: 20px;
+    }
   }
 
   .card {
@@ -54,6 +72,16 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    @media (max-width: 1024px) {
+      width: 260px;
+      height: 290px;
+    }
+
+    @media (max-width: 768px){
+      width: 220px;
+      height: 250px;
+    }
   }
 
   .cardTitle {
@@ -63,6 +91,17 @@
     color: #1e1e1e;
     margin-bottom: 30px;
     text-align: center;
+
+    @media (max-width: 1024px) {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+      margin-top: -10px;
+      margin-bottom: 10px;
+    }
   }
 
   .cardList {
@@ -72,6 +111,16 @@
     font-family: var(--font-raleway);
     font-size: 18px;
     color: #1e1e1e;
+
+    @media (max-width: 1024px) {
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 13px;
+      padding-left: 30px;
+    }
   }
 
   .priceButton {
@@ -87,6 +136,17 @@
     font-weight: 500;
     font-size: 25px;
     font-family: var(--font-raleway);
+
+    @media (max-width: 1024px) {
+      font-size: 18px;
+      width: 120px;
+      height: 40px;
+      padding: 10px;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+    }
   }
 
   .moreLink {
@@ -96,4 +156,15 @@
     font-size: 14px;
     color: #1e1e1e;
     cursor: pointer;
+
+    @media (max-width: 1024px) {
+      margin-right: 50px;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+      margin-right: 15px;
+      margin-top: 15px;
+      font-size: 12px;
+    }
   }

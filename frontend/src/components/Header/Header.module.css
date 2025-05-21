@@ -6,10 +6,10 @@
   padding: 24px 0;
   font-family: 'Inter', sans-serif;
 }
-
 .container {
   margin: 0 auto;
-  padding: 0 80px;
+  margin-right: 50px;
+  padding: 0 120px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,20 +18,20 @@
 .left {
   display: flex;
   align-items: center;
-  padding-left: 200px;
+  padding-left: 122px;
 }
 
 
 .nav {
   display: flex;
-  gap: 60px;
+  gap: 50px;
 
   a {
-    color: #fff;
+    color: #ffffff;
     text-decoration: none;
     font-size: 16px;
     transition: opacity 0.3s;
-    font-family: var(--font-raleway);;
+    font-family: var(--font-nunito);
     font-weight: 400;
 
     &:hover {
@@ -39,18 +39,21 @@
     }
   }
 }
-
+.nav a.active {
+      font-weight: 700;
+    }
 .cta {
   background: transparent;
   border: none;
-  color: #fff;
+  color: #ffffff;
   font-size: 16px;
   cursor: pointer;
   padding: 8px 16px;
   transition: opacity 0.3s;
+  font-family: var(--font-nunito);
 
   &:hover {
-    opacity: 0.7;
+    opacity: 0.5;
   }
 }
 
@@ -59,7 +62,7 @@
   .container {
     padding: 0 60px;
     font-size: 25px;
-    margin-left: -150px;
+    margin-left: 0px;
   }
 
   .nav {
@@ -79,7 +82,7 @@
 @media (max-width: 1024px) {
   .container {
     padding: 0 40px;
-    margin-left: -180px;
+    margin-left: 0px;
   }
 
   .nav {
@@ -99,7 +102,7 @@
 @media (max-width: 768px) {
   .container {
     padding: 0 40px;
-    margin-left: -240px;
+    margin-left: -60px;
   }
 
   .nav {
@@ -113,4 +116,22 @@
   .cta {
     font-size: 17px;
   }
+}
+/* Светлая шапка — для Главной страницы (белый текст) */
+.lightHeader .nav a,
+.lightHeader .cta {
+  color: white;
+}
+
+/* Тёмная шапка — для других страниц, например "Обо мне" (чёрный текст) */
+.darkHeader .nav a,
+.darkHeader .cta {
+  color: black;
+
+}
+
+/* Плавное переключение цвета */
+.nav a,
+.cta {
+  transition: color 0.3s ease;
 }

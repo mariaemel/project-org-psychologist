@@ -17,7 +17,7 @@ export default function ServicesIndividuals() {
               <li>какую помощь окажет</li>
               <li>ещё немного описания</li>
             </ul>
-            <div className={styles.priceButton}>ОООО ₽</div>
+            <div className={styles.priceButton}>Подробнее</div>
           </div>
 
           <div className={styles.card}>
@@ -31,7 +31,7 @@ export default function ServicesIndividuals() {
               <li>какую помощь окажет</li>
               <li>ещё немного описания</li>
             </ul>
-            <div className={styles.priceButton}>ОООО ₽</div>
+            <div className={styles.priceButton}>Подробнее</div>
           </div>
 
           <div className={styles.card}>
@@ -45,7 +45,7 @@ export default function ServicesIndividuals() {
               <li>какую помощь окажет</li>
               <li>ещё немного описания</li>
             </ul>
-            <div className={styles.priceButton}>ОООО ₽</div>
+            <div className={styles.priceButton}>Подробнее</div>
           </div>
         </div>
 

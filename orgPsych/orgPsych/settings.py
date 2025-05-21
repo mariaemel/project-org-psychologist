@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'application',
     'questions',
     'drf_spectacular',
-    'import_export'
+    'import_export',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [

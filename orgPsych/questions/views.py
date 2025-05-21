@@ -3,11 +3,13 @@ from rest_framework.permissions import IsAdminUser, AllowAny
 from django.utils import timezone
 from .models import ClientQuestion
 from .serializers import ClientQuestionSerializer, ClientQuestionAdminSerializer
+from rest_framework.parsers import MultiPartParser, FormParser
 
 class ClientQuestionCreateView(generics.CreateAPIView):
     queryset = ClientQuestion.objects.all()
     serializer_class = ClientQuestionSerializer
     permission_classes = [AllowAny]
+    parser_classes = [MultiPartParser, FormParser]
 
 class ClientQuestionListView(generics.ListAPIView):
     queryset = ClientQuestion.objects.all()
