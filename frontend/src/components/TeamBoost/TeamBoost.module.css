@@ -21,7 +21,12 @@
 
   @media (max-width: 1024px) {
     margin-left: 80px;
-    margin-top: 150px;
+    margin-top: 0px;
+  }
+
+  @media (max-width: 768px) {
+    margin-left: 40px;
+    margin-top: -60px;
   }
 }
 
@@ -31,10 +36,11 @@
   margin-bottom: 20px;
 
   @media (max-width: 1024px) {
-    width: 350px;
+    width: 450px;
+    margin-bottom: 10px;
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 768px) {
     width: 270px;
     margin-bottom: 10px;
   }
@@ -63,14 +69,14 @@
   width: 180px;
 
   @media (max-width: 1024px) {
-    font-size: 15px;
-    width: 240px;
+    font-size: 14px;
+    width: 170px;
     height: 50px;
   }
 
   @media (max-width: 768px) {
     font-size: 12px;
-    width: 180px;
+    width: 140px;
     height: 40px;
   }
 }
@@ -96,15 +102,15 @@
   width: 180px;
 
   @media (max-width: 1024px) {
-    font-size: 15px;
-    width: 240px;
+    font-size: 14px;
+    width: 170px;
     height: 50px;
     margin-left: 10px;
   }
 
   @media (max-width: 768px) {
     font-size: 12px;
-    width: 180px;
+    width: 140px;
     height: 40px;
     margin-left: 10px;
   }
@@ -129,13 +135,13 @@
   color: #1e1e1e;
 
   @media (max-width: 1024px) {
-    font-size: 36px;
+    font-size: 30px;
   }
 
   @media (max-width: 768px) {
-    font-size: 26px;
-    margin-top: 180px;
-    margin-bottom: 30px;
+    font-size: 22px;
+    margin-top: -80px;
+    margin-bottom: 20px;
   }
 }
 
@@ -162,13 +168,13 @@
 
   @media (max-width: 1024px) {
     font-size: 16px;
-    width: 380px;
+    width: 340px;
     padding: 20px;
   }
 
   @media (max-width: 768px) {
     font-size: 14px;
-    width: 220px;
-    padding: 12px;
+    width: 280px;
+    padding: 10px;
   }
 }

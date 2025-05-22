@@ -2,8 +2,15 @@
 import styles from './AboutPage.module.css';
 import Image from 'next/image';
 import photo from '/public/photo-placeholder.png';
+import dynamic from 'next/dynamic';
+import { useState } from 'react';
+
+const RequestForm = dynamic(() => import('@/components/RequestForm/RequestForm'), { ssr: false });
 
 export default function AboutPage() {
+  const [formType, setFormType] = useState<null | 'request' | 'question'>(null);
+  const closeForm = () => setFormType(null);
+
   return (
     <div className={styles.page}>
       <div className={styles.container}>
@@ -78,14 +85,14 @@ export default function AboutPage() {
 
 
       <section className={styles.experienceSection}>
-        <div className={styles.contentWrapper}>
+        <div className={styles.contentWrapper2}>
           <div className={styles.leftColumn}>
             <div className={styles.yearBox}>2013</div>
             <div className={styles.yearBox}>2021</div>
           </div>
           <div className={styles.rightColumn}>
             <h2 className={styles.experiencetitle}>опыт</h2>
-            <p className={styles.textOpit}>
+      textOpit      <p className={styles.textOpit}>
               С 2013 года я работаю с бизнесом и для бизнеса, над оптимизацией и автоматизацией процессов, происходящих в компании.
             </p>
             <p className={styles.textOpit}>
@@ -108,11 +115,9 @@ export default function AboutPage() {
               Вы ведь удивитесь, если врач начнёт выписывать рецепт, не дослушав вас?
             </p>
           </div>
-          <Image
+          <img
             src="/methods-1.png"
             alt="Сбор анамнеза"
-            width={460}
-            height={320}
             className={styles.image}
           />
         </div>
@@ -178,8 +183,10 @@ export default function AboutPage() {
             alt="paper background"
             className={styles.paperImage}
           />
-          <button className={styles.paperButton}>Оставить заявку</button>
+          <button className={styles.paperButton} onClick={() => setFormType('request')}>Оставить заявку</button>
         </div>
+
+        {formType === 'request' && <RequestForm onClose={closeForm} />}
       </section>
       </div>
     </div>

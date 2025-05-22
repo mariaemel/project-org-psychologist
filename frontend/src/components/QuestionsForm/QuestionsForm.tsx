@@ -22,6 +22,7 @@ const initialData = {
 const QuestionsForm = ({ onClose }: { onClose: () => void }) => {
   const [formData, setFormData] = useState(initialData);
   const [file, setFile] = useState<File | null>(null);
+  const [formSent, setFormSent] = useState(false);
 
   useEffect(() => {
     const escHandler = (e: KeyboardEvent) => {
@@ -174,6 +175,7 @@ const QuestionsForm = ({ onClose }: { onClose: () => void }) => {
 
               <button type="submit" className={styles.submitBtn}>Отправить</button>
             </form>
+            {formSent && <div className={styles.toast}>Спасибо за заявку!</div>}
       </div>
     </div>
   );

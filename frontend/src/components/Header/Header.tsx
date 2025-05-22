@@ -10,7 +10,9 @@ export default function Header() {
   const [showForm, setShowForm] = useState(false);
   const pathname = usePathname()
   const [visible, setVisible] = useState(true);
-  const isAboutPage = pathname === '/about' || '/servies'
+  const darkRoutes = ['/about', '/services', '/articles', '/questions'];
+  const isAboutPage = darkRoutes.includes(pathname);
+
 
   useEffect(() => {
     const handleScroll = () => {

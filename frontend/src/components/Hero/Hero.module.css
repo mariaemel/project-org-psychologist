@@ -33,8 +33,18 @@
   color: #ffffff;
   font-family: var(--font-nunito);
   position: relative;
-  margin-left: 140px;
+  margin-left: 30px;
   margin-top: 55px;
+
+  @media(max-width: 1024px) {
+    margin-left: -10px;
+    margin-top: 100px;
+  }
+
+  @media(max-width: 768px) {
+    margin-left: 5px;
+    margin-top: -40px;
+  }
 }
 
 .name {
@@ -50,12 +60,28 @@
         margin-left: -2.5px;
 
         @media (max-width: 1024px) {
-            font-size: 52px;
+            font-size: 3px;
         }
 
         @media (max-width: 768px) {
-            font-size: 45px;
+          font-size: 30px;
         }
+    }
+}
+
+.name {
+    font-family: var(--font-nunito);
+    font-weight: 400;
+    font-size: 50px;
+    margin-left: -2.5px;
+
+    @media (max-width: 1024px) {
+        font-size: 40px;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 30px;
+      margin-bottom: 30px;
     }
 }
 
@@ -68,12 +94,12 @@
   }
 
   @media (max-width: 768px) {
-      font-size: 14px;
+      font-size: 12px;
   }
 }
 
 .description {
-  font-size: 17px;
+  font-size: 18px;
   line-height: 1.2;
   margin-bottom: 60px;
   font-family: var(--font-nunito);
@@ -83,7 +109,8 @@
   }
 
   @media (max-width: 768px) {
-      font-size: 14px;
+    font-size: 12px;
+    margin-bottom: 20px;
   }
 }
 
@@ -111,26 +138,26 @@
 
   @media (max-width: 768px) {
     font-size: 11px;
+    width: 140px;
+    height: 40px;
   }
 }
 
 .paperImage {
   position: absolute;
   bottom: 0;
-  right: -125px;
-  width: 1600px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1600px;
   z-index: 1;
   pointer-events: none;
 
   @media (max-width: 1440px) {
-    width: 1440px;
-    margin-left: -347px;
-    margin-top: 163px;
+
   }
   @media (max-width: 1024px) {
-    width: 1024px;
-    margin-left: -390px;
-    margin-top: 163px;
+    width: 1300px;
   }
 }
 
@@ -141,24 +168,54 @@
   font-family: var(--font-nunito);
   color: #ffffff;
   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3), 0 2px 5px rgba(38, 37, 37, 0.4);
-
   margin-top: -150px;
+
+  @media (max-width: 1440px) {
+    font-size: 22px;
+  }
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
 }
 
 .quoteBox {
   position: absolute;
   top: 280px;
-  right: 170px;
+  left: 700px;
   font-style: italic;
-  max-width: 520px;
+  max-width: 530px;
   text-align: right;
   z-index: 2;
+
+  @media (max-width: 1440px) {
+    right: 260px;
+    width: 530px;
+  }
+  @media (max-width: 1024px) {
+    left: 400px;
+    width: 500px;
+  }
+  @media (max-width: 768px) {
+    top: 280px;
+    left: 200px;
+    font-style: italic;
+    max-width: 520px;
+  }
 }
 
 .author {
   display: block;
-  font-size: 18px;
+  font-size: 20px;
   margin-top: 5px;
   font-family: var(--font-nunito);
   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3), 0 2px 5px rgba(38, 37, 37, 0.4);
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
 }

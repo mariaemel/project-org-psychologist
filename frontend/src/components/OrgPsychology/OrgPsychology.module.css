@@ -23,14 +23,14 @@
   font-family: var(--font-nunito);
 
   @media (max-width: 1024px) {
-    font-size: 24px;
+    font-size: 20px;
     margin-left: -420px;
     padding: 30px 200px;
     padding-left: 550px;
   }
 
   @media (max-width: 768px) {
-    font-size: 20px;
+    font-size: 18px;
     margin-left: -550px;
     padding: 30px 00px;
     padding-left: 630px;
@@ -56,13 +56,14 @@
 
   @media (max-width: 1024px) {
     font-size: 18px;
-    width: 90%;
+    width: 60%;
     padding: 40px;
+    margin-left: 80px;
   }
 
   @media (max-width: 768px) {
     font-size: 16px;
-    width: 110%;
+    width: 80%;
     padding: 40px;
   }
 }
@@ -80,6 +81,16 @@
   margin-left: 200px;
   margin-top: -150px;
   font-family: var(--font-nunito);
+
+  @media (max-width: 1024px) {
+    margin-left: 80px;
+    margin-top: 0px;
+  }
+  @media (max-width: 768px) {
+    margin-left: 80px;
+    width: 80%;
+    margin-top: 0px;
+  }
 }
 
 .greenCard1 {
@@ -94,6 +105,14 @@
   width: 700px;
   margin-left: 600px;
   font-family: var(--font-nunito);
+
+  @media (max-width: 1024px) {
+    margin-left: 180px;
+  }
+  @media (max-width: 768px) {
+    margin-left: 80px;
+    width: 80%;
+  }
 }
 
 .greenCard2 {
@@ -107,14 +126,57 @@
   width: 700px;
   margin-left: 200px;
   font-family: var(--font-nunito);
+
+  @media (max-width: 1024px) {
+    margin-left: 80px;
+  }
+  @media (max-width: 768px) {
+    margin-left: 80px;
+    width: 80%;
+  }
 }
 
-.imageWrapper {
+.imageWrapper1 {
   margin-left: 840px;
   margin-top: -350px;
+
+  @media (max-width: 1600px) {
+    width:500px;
+    height: 500px;
+    margin-left: 900px;
+    margin-top: -350px;
+  }
+
+  @media (max-width: 1440px) {
+    width:500px;
+    height: 500px;
+    margin-left: 900px;
+    margin-top: -350px;
+  }
+
+  @media (max-width: 1024px) {
+    width:300px;
+    height: 300px;
+    margin-left: 720px;
+    margin-top: -350px;
+  }
+  @media (max-width: 768px) {
+    margin: 20px 0;
+    width:0px;
+    height: 0px;
+  }
 }
 
 .paperImage2 {
   margin-left: -800px;
   margin-top: -80px;
+
+  @media (max-width: 1024px) {
+    margin-left: -800px;
+    margin-top: -40px;
+  }
+  @media (max-width: 768px) {
+    margin-left: -800px;
+    margin-top: -180px;
+  }
 }

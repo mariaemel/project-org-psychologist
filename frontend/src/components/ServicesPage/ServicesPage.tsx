@@ -1,7 +1,10 @@
 'use client';
-import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { useState } from 'react';
 import styles from './ServicesPage.module.css';
+import dynamic from 'next/dynamic';
+
+const RequestForm = dynamic(() => import('@/components/RequestForm/RequestForm'), { ssr: false });
 
 interface Service {
   id: number;
@@ -218,115 +221,41 @@ export default function ServicesPage() {
   const [tab, setTab] = useState<'individual' | 'business'>(initialTab);
   const services = tab === 'individual' ? individualServices : businessServices;
 
-  const [selectedService, setSelectedService] = useState<null | Service>(null);
-  const [formSent, setFormSent] = useState(false);
+  const [showForm, setShowForm] = useState(false);
+  const [selectedServiceId, setSelectedServiceId] = useState<number | null>(null);
+  const [selectedServiceName, setSelectedServiceName] = useState<string | null>(null);
 
-  const closeModal = () => setSelectedService(null);
-
-  const handleSubmit = async (
-    e: React.FormEvent<HTMLFormElement>,
-    selectedServiceId: number
-  ) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-
-    const payload = {
-      full_name: formData.get('full_name'),
-      phone: formData.get('phone'),
-      email: formData.get('email'),
-      request_text: formData.get('request_text'),
-      client_type: formData.get('client_type'),
-      preferred_communication: formData.get('preferred_communication'),
-      selected_service: selectedServiceId,
-    };
-
-    try {
-      const res = await fetch('http://localhost:8000/api/requests/create/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-
-      if (!res.ok) throw new Error('Ошибка при отправке формы');
-
-      setFormSent(true);
-      setTimeout(() => {
-        setFormSent(false);
-        closeModal();
-      }, 2000);
-    } catch (error) {
-      console.error('Ошибка отправки:', error);
-      alert('Ошибка при отправке формы. Попробуйте позже.');
-    }
+  const openForm = (id: number, name: string) => {
+    setSelectedServiceId(id);
+    setSelectedServiceName(name);
+    setShowForm(true);
   };
 
   return (
     <div className={styles.servicesPage}>
       <div className={styles.tabs}>
-        <button className={tab === 'individual' ? styles.active : ''} onClick={() => setTab('individual')}>
-          Физические лица
-        </button>
-        <button className={tab === 'business' ? styles.active : ''} onClick={() => setTab('business')}>
-          Юридические лица
-        </button>
+        <button className={tab === 'individual' ? styles.active : ''} onClick={() => setTab('individual')}>Физические лица</button>
+        <button className={tab === 'business' ? styles.active : ''} onClick={() => setTab('business')}>Юридические лица</button>
       </div>
 
       <div className={styles.servicesList}>
-        {services.map((service) => (
+        {services.map(service => (
           <div key={service.id} className={styles.serviceCard}>
             <h3>{service.title}</h3>
             <p><strong>Продолжительность:</strong> {service.duration}</p>
             <p><strong>Описание:</strong> {service.description}</p>
             <p><strong>Стоимость:</strong> {service.price}</p>
-            <button className={styles.signupButton} onClick={() => setSelectedService(service)}>
-              Записаться
-            </button>
+            <button className={styles.signupButton} onClick={() => openForm(service.id, service.title)}>Записаться</button>
           </div>
         ))}
       </div>
 
-      {selectedService && (
-        <div className={styles.modalOverlay} onClick={closeModal}>
-          <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-            <button className={styles.closeButton} onClick={closeModal}>×</button>
-            <h2>Запись на услугу: {selectedService.title}</h2>
-            <form className={styles.form} onSubmit={(e) => handleSubmit(e, selectedService.id)}>
-              <label>ФИО:
-                <input type="text" name="full_name" required />
-              </label>
-              <label>Телефон:
-                <input type="tel" name="phone" required />
-              </label>
-              <label>Email:
-                <input type="email" name="email" required />
-              </label>
-              <label>Тип клиента:
-                <select name="client_type" required className={styles.selectInput}>
-                  <option value="">-- Выберите --</option>
-                  <option value="individual">Физическое лицо</option>
-                  <option value="organization">Юридическое лицо</option>
-                </select>
-              </label>
-
-              <label>Предпочитаемый способ связи:
-                <select name="preferred_communication" required className={styles.selectInput}>
-                  <option value="">-- Выберите --</option>
-                  <option value="email">Email</option>
-                  <option value="phone">Телефон</option>
-                </select>
-              </label>
-              <label>Комментарий:
-                <textarea name="request_text" rows={3} required />
-              </label>
-              <button type="submit">Отправить</button>
-            </form>
-          </div>
-        </div>
-      )}
-
-      {formSent && (
-        <div className={styles.toast}>Спасибо за заявку!</div>
+      {showForm && selectedServiceId !== null && selectedServiceName !== null && (
+        <RequestForm
+          onClose={() => setShowForm(false)}
+          defaultServiceId={selectedServiceId}
+          defaultServiceName={selectedServiceName}
+        />
       )}
     </div>
   );

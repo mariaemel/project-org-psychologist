@@ -70,6 +70,10 @@
   cursor: pointer;
   transition: background 0.2s ease;
   margin-left: 700px;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+  }
 }
 .signupButton:hover {
   background-color: #5e1ed1;
@@ -220,4 +224,16 @@
   .serviceCard p {
     font-size: 14px;
   }
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.checkboxLabel p {
+  color: #8681FF;
 }
