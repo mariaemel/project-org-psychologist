@@ -3,11 +3,43 @@ from rest_framework.permissions import IsAdminUser, AllowAny
 from django.utils import timezone
 from .models import ClientQuestion
 from .serializers import ClientQuestionSerializer, ClientQuestionAdminSerializer
+from utils.telegram_utils import send_telegram_message
+
+
 
 class ClientQuestionCreateView(generics.CreateAPIView):
     queryset = ClientQuestion.objects.all()
     serializer_class = ClientQuestionSerializer
     permission_classes = [AllowAny]
+
+    def perform_create(self, serializer):
+        instance = serializer.save()
+        company = instance.company_name_juridical or '—'
+        position = instance.position_juridical or '—'
+        inn = instance.inn_juridical or '—'
+        preferred_comm = instance.preferred_communication or '—'
+        consent = 'Да' if instance.consent_processing else 'Нет'
+        files = instance.additional_files.url if instance.additional_files else 'Нет файлов'
+
+        message = (
+            f"<b>Новый вопрос</b>\n\n"
+            f"ФИО: {instance.full_name}\n"
+            f"Тип клиента: {instance.get_client_type_display()}\n"
+            f"Компания: {company}\n"
+            f"Должность: {position}\n"
+            f"ИНН: {inn}\n"
+            f"Телефон: {instance.phone}\n"
+            f"Email: {instance.email}\n"
+            f"Предпочитаемый способ связи: {preferred_comm}\n"
+            f"Дата: {instance.created_at.strftime('%Y-%m-%d %H:%M')}\n"
+            f"Тема: {instance.question_topic}\n"
+            f"Описание: {instance.question_text[:300]}...\n"
+            f"Файлы: {files}\n"
+            f"Согласие на обработку: {consent}"
+        )
+        send_telegram_message(message)
+
+
 
 class ClientQuestionListView(generics.ListAPIView):
     queryset = ClientQuestion.objects.all()
