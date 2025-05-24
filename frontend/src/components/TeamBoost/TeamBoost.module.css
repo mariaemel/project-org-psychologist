@@ -16,109 +16,165 @@
   flex-direction: column;
   align-items: center;
   flex: 1;
-  margin-left: 130px;
+  margin-left: 30px;
   margin-top: -50px;
+
+  @media (max-width: 1024px) {
+    margin-left: 80px;
+    margin-top: 0px;
+  }
+
+  @media (max-width: 768px) {
+    margin-left: 40px;
+    margin-top: -60px;
+  }
 }
 
 .teamImage {
-  width: 420px;
+  width: 620px;
   height: auto;
   margin-bottom: 20px;
+
+  @media (max-width: 1024px) {
+    width: 450px;
+    margin-bottom: 10px;
+  }
+
+  @media (max-width: 768px) {
+    width: 270px;
+    margin-bottom: 10px;
+  }
 }
 
 .buttons {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 20px;
+
+  @media (max-width: 768px) {
+    gap: 10px;
+  }
 }
 
 .primaryButton {
-  background: #540095;
+  background: #8C00FF;
   color: white;
-  padding: 12px 24px;
   border: none;
-  border-radius: 30px;
-  font-family: var(--font-raleway);
+  border-radius: 5px;
+  font-family: var(--font-nunito);
   font-weight: 400;
-  font-size: 22px;
+  font-size: 14px;
   cursor: pointer;
-  height: 65px;
-  width: 330px;
+  height: 40px;
+  width: 180px;
+
+  @media (max-width: 1024px) {
+    font-size: 14px;
+    width: 170px;
+    height: 50px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+    width: 140px;
+    height: 40px;
+  }
+}
+
+.primaryButton:hover {
+  background: #6a1ea8;
+}
+
+.secondaryButton:hover {
+  background: #6a1ea8;
 }
 
 .secondaryButton {
-  background: #8B3DDE;
-  border: 2px solid #9900ff;
+  background: #8C00FF;
   color: white;
-  padding: 12px 24px;
-  border-radius: 30px;
-  font-family: var(--font-raleway);
+  border: none;
+  border-radius: 5px;
+  font-family: var(--font-nunito);
   font-weight: 400;
-  font-size: 22px;
+  font-size: 14px;
   cursor: pointer;
-  height: 65px;
-  width: 330px;
+  height: 40px;
+  width: 180px;
+
+  @media (max-width: 1024px) {
+    font-size: 14px;
+    width: 170px;
+    height: 50px;
+    margin-left: 10px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+    width: 140px;
+    height: 40px;
+    margin-left: 10px;
+  }
 }
 
 .rightSide {
   flex: 2;
   max-width: 600px;
-  margin-left: 80px;
+  margin-left: 50px;
+
+  @media (max-width: 1024px) {
+    margin-left: 50px;
+  }
 }
 
 .title {
-  font-family: var(--font-raleway);
+  font-family: var(--font-nunito);
   font-weight: 400;
-  font-size: 44px;
-  margin-bottom: 25px;
+  font-size: 32px;
+  margin-bottom: 35px;
+  margin-top: -45px;
   color: #1e1e1e;
+
+  @media (max-width: 1024px) {
+    font-size: 30px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 22px;
+    margin-top: -80px;
+    margin-bottom: 20px;
+  }
 }
 
 .features {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 30px;
+
+  @media (max-width: 1024px){
+    gap: 15px;
+  }
 }
 
 .featureCard {
-  background: #d0a8ff;
+  background: #8681FF;
   padding: 20px;
-  border-radius: 20px;
-  font-family: var(--font-raleway);
-  font-size: 16px;
-  color: white;
-}
-
-.featureCard1 {
-  background: #BB92E7;
-  padding: 25px;
-  border-radius: 35px;
-  font-family: var(--font-raleway);
+  border-radius: 5px;
+  font-family: var(--font-nunito);
   font-size: 18px;
   color: white;
-  width: 370px;
-  height: 80px;
-}
+  width: 380px;
+  height: auto;
+  text-align: center;
 
-.featureCard2 {
-  background: #BB92E7;
-  padding: 25px;
-  border-radius: 35px;
-  font-family: var(--font-raleway);
-  font-size: 18px;
-  color: white;
-  width: 370px;
-  height: 80px;
-  margin-left: 80px;
-}
+  @media (max-width: 1024px) {
+    font-size: 16px;
+    width: 340px;
+    padding: 20px;
+  }
 
-.featureCard3 {
-  background: #BB92E7;
-  padding: 20px;
-  border-radius: 35px;
-  font-family: var(--font-raleway);
-  font-size: 18px;
-  color: white;
-  width: 400px;
-  height: 80px;
+  @media (max-width: 768px) {
+    font-size: 14px;
+    width: 280px;
+    padding: 10px;
+  }
 }

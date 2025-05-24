@@ -3,6 +3,7 @@
   background: #ffffff;
   max-width: 1600px;
   margin: 0 auto;
+  text-align: justify;
 }
 
 
@@ -10,47 +11,172 @@
   background: white;
   padding: 36px 200px;
   width: 1050px;
-  font-size: 30px;
+  font-size: 26px;
   border-radius: 0 5px 5px 0;
-  box-shadow: 0px 4px 20px #00000021;
+  box-shadow: 0px 4px 10px #333333;
   font-weight: 400;
-  margin-bottom: 100px;
-  margin-left: -190px;
-  padding-left: 380px;
+  margin-bottom: 80px;
+  margin-left: -320px;
+  padding-left: 500px;
   border: 2px solid #333333;
   white-space: nowrap;
-  font-family: var(--font-kotta);
+  font-family: var(--font-nunito);
+
+  @media (max-width: 1024px) {
+    font-size: 20px;
+    margin-left: -420px;
+    padding: 30px 200px;
+    padding-left: 550px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+    margin-left: -550px;
+    padding: 30px 00px;
+    padding-left: 630px;
+    margin-bottom: 70px;
+  }
 }
 
-.container {
-  margin: 0 auto;
-  display: flex;
-  gap: 70px;
-}
 
 .leftCard {
-  background: #333333;
-  border-radius: 0 5px 5px 0;
-  padding: 50px;
-  font-family: var(--font-raleway);
+  background: #9592fb;
+  border-radius: 5px;
+  padding-top: 45px;
+  font-family: var(--font-nunito);
   font-size: 20px;
   color: #ffffff;
   line-height: 1.5;
-  width: 100%;
-  height: 200px;
-  text-align: end;
+  width: 640px;
+  height: 150px;
+  text-align: center;
+  margin-left: 200px;
+  margin-bottom: 50px;
+  font-weight: 700;
+
+  @media (max-width: 1024px) {
+    font-size: 18px;
+    width: 60%;
+    padding: 40px;
+    margin-left: 80px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+    width: 80%;
+    padding: 40px;
+  }
 }
 
-.rightCards {
-  text-align: left;
-  display: grid;
-  background-color: #7000CC;
-  border-radius: 5px 0 0 5px;
-  padding: 50px;
-  font-family: var(--font-raleway);
-  color: #ffffff;
-  line-height: 1.5;
-  width: 88%;
-  height: 350px;
-  font-size: 20px;
+.greenCard {
+  background-color: #e7f9dc;
+  color: #222;
+  font-size: 16px;
+  padding: 20px 24px;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  line-height: 1.6;
+  margin-bottom: 40px;
+  width: 700px;
+  margin-left: 200px;
+  margin-top: -150px;
+  font-family: var(--font-nunito);
+
+  @media (max-width: 1024px) {
+    margin-left: 80px;
+    margin-top: 0px;
+  }
+  @media (max-width: 768px) {
+    margin-left: 80px;
+    width: 80%;
+    margin-top: 0px;
+  }
+}
+
+.greenCard1 {
+  background-color: #e7f9dc;
+  color: #222;
+  font-size: 16px;
+  padding: 20px 24px;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  line-height: 1.6;
+  margin-bottom: 40px;
+  width: 700px;
+  margin-left: 600px;
+  font-family: var(--font-nunito);
+
+  @media (max-width: 1024px) {
+    margin-left: 180px;
+  }
+  @media (max-width: 768px) {
+    margin-left: 80px;
+    width: 80%;
+  }
+}
+
+.greenCard2 {
+  background-color: #e7f9dc;
+  color: #222;
+  font-size: 16px;
+  padding: 20px 24px;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  line-height: 1.6;
+  width: 700px;
+  margin-left: 200px;
+  font-family: var(--font-nunito);
+
+  @media (max-width: 1024px) {
+    margin-left: 80px;
+  }
+  @media (max-width: 768px) {
+    margin-left: 80px;
+    width: 80%;
+  }
+}
+
+.imageWrapper1 {
+  margin-left: 840px;
+  margin-top: -350px;
+
+  @media (max-width: 1600px) {
+    width:500px;
+    height: 500px;
+    margin-left: 900px;
+    margin-top: -350px;
+  }
+
+  @media (max-width: 1440px) {
+    width:500px;
+    height: 500px;
+    margin-left: 900px;
+    margin-top: -350px;
+  }
+
+  @media (max-width: 1024px) {
+    width:300px;
+    height: 300px;
+    margin-left: 720px;
+    margin-top: -350px;
+  }
+  @media (max-width: 768px) {
+    margin: 20px 0;
+    width:0px;
+    height: 0px;
+  }
+}
+
+.paperImage2 {
+  margin-left: -800px;
+  margin-top: -80px;
+
+  @media (max-width: 1024px) {
+    margin-left: -800px;
+    margin-top: -40px;
+  }
+  @media (max-width: 768px) {
+    margin-left: -800px;
+    margin-top: -180px;
+  }
 }

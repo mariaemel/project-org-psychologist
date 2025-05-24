@@ -9,7 +9,8 @@
 
 .container {
   margin: 0 auto;
-  padding: 0 80px;
+  margin-right: 130px;
+  padding: 0 120px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,20 +19,20 @@
 .left {
   display: flex;
   align-items: center;
-  padding-left: 200px;
+  padding-left: 12px;
 }
 
 
 .nav {
   display: flex;
-  gap: 60px;
+  gap: 50px;
 
   a {
-    color: #fff;
+    color: #ffffff;
     text-decoration: none;
     font-size: 16px;
     transition: opacity 0.3s;
-    font-family: var(--font-raleway);;
+    font-family: var(--font-nunito);
     font-weight: 400;
 
     &:hover {
@@ -39,18 +40,22 @@
     }
   }
 }
+.nav a.active {
+      font-weight: 700;
+    }
 
 .cta {
   background: transparent;
   border: none;
-  color: #fff;
+  color: #ffffff;
   font-size: 16px;
   cursor: pointer;
   padding: 8px 16px;
   transition: opacity 0.3s;
+  font-family: var(--font-nunito);
 
   &:hover {
-    opacity: 0.7;
+    opacity: 0.5;
   }
 }
 
@@ -59,7 +64,7 @@
   .container {
     padding: 0 60px;
     font-size: 25px;
-    margin-left: -150px;
+    margin-left: 0px;
   }
 
   .nav {
@@ -78,28 +83,8 @@
 /* 1024 */
 @media (max-width: 1024px) {
   .container {
-    padding: 0 40px;
-    margin-left: -180px;
-  }
-
-  .nav {
-    gap: 24px;
-
-    a {
-      font-size: 20px;
-    }
-  }
-
-  .cta {
-    font-size: 19px;
-  }
-}
-
-/* 768 */
-@media (max-width: 768px) {
-  .container {
-    padding: 0 40px;
-    margin-left: -240px;
+    padding: 0 0px;
+    margin-left: 30px;
   }
 
   .nav {
@@ -111,6 +96,44 @@
   }
 
   .cta {
-    font-size: 17px;
+    font-size: 18px;
   }
+}
+
+/* 768 */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+    margin-left: -10px;
+  }
+
+  .nav {
+    gap: 20px;
+
+    a {
+      font-size: 16px;
+    }
+  }
+
+  .cta {
+    font-size: 16px;
+  }
+}
+/* Светлая шапка — для Главной страницы (белый текст) */
+.lightHeader .nav a,
+.lightHeader .cta {
+  color: white;
+}
+
+/* Тёмная шапка — для других страниц, например "Обо мне" (чёрный текст) */
+.darkHeader .nav a,
+.darkHeader .cta {
+  color: black;
+
+}
+
+/* Плавное переключение цвета */
+.nav a,
+.cta {
+  transition: color 0.3s ease;
 }

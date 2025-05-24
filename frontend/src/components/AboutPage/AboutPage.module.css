@@ -1,283 +1,529 @@
-  .wrapper {
-    padding-top: 120px;
-    background: #333333;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: 'Raleway', sans-serif;
-  }
+.page {
+  background: url('/obo_mne.png') center top no-repeat;
+  background-size: cover;
+  font-family: var(--font-nunito);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.container {
+  width: 100%;
+  max-width: 1600px;
+  padding: 0 60px;
+  box-sizing: border-box;
+}
   /* обо мне */
-  .heroSection {
-    width: 100%;
-    position: relative;
-    height: 700px;
-  }
 
-  .cards {
-    position: absolute;
-    top: 0px;
-    left: 180px;
-    width: 500px;
-    height: 480px;
-  }
+.aboutSection {
+  padding: 80px 60px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 100px;
+  margin-top: 120px;
+  text-align: justify;
+}
 
-  .cardWhite,
-  .cardGray,
-  .cardLightGray {
-    border-radius: 30px;
-    position: absolute;
-    box-shadow: 0px 20px 60px rgba(0, 0, 0, 0.05);
-  }
+.contentWrapper {
+  display: flex;
+  max-width: 1180px;
+  justify-content: space-between;
+  gap: 80px;
+}
 
-  .cardWhite {
-    background: white;
-    width: 290px;
-    height: 320px;
-    top: 10px;
-    left: 10px;
-    z-index: 1;
-  }
+.imagePlaceholder {
+  width: 440px;
+  height: 460px;
+  background: #aaa;
+  border-radius: 5px;
+  flex-shrink: 0;
+  margin-left: 20px;
+}
 
-  .cardGray {
-    background: #E5DFDF;
-    width: 280px;
-    height: 315px;
-    top: 90px;
-    left: 310px;
-    z-index: 2;
-  }
+.textContent {
+  flex: 1;
+  color: #333;
+  font-size: 18px;
+  line-height: 1.7;
+  margin-top: -60px;
+  max-width: 600px;
+}
 
-  .cardLightGray {
-    background: #C2C0C0;
-    width: 280px;
-    height: 315px;
-    top: 240px;
-    left: 100px;
-    z-index: 3;
-  }
+.text {
+  margin-bottom: 30px;
+}
 
-  .introBox {
-    position: absolute;
-    top: 92px;
-    left: 870px;
-    background: #9900f0;
-    color: white;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    padding: 62px;
-    max-width: 700px;
-    padding-left: 45px;
-    padding-top: 45px;
-    box-shadow: 0px 20px 60px rgba(0, 0, 0, 0.1);
-  }
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #7b5fff;
+  text-transform: lowercase;
+  margin-bottom: 20px;
+}
 
-
-  .title {
-    font-size: 32px;
-    font-weight: 400;
-    padding-bottom: 15px;
-  }
-
-  .description {
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 1.6;
-  }
+.footerNote {
+  font-size: 18px;
+  max-width: 1105px;
+  margin-top: 0px;
+  color: #333333;
+}
 
 
   /* образование*/
-  .educationSection {
-    padding: 0px 80px;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #ffffff;
-    height: 780px;
-  }
+.educationSection {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  padding-top: 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
 
-  .educationLabel {
-    background: white;
-    padding: 36px 410px;
-    font-size: 26px;
-    border-radius: 5px;
-    border: 3px solid #7000CC21;
-    box-shadow: 0px 4px 20px #7000CC21;
-    font-weight: 500;
-    margin-bottom: 50px;
-    margin-left: 900px;
-    padding-left: 50px;
-  }
+.educationTitle {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: -50px;
+  color: #7c4dff;
+  text-transform: lowercase;
+}
 
-  .educationContent {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 40px;
-    width: 100%;
-  }
+.blockRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 100px;
+}
 
-  .educationText {
-    flex: 1;
-    background: #A448FF;
-    color: white;
-    padding: 99px;
-    padding-top: 48px;
-    padding-left: 130px;
-    border-radius: 0 5px 5px 0;
-    font-size: 22px;
-    line-height: 1.6;
-    box-shadow: 0px 20px 60px rgba(0, 0, 0, 0.1);
-  }
+.textObr {
+  flex: 1;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #333333;
+  text-align: justify;
+}
 
-  .educationImage {
-    width: 370px;
-    height: 322px;
-    background: #d1d1d1;
-    border-radius: 5px;
-    margin-right: 259px;
-  }
+.textObr1 {
+  flex: 1;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #333333;
+  margin-top: 50px;
+  text-align: justify;
+}
+
+.textList {
+  flex: 1;
+  font-size: 18px;
+  line-height: 1.7;
+  max-width: 580px;
+  color: #333333;
+  margin-top: 80px;
+  text-align: justify;
+}
+
+.textList ul {
+  margin-top: 25px;
+  padding-left: 20px;
+}
+
+.textList li {
+  margin-bottom: 10px;
+}
+
+.grayBlock {
+  width: 410px;
+  height: 380px;
+  background: #cfcfcf;
+  border-radius: 5px;
+  flex-shrink: 0;
+  margin-top: -130px;
+}
+
+.grayBlockSmall {
+  width: 440px;
+  height: 280px;
+  background: #cfcfcf;
+  border-radius: 5px;
+  flex-shrink: 0;
+}
+
+.blockGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 200px);
+  gap: 16px;
+}
+
+.square {
+  width: 200px;
+  height: 200px;
+  background: #cfcfcf;
+  border-radius: 5px;
+}
 
   /* опыт */
 .experienceSection {
-    padding: 100px 80px;
-    background: white;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    position: relative;
-  }
-  .circleBackground {
-    position: absolute;
-    width: 1300px;
-    height: 1100px;
-    border-radius: 50%;
-    background-color: rgba(112, 0, 204, 0.06);
-    top: 440px;
-    left: 180px;
-    z-index: 0;
-  }
+  padding: 100px 80px;
+  font-family: var(--font-nunito);
+  margin-left: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .experienceBlock {
-    display: flex;
+.experiencetitle {
+  font-size: 28px;
+  color: #7c4dff;
+  font-weight: 600;
+  margin-bottom: 55px;
+}
+
+.contentWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 100px;
+}
+.contentWrapper2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 100px;
+}
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 90px;
+}
+
+.yearBox {
+  background: #8681FF;
+  color: white;
+  font-weight: bold;
+  padding: 16px 80px;
+  font-size: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.rightColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+}
+
+.textOpit {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #333;
+  width: 700px;
+  margin-bottom: 25px;
+  text-align: justify;
+}
+
+/* методы работы */
+.methodtitle {
+  font-size: 28px;
+  color: #7c4dff;
+  font-weight: 600;
+  text-transform: lowercase;
+  margin-bottom: 50px;
+
+}
+
+.step {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 60px;
+}
+
+.methodsSection {
+  padding: 100px 180px;
+}
+
+.textmethods {
+  flex: 1;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-bottom: 50px;
+  text-align: justify;
+}
+
+.textmethods1 {
+  flex: 1;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 30px;
+  text-align: justify;
+}
+
+.textmethods2 {
+  flex: 1;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 75px;
+  text-align: justify;
+}
+
+.textmethods3 {
+  flex: 1;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 55px;
+  text-align: justify;
+}
+.image {
+  flex-shrink: 0;
+}
+
+.image3 {
+  flex-shrink: 0;
+  margin-right: 105px;
+}
+
+
+  /* картинка */
+.paperSection {
+  display: flex;
+  padding: 80px 60px;
+  margin-bottom: 100px;
+}
+
+.paperContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.paperImage {
+  width: 1000px;
+  height: auto;
+  border-radius: 5px;
+  margin-left: -200px;
+}
+
+.paperButton {
+  background: #8681FF;
+  color: white;
+  padding: 18px 40px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 4px 20px rgba(81, 81, 81, 0.3);
+  cursor: pointer;
+  font-weight: 400;
+  white-space: nowrap;
+  transition: background 0.2s ease;
+  margin-right: 110px;
+}
+
+.paperButton:hover {
+  background: #8581ffc5;
+}
+
+@media (max-width: 1024px) {
+  .blockRow,
+  .step,
+  .paperContent,
+  .experienceSection {
     flex-direction: row;
+    gap: 60px;
     align-items: flex-start;
-    gap: 170px;
   }
 
-  .experienceLabel {
-    background: white;
-    padding: 36px 610px;
-    font-size: 30px;
-    border-radius: 5px 0 0 5px;
-    border: 3px solid #7000CC21;
-    box-shadow: 0px 4px 20px #7000CC21;
-    font-weight: 500;
-    margin-bottom: 50px;
-    margin-left: 750px;
-    padding-left: 50px;
+  .aboutSection {
+    width: 1050px;
+    margin-left: -60px;
   }
 
-  .experienceBadge {
-    background: #7101CD;
-    color: white;
-    border-radius: 5px;
-    padding: 30px;
-    width: 280px;
+  .imagePlaceholder {
+    width: 240px;
+    height: 260px;
+  }
+
+  .container {
+    padding: 0 40px;
+  }
+
+  .textOpit {
+    width: 580px;
+  }
+
+  .contentWrapper2 {
+    margin-left: -120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 100px;
+  }
+
+  .leftColumn {
+    margin-top: 105px;
+    gap: 60px;
+  }
+
+  .methodsSection {
+    padding: 80px 100px;
+  }
+
+  .image {
+    width: 350px;
     height: 250px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-left: 300px;
-    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.15);
+    padding-left: 15px;
   }
 
-  .experienceContent {
-    display: flex;
+  .paperImage {
+    width: 850px;
+    margin-left: -160px;
+  }
+
+  .paperButton {
+    padding: 16px 20px;
+    font-size: 16px;
+    margin-top: 50px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container,
+  .contentWrapper,
+  .blockRow,
+  .step,
+  .paperContent {
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
     gap: 40px;
   }
 
-  .years {
-    font-size: 70px;
-    font-weight: 400;
-    font-family: var(--font-raleway);
-  }
-
-  .label {
-    font-size: 30px;
-    margin-top: 20px;
-    font-family: var(--font-raleway);
-  }
-
-  .experienceText {
-    max-width: 500px;
-    font-size: 18px;
-    line-height: 1.6;
-    color: #000;
-    margin-top: 20px;
-    font-family: var(--font-raleway);
-  }
-
-  /* методы работы */
-  .methodsSection {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-    height: 920px;
-    background-color: #ffffff;
-  }
-
-  .methodsLabel {
-    background: white;
-    padding: 36px 592px;
-    font-size: 30px;
-    border-radius: 5px 0 0 5px;
-    border: 3px solid #7000CC21;
-    box-shadow: 0px 4px 20px #7000CC21;
-    white-space: nowrap;
-    font-weight: 500;
-    margin-left: 600px;
-    padding-left: 50px;
-  }
-
-  /* картинка */
-  .paperSection {
-    position: relative;
+  .imagePlaceholder,
+  .grayBlock,
+  .grayBlockSmall,
+  .square {
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 700px;
-    background-color: white;
+    height: auto;
+    max-height: 300px;
+  }
+
+  .textContent,
+  .textObr,
+  .textObr1,
+  .textList,
+  .textOpit,
+  .textmethods,
+  .textmethods1,
+  .textmethods2,
+  .textmethods3 {
+    font-size: 16px;
+    text-align: justify;
+    padding: 0 10px;
+    max-width: 100%;
+  }
+
+  .footerNote {
+    font-size: 16px;
+    text-align: justify;
+    padding: 0 10px;
+  }
+
+  .blockGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .image,
+  .image3 {
+    width: 0;
+
+  }
+
+  .methodsSection,
+  .experienceSection,
+  .educationSection,
+  .aboutSection {
+    padding: 40px 20px;
   }
 
   .paperImage {
     width: 100%;
     height: auto;
-    box-shadow: 0px 15px 60px rgba(0, 0, 0, 0.1);
+    margin-left: 0;
   }
 
   .paperButton {
-    position: absolute;
-    background: #540095;
-    color: white;
-    padding: 18px 50px;
-    font-size: 18px;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    font-weight: 400;
-    margin-top: 550px;
+    font-size: 16px;
+    padding: 14px 30px;
+    margin: 20px 0 0 0;
   }
 
-  .paperButton:hover {
-    background: #8500d0;
+  .title,
+  .educationTitle,
+  .experiencetitle,
+  .methodtitle {
+    font-size: 24px;
+    text-align: center;
   }
+
+  .aboutSection {
+    width: 750px;
+    margin-left: 0px;
+  }
+
+  .textOpit {
+    width: 450px;
+  }
+
+  .footerNote {
+    width: 670px;
+    text-align: justify;
+    padding: 0 10px;
+  }
+
+  .contentWrapper2 {
+    gap: 20px;
+    margin-left: -60px;
+  }
+
+  .yearBox {
+    width: 150px;
+    height: 40px;
+    padding: 7px 0px;
+  }
+
+  .textmethods1 {
+    margin-top: -600px;
+  }
+
+  .textmethods2 {
+    margin-top: -110px;
+  }
+
+  .textmethods3 {
+    margin-top: -540px;
+  }
+}
