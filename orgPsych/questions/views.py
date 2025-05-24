@@ -4,13 +4,14 @@ from django.utils import timezone
 from .models import ClientQuestion
 from .serializers import ClientQuestionSerializer, ClientQuestionAdminSerializer
 from utils.telegram_utils import send_telegram_message
-
+from rest_framework.parsers import MultiPartParser, FormParser
 
 
 class ClientQuestionCreateView(generics.CreateAPIView):
     queryset = ClientQuestion.objects.all()
     serializer_class = ClientQuestionSerializer
     permission_classes = [AllowAny]
+    parser_classes = [MultiPartParser, FormParser]
 
     def perform_create(self, serializer):
         instance = serializer.save()
