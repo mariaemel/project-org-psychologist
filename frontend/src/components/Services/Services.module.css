@@ -122,3 +122,89 @@
   margin-bottom: 10px;
   color: #000;
 }
+
+@media (max-width: 427px) {
+  .tabs {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .tab {
+    width: 90vw;
+    text-transform: lowercase;
+    max-width: 320px;
+    font-size: 14px;
+    padding: 14px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    text-align: center;
+  }
+
+  .tab:first-child {
+    border-radius: 6px;
+  }
+
+  .tab:last-child {
+    border-radius: 6px;
+  }
+
+  .active {
+    background: #8025FF;
+    color: #fff;
+  }
+
+  .cards {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 16px;
+    width: 85vw;
+    padding-bottom: 12px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .card {
+    min-width: 260px;
+    margin-left: 0;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .cardTitle {
+    font-size: 16px;
+  }
+
+  .cardDescription {
+    font-size: 14px;
+  }
+
+  .cardDuration {
+    font-size: 13px;
+  }
+
+  .cardPrice {
+    font-size: 13px;
+  }
+
+  .priceButton {
+    text-align: right;
+    color: #7b77e8;
+    font-weight: 500;
+    margin-top: 12px;
+    display: block;
+  }
+
+  .moreLink {
+    text-align: right;
+    margin-left: 124px;
+    margin-top: 10px;
+    display: block;
+    font-size: 15px;
+  }
+}

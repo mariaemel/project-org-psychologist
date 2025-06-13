@@ -16,6 +16,12 @@ export default function About() {
       </div>
       <img src="/vector-1.svg" alt="paper" className={styles.paperImage2} />
       <img src="/vector-2.svg" alt="paper" className={styles.paperImage3} />
+      <img src="/vector-3.svg" alt="paper" className={styles.paperImage4} />
+      <img src="/vector-4.svg" alt="paper" className={styles.paperImage5} />
+      <img src="/vector7.svg" alt="paper" className={styles.paperImage6} />
+      <img src="/vector8.svg" alt="paper" className={styles.paperImage7} />
+      <img src="/vector9.svg" alt="paper" className={styles.paperImage8} />
+      <img src="/vector-4.svg" alt="paper" className={styles.paperImage9} />
     </section>
   )
 }

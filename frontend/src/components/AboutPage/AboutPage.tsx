@@ -92,7 +92,7 @@ export default function AboutPage() {
           </div>
           <div className={styles.rightColumn}>
             <h2 className={styles.experiencetitle}>опыт</h2>
-      textOpit      <p className={styles.textOpit}>
+            <p className={styles.textOpit}>
               С 2013 года я работаю с бизнесом и для бизнеса, над оптимизацией и автоматизацией процессов, происходящих в компании.
             </p>
             <p className={styles.textOpit}>
@@ -182,6 +182,11 @@ export default function AboutPage() {
             src="/paper-bg.jpg"
             alt="paper background"
             className={styles.paperImage}
+          />
+          <img
+            src="/quote.png"
+            alt="paper background"
+            className={styles.paperQuote}
           />
           <button className={styles.paperButton} onClick={() => setFormType('request')}>Оставить заявку</button>
         </div>

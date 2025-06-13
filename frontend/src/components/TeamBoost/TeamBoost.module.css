@@ -178,3 +178,92 @@
     padding: 10px;
   }
 }
+
+@media (max-width: 427px) {
+  .teamWorkSection {
+    padding: 60px 16px;
+  }
+
+  .container {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .leftSide {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 24px;
+  }
+
+  .teamImage {
+    display: none;
+  }
+
+  .rightSide {
+    margin-left: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .title {
+    font-size: 18px;
+    margin-top: 0;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  .features {
+    gap: 16px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 28px;
+  }
+
+  .featureCard {
+    width: 100%;
+    max-width: 82vw;
+    font-size: 14px;
+    padding: 14px;
+    text-align: center;
+    background: #8681FF;
+    border-radius: 5px;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0;
+  }
+
+  .buttons {
+    margin-top: -10px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    width: 100%;
+    margin-left: -40px;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    margin-left: 0;
+    width: 100%;
+    max-width: 180px;
+    height: 44px;
+    font-size: 14px;
+    background: #8025FF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: var(--font-nunito);
+    font-weight: 500;
+  }
+
+  .primaryButton:hover,
+  .secondaryButton:hover {
+    background: #6a1ea8;
+  }
+}

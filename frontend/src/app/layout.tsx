@@ -3,6 +3,7 @@ import { Nunito_Sans, Kotta_One, Inter, Roboto, Victor_Mono, Ubuntu_Sans_Mono, C
 import "./globals.css";
 import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
+import MobileMenu from '@/components/Header/MobileMenu';
 
 const victorMono = Victor_Mono({ subsets: ["latin", "cyrillic"], weight: ["400"], variable: "--font-victor" });
 const ubuntuMono = Ubuntu_Sans_Mono({ subsets: ["latin", "cyrillic"], weight: ["400", "700"], variable: "--font-ubuntu" });
@@ -24,6 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <div className="background">
           <Header />
+          <MobileMenu />
           <main>{children}</main>
           <Footer />
         </div>

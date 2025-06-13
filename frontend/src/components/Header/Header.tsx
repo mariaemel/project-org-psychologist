@@ -41,7 +41,7 @@ export default function Header() {
             <a href="/questions" className={pathname === '/questions' ? styles.active : ''}>Вопросы</a>
           </nav>
         </div>
-        <button className={styles.cta} onClick={() => setShowForm(true)}>Оставить заявку</button>
+        <button className={styles.cta}  onClick={() => setShowForm(true)}>Оставить заявку</button>
       </div>
       {showForm && <RequestForm onClose={() => setShowForm(false)} />}
     </header>

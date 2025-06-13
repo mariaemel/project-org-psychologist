@@ -5,6 +5,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: -70px;
+
+  @media (max-width: 320px){
+    background: #fff;
+  }
 }
 
 .container {
@@ -339,6 +344,9 @@
   margin-right: 110px;
 }
 
+.paperQuote {
+  width: 0;
+}
 .paperButton:hover {
   background: #8581ffc5;
 }
@@ -525,5 +533,157 @@
 
   .textmethods3 {
     margin-top: -540px;
+  }
+}
+
+@media (max-width: 427px) {
+  .page {
+    margin-top: 60px;
+    background: white;
+    padding: 0 12px;
+  }
+
+  .aboutSection,
+  .educationSection,
+  .methodsSection {
+    margin-left: -50px;
+    width: 110vw;
+  }
+
+  .experienceSection {
+    margin-left: 20px;
+    margin-top: -340px;
+  }
+
+  .textOpit {
+    width: 94vw;
+    font-size: 14px;
+  }
+
+  .footerNote {
+    width: 91%;
+    line-height: 1.8;
+  }
+
+  .grayBlock {
+    width: 100%;
+    max-width: 110%;
+    height: 230px;
+    background: #cfcfcf;
+    border-radius: 5px;
+    flex-shrink: 0;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .grayBlockSmall,
+  .square {
+    width: 0;
+  }
+
+  .imagePlaceholder {
+    width: 100%;
+    max-width: 280px;
+    height: 200px;
+    background: #cfcfcf;
+    border-radius: 5px;
+    flex-shrink: 0;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .image,
+  .image3 {
+    width: 0;
+  }
+
+  .yearBox {
+    display: none;
+  }
+
+  .step,
+  .blockRow,
+  .contentWrapper,
+  .contentWrapper2,
+  .paperContent {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    text-align: justify;
+  }
+
+  .contentWrapper {
+    margin-top: -150px;
+  }
+
+  .textContent,
+  .textmethods,
+  .textmethods1,
+  .textmethods2,
+  .textmethods3,
+  .textObr,
+  .textObr1,
+  .textList,
+  .footerNote {
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+    font-size: 15px;
+    text-align: justify;
+  }
+
+  .textObr1 {
+    margin-top: -70px;
+  }
+
+  .textList {
+    margin-top: -70px;
+    margin-bottom: 100px;
+  }
+
+  .textmethods1 {
+    margin-top: -500px;
+  }
+
+  .textmethods2 {
+    margin-top: 40px;
+  }
+
+  .textmethods3 {
+    margin-top: -480px;
+  }
+
+  .textList ul {
+    padding-left: 20px;
+  }
+
+  .paperButton {
+    width: 170%;
+    margin: 0;
+    font-size: 15px;
+    padding: 12px 20px;
+    background: #8681FF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 4px 20px rgba(81, 81, 81, 0.3);
+    cursor: pointer;
+    font-weight: 400;
+    white-space: nowrap;
+    transition: background 0.2s ease;
+  }
+
+  .paperButton:hover {
+    background: #8581ffc5;
+  }
+
+  .paperImage {
+    width: 0;
+  }
+
+  .paperQuote {
+    width: 105vw;
+    height: auto;
+    margin-top: -50px;
   }
 }

@@ -15,6 +15,8 @@ export default function ArticlesPage() {
   return (
     <div className={styles.wrapper}>
       <section className={styles.shelfSection}>
+        <img src="/vector-1.svg" alt="paper" className={styles.paperImage1} />
+        <img src="/vector9.svg" alt="paper" className={styles.paperImage2} />
         <div className={styles.shelfHeader}>
           <h1 className={styles.shelfTitle}>книжная полка</h1>
           <p className={styles.shelfDescription}>
@@ -22,7 +24,9 @@ export default function ArticlesPage() {
             мыслями на их счёт.
           </p>
         </div>
-
+        <img src="/vector7.svg" alt="paper" className={styles.paperImage3} />
+        <img src="/vector8.svg" alt="paper" className={styles.paperImage4} />
+        <img src="/vector2.svg" alt="paper" className={styles.paperImage10} />
         {/* Управление финансами */}
         <h2 className={styles.category}>Управление финансами</h2>
 
@@ -146,6 +150,11 @@ export default function ArticlesPage() {
       </section>
 
       <section className={styles.articlesSection}>
+        <img src="/vector9.svg" alt="paper" className={styles.paperImage5} />
+        <img src="/vector3.svg" alt="paper" className={styles.paperImage6} />
+        <img src="/vector4.svg" alt="paper" className={styles.paperImage7} />
+        <img src="/vector-4.svg" alt="paper" className={styles.paperImage8} />
+        <img src="/vector-3.svg" alt="paper" className={styles.paperImage9} />
         <h2 className={styles.articlesTitle}>статьи</h2>
         <h3 className={styles.category}>Финансы</h3>
 

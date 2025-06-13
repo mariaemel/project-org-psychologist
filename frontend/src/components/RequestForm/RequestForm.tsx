@@ -30,21 +30,36 @@ export default function RequestForm({ onClose, defaultServiceId, defaultServiceN
       consent_processing: formData.get('consent_processing') === 'on',
     };
 
+    const rawDate = formData.get('desired_datetime');
+    if (rawDate) {
+      payload.desired_datetime = new Date(rawDate.toString()).toISOString();
+    }
+
     if (clientType === 'individual') {
       payload.position_individual = formData.get('position_individual');
-      payload.desired_datetime = formData.get('desired_datetime');
     }
 
     if (clientType === 'organization') {
       payload.position_juridical = formData.get('position_juridical');
       payload.company_name_juridical = formData.get('company_name_juridical');
       payload.inn_juridical = formData.get('inn_juridical');
-      payload.desired_datetime = formData.get('desired_datetime');
     }
 
-    if (defaultServiceId) {
+    if (defaultServiceId && defaultServiceId > 0) {
       payload.selected_service = defaultServiceId;
     }
+
+    Object.keys(payload).forEach((key) => {
+      if (
+        payload[key] === null ||
+        payload[key] === undefined ||
+        payload[key] === ''
+      ) {
+        delete payload[key];
+      }
+    });
+
+    console.log('Payload:', payload);
 
     try {
       const res = await fetch('http://localhost:8000/application/create/', {
@@ -52,6 +67,9 @@ export default function RequestForm({ onClose, defaultServiceId, defaultServiceN
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
+
+      const data = await res.json();
+      console.log('Server response:', res.status, data);
 
       if (!res.ok) throw new Error('Ошибка при отправке');
 
@@ -79,6 +97,7 @@ export default function RequestForm({ onClose, defaultServiceId, defaultServiceN
         ) : (
           <form className={styles.form} onSubmit={handleSubmit}>
             <h2>Запись на: {defaultServiceName || 'услугу'}</h2>
+
             <label>ФИО:<input type="text" name="full_name" required /></label>
             <label>Телефон:<input type="tel" name="phone" required /></label>
             <label>Email:<input type="email" name="email" required /></label>

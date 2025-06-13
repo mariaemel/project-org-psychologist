@@ -25,6 +25,9 @@
       padding: 40px 20px;
       min-height: 600px;
     }
+    @media (max-width: 427px) {
+      height: 400px;
+    }
 }
 
 .content {
@@ -153,8 +156,9 @@
   z-index: 1;
   pointer-events: none;
 
-  @media (max-width: 1440px) {
-
+  @media (max-width: 427px) {
+    max-width: 500px;
+    width: 80%;
   }
   @media (max-width: 1024px) {
     width: 1300px;
@@ -203,6 +207,9 @@
     left: 200px;
     font-style: italic;
     max-width: 520px;
+  }
+  @media (max-width: 427px) {
+    display: none;
   }
 }
 

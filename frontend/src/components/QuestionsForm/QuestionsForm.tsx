@@ -72,9 +72,7 @@ const QuestionsForm = ({ onClose }: { onClose: () => void }) => {
 
     for (const key in formData) {
       const value = formData[key as keyof typeof formData];
-      // Не добавляем пустые поля и файлы сюда
       if (value !== undefined && value !== null && value !== '') {
-        // Если поле boolean, convert to string
         if (typeof value === 'boolean') {
           data.append(key, value ? 'true' : 'false');
         } else {
@@ -89,16 +87,18 @@ const QuestionsForm = ({ onClose }: { onClose: () => void }) => {
 
     try {
       await sendQuestion(data);
-      alert('Вопрос успешно отправлен');
-      onClose();
-    } catch (err) {
+      setFormSent(true);
+
+      setTimeout(() => {
+        setFormSent(false);
+        onClose();
+      }, 2000)} catch (err) {
       console.error(err);
       alert('Ошибка при отправке формы');
     }
   };
 
   if (!formData.client_type) {
-    // выбор типа клиента
     return (
       <div className={styles.overlay} onClick={onClose}>
         <div className={styles.modal} onClick={e => e.stopPropagation()}>
