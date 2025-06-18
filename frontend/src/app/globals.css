@@ -4,8 +4,24 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  min-height: calc(100vh - 50px);
+}
+
+footer {
+  margin-top: auto;  /* Прижимает футер вниз */
+}
+
+body {
   height: 100%;
+  margin: 0;
   scroll-behavior: smooth;
   background-color: #ffffff;
 }

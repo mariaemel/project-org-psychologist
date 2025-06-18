@@ -54,7 +54,7 @@ export default function ArticlesPage() {
   };
 
   if (loading) {
-    return <div className={styles.loading}>Загрузка материалов...</div>;
+    return <div className={styles.loading}></div>;
   }
 
   if (error) {

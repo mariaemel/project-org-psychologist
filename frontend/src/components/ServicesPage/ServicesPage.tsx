@@ -87,7 +87,7 @@ useEffect(() => {
   };
 
   if (loading) {
-    return <div className={styles.loading}>Загрузка услуг...</div>;
+    return <div className={styles.loading}></div>;
   }
 
   if (error) {
@@ -98,8 +98,8 @@ useEffect(() => {
     return (
       <div className={styles.empty}>
         {tab === 'organization'
-          ? 'Нет доступных услуг для юридических лиц'
-          : 'Нет доступных услуг для физических лиц'}
+          ? ''
+          : ''}
       </div>
     );
   }
