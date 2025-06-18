@@ -146,9 +146,7 @@ export default function ArticlesPage() {
       {/* Статьи */}
       <section className={styles.articlesSection}>
         <img src="/vector9.svg" alt="paper" className={styles.paperImage5} />
-        <img src="/vector3.svg" alt="paper" className={styles.paperImage6} />
         <img src="/vector4.svg" alt="paper" className={styles.paperImage7} />
-        <img src="/vector-4.svg" alt="paper" className={styles.paperImage8} />
         <img src="/vector-3.svg" alt="paper" className={styles.paperImage9} />
 
         <h2 className={styles.articlesTitle}>статьи</h2>
