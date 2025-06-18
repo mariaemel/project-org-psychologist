@@ -14,10 +14,17 @@ class ServiceListView(generics.ListAPIView):
         queryset = Service.objects.all()
         if not self.request.user.is_staff:
             queryset = queryset.filter(is_active=True)
+
         client_type = self.request.query_params.get('client_type')
         if client_type:
             queryset = queryset.filter(client_type=client_type)
+
+        category = self.request.query_params.get('category')
+        if category:
+            queryset = queryset.filter(category=category)
+
         return queryset
+
 
 class ServiceCreateView(generics.CreateAPIView):
     serializer_class = ServiceSerializer
