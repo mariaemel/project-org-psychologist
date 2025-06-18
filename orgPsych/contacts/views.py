@@ -14,3 +14,4 @@ class ContactView(generics.RetrieveUpdateAPIView):
         if self.request.method in ['PUT', 'PATCH']:
             return [IsAdminUser()]
         return [AllowAny()]
+пш
