@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import styles from './ArticlesPage.module.css';
+import { API_BASE_URL } from '@/config';
 
 interface Article {
   id: number;
@@ -25,7 +26,7 @@ export default function ArticlesPage() {
       try {
         setLoading(true);
         setError(null);
-        const response = await fetch('http://localhost:8000/articles/list/');
+        const response = await fetch(`${API_BASE_URL}/articles/list/`);
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);

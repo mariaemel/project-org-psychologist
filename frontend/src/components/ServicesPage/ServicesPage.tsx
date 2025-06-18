@@ -3,6 +3,7 @@ import { useSearchParams } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import styles from './ServicesPage.module.css';
 import dynamic from 'next/dynamic';
+import { API_BASE_URL } from '@/config';
 
 const RequestForm = dynamic(() => import('@/components/RequestForm/RequestForm'), { ssr: false });
 
@@ -17,19 +18,28 @@ export interface Service {
   client_type: 'individual' | 'organization';
 }
 
-const API_BASE_URL = 'http://localhost:8000';
-
 export async function fetchServices(clientType?: 'individual' | 'organization') {
-  const url = clientType
-    ? `${API_BASE_URL}/services/list/?client_type=${clientType}`
-    : `${API_BASE_URL}/services/list/`;
+  let allServices: Service[] = [];
+  let nextUrl = clientType
+    ? `${API_BASE_URL}/services/list/?client_type=${clientType}&page_size=100`
+    : `${API_BASE_URL}/services/list/?page_size=100`;
 
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error('Failed to fetch services');
+  try {
+    while (nextUrl) {
+      const response = await fetch(nextUrl);
+      if (!response.ok) throw new Error('Failed to fetch services');
+
+      const data = await response.json();
+      allServices = [...allServices, ...(data.results || [])];
+
+      nextUrl = data.next;
+    }
+
+    return allServices;
+  } catch (error) {
+    console.error('Error fetching services:', error);
+    throw error;
   }
-  const data = await response.json();
-  return data.results || data;
 }
 
 export default function ServicesPage() {
@@ -42,24 +52,22 @@ export default function ServicesPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const loadServices = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        const data = await fetchServices();
-        const servicesArray = Array.isArray(data) ? data : data.results || [];
-        setAllServices(servicesArray);
-      } catch (err) {
-        setError('Не удалось загрузить услуги. Пожалуйста, попробуйте позже.');
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadServices();
-  }, []);
+useEffect(() => {
+  const loadServices = async () => {
+    try {
+      setLoading(true);
+      const data = await fetchServices(tab);
+      console.log('Total services loaded:', data.length);
+      setAllServices(data);
+    } catch (err) {
+      console.error('Fetch error:', err);
+      setError('Не удалось загрузить услуги');
+    } finally {
+      setLoading(false);
+    }
+  };
+  loadServices();
+}, [tab]);
 
   const filteredServices = allServices.filter(service =>
     service.client_type === tab && service.is_active

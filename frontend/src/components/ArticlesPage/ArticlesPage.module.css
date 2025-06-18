@@ -100,7 +100,6 @@
   display: flex;
   gap: 10px;
   font-weight: 400;
-  margin-bottom: 5px;
   text-decoration-line: underline;
   text-decoration-style: solid;
   text-decoration-skip-ink: auto;
@@ -108,6 +107,7 @@
   text-underline-offset: 20%;
   text-underline-position: from-font;
   color: #333333;
+  margin-bottom: 20px;
 }
 
 .bookTitleArt {

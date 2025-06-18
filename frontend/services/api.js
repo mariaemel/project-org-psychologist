@@ -1,5 +1,7 @@
+import { API_BASE_URL } from '@/config';
+
 export const fetchData = async (endpoint) => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/${endpoint}`);
+    const res = await fetch(`${API_BASE_URL}/${endpoint}`);
     if (!res.ok) {
       throw new Error('Ошибка при загрузке данных');
     }
@@ -8,7 +10,7 @@ export const fetchData = async (endpoint) => {
   };
 
 export async function getPing() {
-  const res = await fetch('http://127.0.0.1:8000/api/ping/');
+  const res = await fetch(`${API_BASE_URL}`);
   const data = await res.json();
   return data;
 }
@@ -22,7 +24,7 @@ export const sendQuestion = async (formData) => {
     }
   });
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/questions/create/`, {
+  const res = await fetch(`${API_BASE_URL}/questions/create/`, {
     method: 'POST',
     body: formData,
   });

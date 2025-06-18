@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import styles from './RequestForm.module.css';
+import { API_BASE_URL } from '@/config';
 
 interface Props {
   onClose: () => void;
@@ -62,7 +63,7 @@ export default function RequestForm({ onClose, defaultServiceId, defaultServiceN
     console.log('Payload:', payload);
 
     try {
-      const res = await fetch('http://localhost:8000/application/create/', {
+      const res = await fetch(`${API_BASE_URL}/application/create/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),

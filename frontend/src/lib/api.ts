@@ -1,13 +1,7 @@
 
-const API_BASE_URL = 'http://localhost:8000';
+const API_BASE_URL = 'http://127.0.0.1:8000';
 
-export async function fetchServices(clientType: 'individual' | 'organization') {
-  const response = await fetch(`${API_BASE_URL}/services/list/?client_type=${clientType}`);
-  if (!response.ok) {
-    throw new Error('Failed to fetch services');
-  }
-  return response.json();
-}
+
 
 export interface Article {
   id: number;

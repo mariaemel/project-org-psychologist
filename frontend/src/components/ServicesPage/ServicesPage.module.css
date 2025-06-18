@@ -4,8 +4,7 @@
   padding: 80px 40px;
   font-family: var(--font-nunito);
   min-height: 100vh;
-    margin-bottom: -70px;
-
+  padding-bottom: 70px;
   @media (max-width: 427px){
     background: #fff;
     margin-top: -40px;
@@ -21,6 +20,10 @@
   align-items: center;
   margin-bottom: 8px;
   line-height: 2;
+
+  @media (max-width: 427px) {
+    font-size: 12px;
+  }
 }
 
 .icon {
@@ -70,6 +73,10 @@
   padding: 40px 50px;
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.43);
   transition: transform 0.3s ease;
+
+  @media (max-width: 427px) {
+    width: 100%;
+  }
 }
 
 .serviceCard h3 {
@@ -96,7 +103,8 @@
   font-size: 16px;
   cursor: pointer;
   transition: background 0.2s ease;
-  margin-left: 700px;
+  align-self: flex-end;
+  margin-left: auto;
 
   @media (max-width: 768px) {
     margin-left: 0;
