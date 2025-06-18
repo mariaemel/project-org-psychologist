@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'services',
     'application',
     'questions',
+    'contacts',
     'drf_spectacular',
     'import_export',
     'django_extensions',
