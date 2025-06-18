@@ -1,7 +1,6 @@
 'use client';
 import styles from './AboutPage.module.css';
 import Image from 'next/image';
-import photo from '/public/photo-placeholder.png';
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
 

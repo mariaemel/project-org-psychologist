@@ -1,9 +1,49 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './ArticlesPage.module.css';
+
+interface Article {
+  id: number;
+  type: 'article' | 'bookshelf';
+  category: string;
+  title: string;
+  short_description: string;
+  content: string;
+  published_date: string;
+  is_published: boolean;
+  tags: string;
+}
 
 export default function ArticlesPage() {
   const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>({});
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchArticles = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const response = await fetch('http://localhost:8000/articles/list/');
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        const articlesData = Array.isArray(data) ? data : (data.results || []);
+        setArticles(articlesData);
+      } catch (error) {
+        console.error('Error fetching articles:', error);
+        setError('Не удалось загрузить статьи. Пожалуйста, попробуйте позже.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchArticles();
+  }, []);
 
   const toggleExpand = (id: string) => {
     setExpandedItems(prev => ({
@@ -12,8 +52,40 @@ export default function ArticlesPage() {
     }));
   };
 
+  if (loading) {
+    return <div className={styles.loading}>Загрузка материалов...</div>;
+  }
+
+  if (error) {
+    return <div className={styles.error}>{error}</div>;
+  }
+
+  const publishedArticles = articles.filter(article => article.is_published);
+  const bookshelfItems = publishedArticles.filter(item => item.type === 'bookshelf');
+  const articleItems = publishedArticles.filter(item => item.type === 'article');
+
+  const bookshelfByCategory = bookshelfItems.reduce((acc, item) => {
+    const category = item.category || 'other';
+    if (!acc[category]) {
+      acc[category] = [];
+    }
+    acc[category].push(item);
+    return acc;
+  }, {} as Record<string, Article[]>);
+
+  const getCategoryDisplayName = (category: string): string => {
+    const categoryMap: Record<string, string> = {
+      'finance': 'Управление финансами',
+      'time': 'Тайм менеджмент',
+      'self': 'Самодиагностика и управление состоянием',
+      'other': 'Другие материалы'
+    };
+    return categoryMap[category] || category;
+  };
+
   return (
     <div className={styles.wrapper}>
+      {/* Книжная полка */}
       <section className={styles.shelfSection}>
         <img src="/vector-1.svg" alt="paper" className={styles.paperImage1} />
         <img src="/vector9.svg" alt="paper" className={styles.paperImage2} />
@@ -27,170 +99,103 @@ export default function ArticlesPage() {
         <img src="/vector7.svg" alt="paper" className={styles.paperImage3} />
         <img src="/vector8.svg" alt="paper" className={styles.paperImage4} />
         <img src="/vector2.svg" alt="paper" className={styles.paperImage10} />
-        {/* Управление финансами */}
-        <h2 className={styles.category}>Управление финансами</h2>
 
-        {/* Книга 1 */}
-        <div className={styles.bookCard}>
-          <div className={styles.bookImage}></div>
-          <div className={styles.bookContent}>
-            <h3 className={styles.bookTitle}>
-              «Название книги» <p className={styles.bookAuthor}>Автор книги</p>
-            </h3>
-            <p className={styles.reviewText}>Заголовок рецензии, заголовок рецензии.</p>
-            <p className={styles.opisanie}>
-              {expandedItems['finance1'] ? (
-                <>
-                  Эта книга оказалась для меня интересным опытом. В рецензии я постараюсь поделиться своими мыслями, что в ней откликнулось, а что — наоборот, вызвало вопросы. Эта книга оказалась для меня интересным опытом. В рецензии я постараюсь поделиться своими мыслями, что в ней откликнулось, а что — наоборот, вызвало вопросы.
-                </>
-              ) : (
-                <>
-                  Эта книга оказалась для меня интересным опытом. В рецензии я постараюсь поделиться своими мыслями, что в ней откликнулось, а что — наоборот, вызвало вопросы...{' '}
-                  <span className={styles.readMoreInline} onClick={() => toggleExpand('finance1')}>читать дальше</span>
-                </>
-              )}
-            </p>
-            {expandedItems['finance1'] && (
-              <button className={styles.readMore} onClick={() => toggleExpand('finance1')}>
-                Свернуть
-              </button>
-            )}
+
+        {Object.entries(bookshelfByCategory).map(([category, books]) => (
+          <div key={category}>
+            <h2 className={styles.category}>{getCategoryDisplayName(category)}</h2>
+            {books.map(book => (
+              <div key={book.id} className={styles.bookCard}>
+                <div className={styles.bookImage}></div>
+                <div className={styles.bookContent}>
+                  <h3 className={styles.bookTitle}>{book.title}</h3>
+                  {book.short_description && (
+                    <p className={styles.reviewText}>{book.short_description}</p>
+                  )}
+                  <p className={styles.opisanie}>
+                    {expandedItems[`book-${book.id}`] ? (
+                      book.content
+                    ) : (
+                      <>
+                        {book.content?.slice(0, 200) || 'Нет содержимого'}...
+                        <span
+                          className={styles.readMoreInline}
+                          onClick={() => toggleExpand(`book-${book.id}`)}
+                        >
+                          читать дальше
+                        </span>
+                      </>
+                    )}
+                  </p>
+                  {expandedItems[`book-${book.id}`] && (
+                    <button
+                      className={styles.readMore}
+                      onClick={() => toggleExpand(`book-${book.id}`)}
+                    >
+                      Свернуть
+                    </button>
+                  )}
+                </div>
+              </div>
+            ))}
           </div>
-        </div>
-
-        {/* Книга 2 */}
-        <div className={styles.bookCard}>
-          <div className={styles.bookImage}></div>
-          <div className={styles.bookContent}>
-            <h3 className={styles.bookTitle}>
-              «Название книги» <p className={styles.bookAuthor}>Автор книги</p>
-            </h3>
-            <p className={styles.reviewText}>Заголовок рецензии, заголовок рецензии.</p>
-            <p className={styles.opisanie}>
-              {expandedItems['finance2'] ? (
-                <>
-                  Эта книга оказалась для меня интересным опытом. В рецензии я постараюсь поделиться своими мыслями, что в ней откликнулось, а что — наоборот, вызвало вопросы. Эта книга оказалась для меня интересным опытом. В рецензии я постараюсь поделиться своими мыслями, что в ней откликнулось, а что — наоборот, вызвало вопросы.
-                </>
-              ) : (
-                <>
-                  Эта книга оказалась для меня интересным опытом. В рецензии я постараюсь поделиться своими мыслями, что в ней откликнулось, а что — наоборот, вызвало вопросы...{' '}
-                  <span className={styles.readMoreInline} onClick={() => toggleExpand('finance2')}>читать дальше</span>
-                </>
-              )}
-            </p>
-            {expandedItems['finance2'] && (
-              <button className={styles.readMore} onClick={() => toggleExpand('finance2')}>
-                Свернуть
-              </button>
-            )}
-          </div>
-        </div>
-
-        {/* Тайм менеджмент */}
-        <h2 className={styles.category}>Тайм менеджмент</h2>
-
-        {/* Книга 3 */}
-        <div className={styles.bookCard}>
-          <div className={styles.bookImage}></div>
-          <div className={styles.bookContent}>
-            <h3 className={styles.bookTitle}>
-              «Название книги» <p className={styles.bookAuthor}>Автор книги</p>
-            </h3>
-            <p className={styles.reviewText}>Заголовок рецензии, заголовок рецензии.</p>
-            <p className={styles.opisanie}>
-              {expandedItems['time1'] ? (
-                <>
-                  Эта книга оказалась для меня интересным опытом. В рецензии я постараюсь поделиться своими мыслями, что в ней откликнулось, а что — наоборот, вызвало вопросы. Эта книга оказалась для меня интересным опытом. В рецензии я постараюсь поделиться своими мыслями, что в ней откликнулось, а что — наоборот, вызвало вопросы.
-                </>
-              ) : (
-                <>
-                  Эта книга оказалась для меня интересным опытом. В рецензии я постараюсь поделиться своими мыслями, что в ней откликнулось, а что — наоборот, вызвало вопросы...{' '}
-                  <span className={styles.readMoreInline} onClick={() => toggleExpand('time1')}>читать дальше</span>
-                </>
-              )}
-            </p>
-            {expandedItems['time1'] && (
-              <button className={styles.readMore} onClick={() => toggleExpand('time1')}>
-                Свернуть
-              </button>
-            )}
-          </div>
-        </div>
-
-        {/* Самодиагностика */}
-        <h2 className={styles.category}>Самодиагностика и управление состоянием</h2>
-
-        {/* Книга 4 */}
-        <div className={styles.bookCard}>
-          <div className={styles.bookImage}></div>
-          <div className={styles.bookContent}>
-            <h3 className={styles.bookTitle}>
-              «Название книги» <p className={styles.bookAuthor}>Автор книги</p>
-            </h3>
-            <p className={styles.reviewText}>Заголовок рецензии, заголовок рецензии.</p>
-            <p className={styles.opisanie}>
-              {expandedItems['diagnostic1'] ? (
-                <>
-                  Эта книга оказалась для меня интересным опытом. В рецензии я постараюсь поделиться своими мыслями, что в ней откликнулось, а что — наоборот, вызвало вопросы. Эта книга оказалась для меня интересным опытом. В рецензии я постараюсь поделиться своими мыслями, что в ней откликнулось, а что — наоборот, вызвало вопросы.
-                </>
-              ) : (
-                <>
-                  Эта книга оказалась для меня интересным опытом. В рецензии я постараюсь поделиться своими мыслями, что в ней откликнулось, а что — наоборот, вызвало вопросы...{' '}
-                  <span className={styles.readMoreInline} onClick={() => toggleExpand('diagnostic1')}>читать дальше</span>
-                </>
-              )}
-            </p>
-            {expandedItems['diagnostic1'] && (
-              <button className={styles.readMore} onClick={() => toggleExpand('diagnostic1')}>
-                Свернуть
-              </button>
-            )}
-          </div>
-        </div>
+        ))}
       </section>
 
+      {/* Статьи */}
       <section className={styles.articlesSection}>
         <img src="/vector9.svg" alt="paper" className={styles.paperImage5} />
         <img src="/vector3.svg" alt="paper" className={styles.paperImage6} />
         <img src="/vector4.svg" alt="paper" className={styles.paperImage7} />
         <img src="/vector-4.svg" alt="paper" className={styles.paperImage8} />
         <img src="/vector-3.svg" alt="paper" className={styles.paperImage9} />
-        <h2 className={styles.articlesTitle}>статьи</h2>
-        <h3 className={styles.category}>Финансы</h3>
 
-        {[1, 2, 3, 4, 5].map((item) => {
-          const id = `article${item}`;
-          return (
-            <div className={styles.bookCard} key={id}>
+        <h2 className={styles.articlesTitle}>статьи</h2>
+
+        {articleItems.length > 0 ? (
+          articleItems.map(article => (
+            <div key={article.id} className={styles.bookCard}>
               <div className={styles.bookImageArt}></div>
               <div className={styles.bookContent}>
-                <h3 className={styles.bookTitleArt}>
-                  Название статьи название статьи ещё название статьи
-                </h3>
+                <h3 className={styles.bookTitleArt}>{article.title}</h3>
+                {article.short_description && (
+                  <p className={styles.reviewText}>{article.short_description}</p>
+                )}
                 <p className={styles.opisanieArt}>
-                  {expandedItems[id] ? (
-                    <>
-                      Какое-то описание статьи или выемки из нее.  Какое-то описание статьи или выемки из нее. Какое-то описание статьи или выемки из нее.  Какое-то описание статьи или выемки из нее. Какое-то описание статьи или выемки из нее.  Какое-то описание статьи или выемки из нее. Какое-то описание статьи или выемки из нее.  Какое-то описание статьи или выемки из нее.
-                    </>
+                  {expandedItems[`article-${article.id}`] ? (
+                    article.content
                   ) : (
                     <>
-                      Какое-то описание статьи или выемки из нее.  Какое-то описание статьи или выемки из нее. Какое-то описание статьи или выемки из нее.  Какое-то описание статьи или выемки из нее...{' '}
-                      <span className={styles.readMoreInline} onClick={() => toggleExpand(id)}>читать далее</span>
+                      {article.content?.slice(0, 200) || 'Нет содержимого'}...
+                      <span
+                        className={styles.readMoreInline}
+                        onClick={() => toggleExpand(`article-${article.id}`)}
+                      >
+                        читать далее
+                      </span>
                     </>
                   )}
                 </p>
-                {expandedItems[id] && (
-                  <button className={styles.readMore} onClick={() => toggleExpand(id)}>
+                {expandedItems[`article-${article.id}`] && (
+                  <button
+                    className={styles.readMore}
+                    onClick={() => toggleExpand(`article-${article.id}`)}
+                  >
                     Свернуть
                   </button>
                 )}
-                <p className={styles.articleTags}>#тег1 #тег2</p>
+                {article.tags && (
+                  <p className={styles.articleTags}>
+                    {article.tags.split(',').map(tag => `#${tag.trim()}`).join(' ')}
+                  </p>
+                )}
               </div>
             </div>
-          );
-        })}
+          ))
+        ) : (
+          <p className={styles.empty}>Нет доступных статей</p>
+        )}
       </section>
-
     </div>
   );
 }

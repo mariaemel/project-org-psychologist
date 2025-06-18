@@ -175,3 +175,90 @@
     transform: translate(-50%, -50%) scale(0.95);
   }
 }
+
+@media (max-width: 427px) {
+  .modal {
+    width: 85vw;
+    padding: 16px;
+  }
+
+  .modalOverlay {
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  .closeButton {
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+  }
+
+  .form h2 {
+    font-size: 18px;
+  }
+
+  .form label {
+    font-size: 14px;
+  }
+
+  .form input,
+  .form select,
+  .form textarea {
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+
+  .form button {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+
+  .selectTypeBtn {
+    font-size: 14px;
+    padding: 10px 20px;
+    width: 100%;
+  }
+
+  .askTitle {
+    font-size: 18px;
+  }
+
+  .askText {
+    font-size: 14px;
+  }
+
+  .askButton {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+
+  .toast {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+
+  .checkboxContainer {
+    max-width: 100%;
+    margin: 0 auto;
+    font-size: 12px;
+  }
+
+  .checkboxLabel {
+    white-space: normal;
+    font-size: 14px;
+    max-width: 100%;
+  }
+
+  .form {
+    width: 100%;
+  }
+
+  .submitBtn {
+    font-size: 16px;
+    padding: 10px 18px;
+  }
+
+  .modal {
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+}

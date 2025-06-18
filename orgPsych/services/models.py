@@ -5,11 +5,20 @@ CLIENT_TYPE_CHOICES = [
     ('organization', 'Юридическое лицо'),
 ]
 
-CATEGORY_CHOICES = [
+CATEGORY_CHOICES_INDIVIDUAL = [
     ('consulting', 'Консультирование'),
     ('career', 'Карьерное консультирование'),
     ('other', 'Другие услуги'),
 ]
+
+CATEGORY_CHOICES_ORGANIZATION = [
+    ('consulting', 'Консультирование'),
+    ('staff', 'Оценка и подбор персонала'),
+    ('other', 'Другие услуги'),
+]
+
+CATEGORY_ALL_CHOICES = list(set(CATEGORY_CHOICES_INDIVIDUAL + CATEGORY_CHOICES_ORGANIZATION))
+
 
 class Service(models.Model):
     client_type = models.CharField(
@@ -19,7 +28,7 @@ class Service(models.Model):
     )
     category = models.CharField(
         max_length=50,
-        choices=CATEGORY_CHOICES,
+        choices=CATEGORY_ALL_CHOICES,
         verbose_name='Категория услуги'
     )
     name = models.CharField(max_length=255, verbose_name='Название услуги')
@@ -28,7 +37,7 @@ class Service(models.Model):
     duration = models.CharField(max_length=100, verbose_name='Продолжительность')
     is_active = models.BooleanField(default=True, verbose_name='Активна')
 
-    def __str__(self):
+    def str(self):
         return self.name
 
     class Meta:

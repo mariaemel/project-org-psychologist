@@ -3,6 +3,7 @@
   max-width: 1000px;
   margin: 0 auto;
   font-family: var(--font-nunito);
+  min-height: 100vh;
 }
 .articlePage {
   padding: 100px 20px;
@@ -182,12 +183,12 @@
   gap: 30px;
   margin-bottom: 30px;
   padding-bottom: 30px;
-  border-bottom: 1px solid #e0e0e0;
+  border: 1px solid #e0e0e0;
 }
 
 .articleImage {
   width: 160px;
-  height: 110px;
+  height: 180px;
   background-color: #f5f5f5;
   border-radius: 4px;
   flex-shrink: 0;
@@ -202,6 +203,14 @@
   font-weight: 500;
   margin-bottom: 15px;
   line-height: 1.4;
+}
+
+.articleText {
+  margin-top: 25px;
+}
+
+.articleDescription {
+  margin-top: 25px;
 }
 
 .readMore {
@@ -691,7 +700,6 @@
     color: #8681FF;
   }
 
-  /* Управление финансами */
   .bookImageArt {
     width: 100%;
     height: 180px;

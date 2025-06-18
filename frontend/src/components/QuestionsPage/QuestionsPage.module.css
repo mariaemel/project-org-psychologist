@@ -121,7 +121,8 @@
 .askButton:hover {
   background-color: #5e1ed1;
 }
-@media (max-width: 320px) {
+
+@media (max-width: 427px) {
   .questionsSection {
     padding: 20px;
     max-width: 100%;

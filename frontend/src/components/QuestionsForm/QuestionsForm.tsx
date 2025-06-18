@@ -170,7 +170,7 @@ const QuestionsForm = ({ onClose }: { onClose: () => void }) => {
 
               <label className={styles.checkboxLabel}>
                 <input type="checkbox" name="consent_processing" checked={formData.consent_processing} onChange={handleChange} required />
-                Даю<p>согласие на обработку персональных данных</p>
+                Даю согласие на обработку персональных данных
               </label>
 
               <button type="submit" className={styles.submitBtn}>Отправить</button>
