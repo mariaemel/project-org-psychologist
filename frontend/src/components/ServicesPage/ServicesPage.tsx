@@ -164,14 +164,14 @@ useEffect(() => {
 function getCategoryDisplayName(categoryKey: string, clientType: 'individual' | 'organization'): string {
   const categoryMaps = {
     individual: {
-      'consulting': 'Консультирование',
-      'career': 'Карьерное консультирование',
-      'other': 'Другие услуги'
+      'consulting': 'консультирование',
+      'career': 'карьерное консультирование',
+      'other': 'другие услуги'
     },
     organization: {
-      'consulting': 'Консультирование',
-      'staff': 'Оценка и подбор персонала',
-      'other': 'Другие услуги'
+      'consulting': 'консультирование',
+      'staff': 'оценка и подбор персонала',
+      'other': 'другие услуги'
     }
   };
 

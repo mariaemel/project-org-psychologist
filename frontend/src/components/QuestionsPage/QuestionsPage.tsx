@@ -166,44 +166,49 @@ export default function QuestionsPage() {
   const [showForm, setShowForm] = useState(false);
 
   const toggle = (index: number) => {
-    setActiveIndices((prev) =>
-      prev.includes(index)
-        ? prev.filter((i) => i !== index)
-        : [...prev, index]
+    setActiveIndices(prev =>
+      prev.includes(index) ? prev.filter(i => i !== index) : [...prev, index]
     );
   };
 
   return (
-    <section className={styles.questionsSection}>
-      <h1 className={styles.title}>Часто задаваемые вопросы</h1>
-      <div className={styles.accordion}>
-        {questions.map((item, index) => (
-          <div key={index} className={styles.item}>
-            <button
-              className={`${styles.question} ${activeIndices.includes(index) ? styles.active : ''}`}
-              onClick={() => toggle(index)}
-            >
-              <span>{item.question}</span>
-              <span className={styles.arrow}>
-                {activeIndices.includes(index) ? '▲' : '▼'}
-              </span>
-            </button>
-            {activeIndices.includes(index) && (
-              <div className={styles.answerWrapper}>
-                <div className={styles.answer}>{item.answer}</div>
+    <div className={styles.pageWrapper}>
+      <section className={styles.questionsSection}>
+        <h1 className={styles.title}>часто задаваемые вопросы</h1>
+        <div className={styles.accordion}>
+          {questions.map((item, index) => {
+            const isOpen = activeIndices.includes(index);
+            return (
+              <div key={index} className={styles.item}>
+                <button
+                  className={`${styles.question} ${isOpen ? styles.open : ''}`}
+                  onClick={() => toggle(index)}
+                  aria-expanded={isOpen}
+                >
+                  <span>{item.question}</span>
+                  <span className={styles.arrow}>{isOpen ? '▲' : '▼'}</span>
+                </button>
+
+                {isOpen && (
+                  <div className={styles.answerWrapper}>
+                    <div className={styles.answer}>{item.answer}</div>
+                  </div>
+                )}
               </div>
-            )}
-          </div>
-        ))}
-      </div>
+            );
+          })}
+        </div>
 
-      <div className={styles.askBlock}>
-        <h2 className={styles.askTitle}>Остались вопросы?</h2>
-        <p className={styles.askText}>Вы можете задать свой вопрос прямо сейчас</p>
-        <button className={styles.askButton} onClick={() => setShowForm(true)}>Задать вопрос</button>
-      </div>
+        <div className={styles.askBlock}>
+          <h2 className={styles.askTitle}>Остались вопросы?</h2>
+          <p className={styles.askText}>Вы можете задать свой вопрос прямо сейчас</p>
+          <button className={styles.askButton} onClick={() => setShowForm(true)}>
+            Задать вопрос
+          </button>
+        </div>
 
-      {showForm && <QuestionsForm onClose={() => setShowForm(false)} />}
-    </section>
+        {showForm && <QuestionsForm onClose={() => setShowForm(false)} />}
+      </section>
+    </div>
   );
 }

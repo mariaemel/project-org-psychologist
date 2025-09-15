@@ -10,7 +10,7 @@ export const fetchData = async (endpoint) => {
   };
 
 export async function getPing() {
-  const res = await fetch(`${API_BASE_URL}`);
+  const res = await fetch(`${API_BASE_URL}/api/ping`);
   const data = await res.json();
   return data;
 }
