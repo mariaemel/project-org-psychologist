@@ -32,7 +32,7 @@
 .title {
   font-size: 24px;
   font-weight: 600;
-  color: #8681FF;
+  color: #9D9DCCC2;
   margin-bottom: 25px;
 }
 
@@ -89,7 +89,7 @@
 }
 
 .submitBtn {
-  background-color: #8681FF;
+  background-color: #575799;
   color: white;
   font-size: 20px;
   padding: 12px;
@@ -103,13 +103,13 @@
 }
 
 .submitBtn:hover {
-  background-color: #7a44e0;
+  background-color: #7676cf;
 }
 
 .clientTypeButton {
   padding: 10px 20px;
   margin-bottom: 10px;
-  background-color: #8681FF;
+  background-color: #9D9DCCC2;
   border: 1px solid #ccc;
   border-radius: 5px;
   cursor: pointer;
@@ -120,7 +120,7 @@
 }
 
 .clientTypeButton:hover {
-  background-color: #5600C0;
+  background-color: #575799;
 }
 
 .active {

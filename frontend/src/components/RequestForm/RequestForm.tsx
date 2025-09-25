@@ -91,9 +91,9 @@ export default function RequestForm({ onClose, defaultServiceId, defaultServiceN
 
         {!clientType ? (
           <div className={styles.typeSelection}>
-            <p className={styles.titleSelection}>Кто вы?</p>
-            <button className={styles.selectTypeBtn} onClick={() => handleClientTypeSelect('individual')}>Физическое лицо</button>
-            <button className={styles.selectTypeBtn} onClick={() => handleClientTypeSelect('organization')}>Юридическое лицо</button>
+            <p className={styles.titleSelection}>записаться</p>
+            <button className={styles.selectTypeBtn} onClick={() => handleClientTypeSelect('individual')}>Я - физическое лицо</button>
+            <button className={styles.selectTypeBtn} onClick={() => handleClientTypeSelect('organization')}>Я - юридическое лицо</button>
           </div>
         ) : (
           <form className={styles.form} onSubmit={handleSubmit}>

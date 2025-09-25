@@ -200,7 +200,7 @@ export default function QuestionsPage() {
         </div>
 
         <div className={styles.askBlock}>
-          <h2 className={styles.askTitle}>Остались вопросы?</h2>
+          <h2 className={styles.askTitle}>остались вопросы?</h2>
           <p className={styles.askText}>Вы можете задать свой вопрос прямо сейчас</p>
           <button className={styles.askButton} onClick={() => setShowForm(true)}>
             Задать вопрос

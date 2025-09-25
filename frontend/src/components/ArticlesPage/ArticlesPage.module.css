@@ -36,7 +36,7 @@
   font-size: 30px;
   font-weight: 700;
   white-space: nowrap;
-  color: #8681FF;
+  color: #9D9DCC;
   margin: 0;
 }
 
@@ -174,11 +174,11 @@
   font-weight: 600;
   margin-bottom: 50px;
   margin-top: 125px;
-  color: #8681FF;
+  color: #9D9DCC;
 }
 .articleTags {
   margin-top: 12px;
-  color: #8681FF;
+  color: #747474;
   font-size: 14px;
 }
 .articlesSubtitle {
@@ -570,7 +570,7 @@
   .shelfTitle {
     font-size: 24px;
     font-weight: 700;
-    color: #8681FF;
+    color: #9D9DCC;
     text-align: center;
     margin: 0;
   }
@@ -643,6 +643,7 @@
     color: #8681FF;
     font-size: 12px;
     cursor: pointer;
+    margin-left: 10px;
   }
 
   .readMoreInline:hover {
@@ -668,7 +669,7 @@
     font-size: 24px;
     font-weight: 600;
     margin-bottom: 20px;
-    color: #8681FF;
+    color: #9D9DCC;
   }
 
   .bookCard {

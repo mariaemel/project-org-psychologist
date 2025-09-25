@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   height: 100vh;
-  background: #7B77E8;
+  background: #575799;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -171,7 +171,6 @@
   text-align: right;
   font-family: var(--font-nunito);
   color: #ffffff;
-  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3), 0 2px 5px rgba(38, 37, 37, 0.4);
   margin-top: -150px;
 
   @media (max-width: 1440px) {
@@ -218,7 +217,6 @@
   font-size: 20px;
   margin-top: 5px;
   font-family: var(--font-nunito);
-  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3), 0 2px 5px rgba(38, 37, 37, 0.4);
   @media (max-width: 1024px) {
     font-size: 16px;
   }

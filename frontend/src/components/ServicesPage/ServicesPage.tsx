@@ -111,13 +111,13 @@ useEffect(() => {
           className={tab === 'individual' ? styles.active : ''}
           onClick={() => setTab('individual')}
         >
-          Физические лица
+          ДЛЯ ФИЗИЧЕСКИХ ЛИЦ
         </button>
         <button
           className={tab === 'organization' ? styles.active : ''}
           onClick={() => setTab('organization')}
         >
-          Юридические лица
+          ДЛЯ ЮРИДИЧЕСКИХ ЛИЦ
         </button>
       </div>
 

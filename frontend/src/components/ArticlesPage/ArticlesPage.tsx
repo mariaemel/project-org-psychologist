@@ -123,7 +123,7 @@ export default function ArticlesPage() {
                           className={styles.readMoreInline}
                           onClick={() => toggleExpand(`book-${book.id}`)}
                         >
-                          читать дальше
+                          Читать далее
                         </span>
                       </>
                     )}
@@ -170,7 +170,7 @@ export default function ArticlesPage() {
                         className={styles.readMoreInline}
                         onClick={() => toggleExpand(`article-${article.id}`)}
                       >
-                        читать далее
+                        Читать далее
                       </span>
                     </>
                   )}

@@ -17,7 +17,7 @@
 
 .title {
   font-size: 30px;
-  color: #8681FF;
+  color: #9D9DCC;
   font-weight: 800;
   text-align: center;
   margin-bottom: 40px;
@@ -49,7 +49,7 @@
   align-items: center;
   cursor: pointer;
   width: 100%;
-  background: #EFEFEF;
+  background: #ffffff;
   border: none;
   text-align: left;
   border-radius: 5px;
@@ -67,7 +67,7 @@
 
 .arrow {
   font-size: 18px;
-  color: #8681FF;
+  color: #575799;
   font-weight: bold;
 }
 
@@ -97,26 +97,24 @@
 .askBlock {
   margin-top: 60px;
   text-align: center;
-  background: #f2f2ff;
   padding: 40px 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
 }
 
-.askTitle { font-size: 26px; font-weight: 700; color: #8681FF; margin-bottom: 10px; }
+.askTitle { font-size: 26px; font-weight: 800; color: #9D9DCC; margin-bottom: 10px; }
 .askText  { font-size: 16px; color: #444; margin-bottom: 20px; }
 
 .askButton {
   padding: 12px 26px;
   font-size: 16px;
-  background-color: #8681FF;
+  background-color: #575799;
   color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   transition: background 0.3s ease;
 }
-.askButton:hover { background-color: #5e1ed1; }
+.askButton:hover { background-color: #7777d0; }
 
 
 @media (max-width: 427px) {
@@ -129,7 +127,7 @@
 
   .title {
     font-size: 22px;
-    color: #8681FF;
+    color: #9D9DCC;
     font-weight: 700;
     text-align: center;
     margin-bottom: 20px;
@@ -148,7 +146,7 @@
   }
 
   .item {
-    background: #EFEFEF;;
+    background: #ffffff;;
   }
 
   .question {
@@ -170,7 +168,7 @@
 
   .arrow {
     font-size: 16px;
-    color: #8681FF;
+    color: #575799;
     font-weight: bold;
   }
 

@@ -41,10 +41,10 @@
 }
 
 .tabs button {
-  padding: 12px 24px;
+  padding: 12px 44px;
   font-size: 16px;
   border-radius: 5px;
-  border: 2px solid #8681FF;
+  border: 1px solid black;
   background: white;
   cursor: pointer;
   transition: 0.3s ease;
@@ -52,10 +52,9 @@
 }
 
 .tabs .active {
-  background: #8681FF;
+  background: #575799;
   color: white;
 }
-
 
 .servicesList {
   display: flex;
@@ -81,7 +80,7 @@
 .serviceCard h3 {
   font-size: 22px;
   margin-bottom: 20px;
-  color: #8681FF;
+  color: #9D9DCC;
 }
 
 .serviceCard p {
@@ -95,7 +94,7 @@
 .signupButton {
   margin-top: 10px;
   padding: 10px 20px;
-  background-color: #8681FF;
+  background-color: #575799;
   color: white;
   border: none;
   border-radius: 6px;
@@ -110,7 +109,7 @@
   }
 }
 .signupButton:hover {
-  background-color: #5e1ed1;
+  background-color: #7878d0;
 }
 
 .modalOverlay {
@@ -281,7 +280,7 @@
   font-weight: 800;
   margin-bottom: 24px;
   padding-bottom: 8px;
-  color: #8681FF;
+  color: #9D9DCC;
   text-align: center;
 
   @media (max-width: 427px) {

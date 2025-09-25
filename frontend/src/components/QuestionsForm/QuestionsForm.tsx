@@ -102,18 +102,18 @@ const QuestionsForm = ({ onClose }: { onClose: () => void }) => {
       <div className={styles.overlay} onClick={onClose}>
         <div className={styles.modal} onClick={e => e.stopPropagation()}>
           <div className={styles.selection}>
-            <h2 className={styles.title}>Кто вы?</h2>
+            <h2 className={styles.title}>задать вопрос</h2>
             <button
               className={styles.clientTypeButton}
               onClick={() => selectClientType('individual')}
             >
-              Физическое лицо
+              Я - физическое лицо
             </button>
             <button
               className={styles.clientTypeButton}
               onClick={() => selectClientType('organization')}
             >
-              Юридическое лицо
+              Я - юридическое лицо
             </button>
           </div>
         </div>
