@@ -44,7 +44,7 @@
   margin-bottom: 0px;
   font-size: 24px;
   font-weight: 600;
-  color: #7c4dff;
+  color: #9D9DCC;
 }
 
 .form {
@@ -74,7 +74,7 @@
 
 .form button {
   padding: 12px;
-  background-color: #7c4dff;
+  background-color: #575799;
   color: white;
   border: none;
   border-radius: 6px;
@@ -85,7 +85,7 @@
 }
 
 .form button:hover {
-  background-color: #6a3ee0;
+  background-color: #6f6fc4;
 }
 
 .toast {
@@ -127,7 +127,7 @@
 .selectTypeBtn {
   padding: 10px 20px;
   margin-bottom: 10px;
-  background-color: #8681FF;
+  background-color: #9D9DCC;
   border: 1px solid #ccc;
   border-radius: 5px;
   cursor: pointer;
@@ -138,7 +138,7 @@
 }
 
 .selectTypeBtn:hover {
-  background-color: #5600C0;
+  background-color: #575799;
 }
 .typeSelection {
   display: flex;
@@ -152,7 +152,7 @@
 .titleSelection {
   font-size: 24px;
   font-weight: 600;
-  color: #8681FF;
+  color: #9D9DCC;
   margin-bottom: 25px;
 }
 

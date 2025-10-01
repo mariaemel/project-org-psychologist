@@ -34,30 +34,29 @@ const Footer = () => {
 
   return (
     <footer className={styles.footer}>
-      {/* Статичные разделы */}
-      <div className={styles.sections}>
-        <h4>Разделы</h4>
-        <ul>
-          <li><a href="/">Главная</a></li>
-          <li><a href="/about">О специалисте</a></li>
-          <li><a href="/services">Услуги</a></li>
-          <li><a href="/articles">Статьи</a></li>
-          <li><a href="/questions">Вопросы</a></li>
-        </ul>
-      </div>
+      <div className={styles.container}>
+        <div className={styles.sections}>
+          <ul>
+            <li><a href="/">Главная</a></li>
+            <li><a href="/about">Обо мне</a></li>
+            <li><a href="/services">Услуги</a></li>
+            <li><a href="/articles">Статьи</a></li>
+            <li><a href="/questions">Вопросы</a></li>
+          </ul>
+        </div>
 
-      {/* Динамические контакты */}
-      <div className={styles.contacts}>
-        <h4>Контакты</h4>
-        {loading && <p>Загрузка...</p>}
-        {error && <p>Ошибка: {error}</p>}
-        {contacts && (
-          <>
-            <p>Email: {contacts.email}</p>
-            <p>Телефон: {contacts.phone}</p>
-            <p>Telegram: {contacts.telegram}</p>
-          </>
-        )}
+        <div className={styles.contacts}>
+          <h4>Контакты</h4>
+          {loading && <p>Загрузка...</p>}
+          {error && <p>Ошибка: {error}</p>}
+          {contacts && (
+            <>
+              <p>E-mail: {contacts.email}</p>
+              <p>Телефон: {contacts.phone}</p>
+              <p>Telegram: {contacts.telegram}</p>
+            </>
+          )}
+        </div>
       </div>
     </footer>
   );

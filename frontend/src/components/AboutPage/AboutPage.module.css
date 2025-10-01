@@ -1,5 +1,5 @@
 .page {
-  background: url('/obo_mne.png') center top no-repeat;
+  background: url('/about.png') center top no-repeat;
   background-size: cover;
   font-family: var(--font-nunito);
   display: flex;
@@ -62,7 +62,7 @@
 .title {
   font-size: 28px;
   font-weight: 700;
-  color: #7b5fff;
+  color: #9D9DCC;
   text-transform: lowercase;
   margin-bottom: 20px;
 }
@@ -89,7 +89,7 @@
   font-size: 28px;
   font-weight: 600;
   margin-bottom: -50px;
-  color: #7c4dff;
+  color: #9D9DCC;
   text-transform: lowercase;
 }
 
@@ -178,7 +178,7 @@
 
 .experiencetitle {
   font-size: 28px;
-  color: #7c4dff;
+  color: #9D9DCC;
   font-weight: 600;
   margin-bottom: 55px;
 }
@@ -203,7 +203,7 @@
 }
 
 .yearBox {
-  background: #8681FF;
+  background: #575799;
   color: white;
   font-weight: bold;
   padding: 16px 80px;
@@ -232,7 +232,7 @@
 /* методы работы */
 .methodtitle {
   font-size: 28px;
-  color: #7c4dff;
+  color: #9D9DCC;
   font-weight: 600;
   text-transform: lowercase;
   margin-bottom: 50px;
@@ -330,7 +330,7 @@
 }
 
 .paperButton {
-  background: #8681FF;
+  background: #575799;
   color: white;
   padding: 18px 40px;
   font-size: 18px;
@@ -348,7 +348,7 @@
   width: 0;
 }
 .paperButton:hover {
-  background: #8581ffc5;
+  background: #7171c5;
 }
 
 @media (max-width: 1024px) {
@@ -662,7 +662,7 @@
     margin: 0;
     font-size: 15px;
     padding: 12px 20px;
-    background: #8681FF;
+    background: #575799;
     color: white;
     border: none;
     border-radius: 5px;
@@ -674,7 +674,7 @@
   }
 
   .paperButton:hover {
-    background: #8581ffc5;
+    background: #7e7edf;
   }
 
   .paperImage {
