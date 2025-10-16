@@ -193,8 +193,9 @@
   width: fit-content;
   max-width: 55%;
   height: 70px;
-  font-size: 18px;
+  font-size: 14px;
   border-radius: 5px;
+  text-transform: lowercase;
   font-weight: 400;
   margin: 0 auto 40px;
   font-family: var(--font-nunito);

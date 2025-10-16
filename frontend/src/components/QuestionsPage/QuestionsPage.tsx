@@ -1,56 +1,169 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styles from './QuestionsPage.module.css';
 import dynamic from 'next/dynamic';
-import { API_BASE_URL } from '@/config';
 
 const QuestionsForm = dynamic(() => import('@/components/QuestionsForm/QuestionsForm'), { ssr: false });
 
-interface FAQItem {
-  id: number;
-  question: string;
-  answer: string;
-  created_at: string;
-  updated_at: string;
-}
+const questions = [
+  {
+    question: 'Из чего складывается стоимость?',
+    answer: (
+      <>
+        <p className={styles.answers}>
+          В первую очередь из затраченного времени специалиста. Помимо самого сеанса в данный
+          расчет включается время на подготовку к нему, анализ полученных результатов и подготовка
+          отчета или развернутого ответа.
+        </p>
+        <p>
+          Некоторые услуги предполагают только общение с клиентом на сеансе, а некоторые требуют
+          большой работы помимо проведения самого сеанса.
+        </p>
+      </>
+    ),
+  },
+  {
+    question: 'Как быстро я могу рассчитывать на результат?',
+    answer: (
+      <>
+        <p className={styles.answers}>
+          Некоторые вопросы могут быть решены за один сеанс, но для решения большинства задач
+          требуется время, сопоставимое со временем возникновения проблемы. Как нельзя похудеть на
+          50 кг за месяц без вреда для здоровья, так нельзя без вреда для своей психики и психики
+          окружающих людей резко изменить свое поведение или работу компании.
+        </p>
+        <p>
+          Работа организационного психолога схожа с работой врача: вначале — знакомство с пациентом
+          и сбор анамнеза, далее — анализы (при необходимости), в конце — рецепт. После первого
+          сеанса будут понятны дальнейшие шаги, после выработки плана “лечения”, положительные
+          изменения не заставят себя ждать, даже если сама “болезнь” пройдёт не сразу.
+        </p>
+      </>
+    ),
+  },
+  {
+    question: 'Вы работаете с депрессией?',
+    answer: (
+      <p>
+        Работа с клиентами находящимися в состоянии депрессии неэффективна. Если Вы подозреваете,
+        что у вас именно она, пройдите опросник “Шкала депрессии Бека” и, если он покажет высокий
+        результат, то лучше вначале обратитесь к психотерапевту. Я работаю с такими негативными
+        состояниями как выгорание, усталость, тревога, стресс, раздражение и другими, и с ними вы
+        можете ко мне обратиться.
+      </p>
+    ),
+  },
+  {
+    question: 'Как производится оплата?',
+    answer: (
+      <>
+        <p className={styles.answers}>
+          Для юридических лиц оплата производится путем перечисления денег на счет ИП после
+          подписания договора оказания услуг.
+        </p>
+        <p className={styles.answers}>
+          Для физических лиц оплата производится картой на сайте или по QR-коду. Чек
+          предоставляется.
+        </p>
+        <p>
+          Оплата производится перед началом сеанса. До наступления оплаты бронирование считается не
+          подтвержденным и может быть отменено. Пожалуйста, производите оплату заранее.
+        </p>
+      </>
+    ),
+  },
+  {
+    question: 'Можно ли отменить прием?',
+    answer: (
+      <p>
+        Да, отменить или перенести прием можно в любое время, но не позднее чем за сутки до
+        назначенной даты. В этом случае оплата возвращается в полном объеме. В случае отмены приема
+        меньше чем за сутки я оставляю за собой право отказать в возврате денежных средств.
+      </p>
+    ),
+  },
+  {
+    question:
+      'Говорят, что после посещения психологов многие пары разводятся, может ли посещение организационного психолога привести к увольнению?',
+    answer: (
+      <p>
+        На сеансах происходит работа с запросами клиента, если клиент не поднимает тему увольнения,
+        то психолог тоже не станет её рассматривать.
+      </p>
+    ),
+  },
+  {
+    question: 'С какими проблемами не стоит обращаться?',
+    answer: (
+      <>
+        <p className={styles.answers}>
+            Ко мне не стоит обращаться если Ваши проблемы относятся больше к семейной сфере, а не
+            рабочей, например, конфликт на работе происходит с родственником, супругой или
+            любовницей. В этом случае лучше обратиться к семейному психологу.
+        </p>
+        <p className={styles.answers}>
+            Ко мне не стоит обращаться если Ваши проблемы требуют посещения врача, а не психолога. Да,
+            многие проблемы от стресса, но если у вас каждый день болит живот, лучше начать с
+            гастроэнтеролога.
+        </p>
+        <p className={styles.answers}>
+            Кроме того:
+        </p>
+        <li>
+            Я не работаю с компаниями и сотрудниками, занимающимися уголовно наказуемой
+            деятельностью.
+        </li>
+        <li>
+            Я не работаю с клиентами в состоянии алкогольного или токсического опьянения и при
+            подозрении на него оставляю за собой право прекратить сеанс.
+        </li>
+        <li>
+            С людьми, которым требуется помощь психотерапевта, я работаю только при условии, что они
+            уже посещают его и соблюдают рекомендации.
+        </li>
+      </>
+    ),
+  },
+  {
+    question:
+      'Если мне очень нужна консультация, а доступных слотов нет, можно ли всё таки на неё попасть?',
+    answer: (
+      <p>
+        Да, Вы можете записаться в лист ожидания или приобрести срочную консультацию за
+        дополнительную плату, подробнее смотрите в разделе “Услуги”.
+      </p>
+    ),
+  },
+  {
+    question: 'Возможно ли личная консультация?',
+    answer: (
+      <p>
+        Начиная с ноября 2025 года возможны личные консультации в Екатеринбурге. Выездные
+        консультации и мероприятия будут доступны только с середины 2026 года. До этого времени
+        возможно проведение мероприятия моими сотрудниками по моему плану и под моим удалённым
+        контролем.
+      </p>
+    ),
+  },
+  {
+    question: 'Насколько конфиденциально общение?',
+    answer: (
+      <p>
+        Я полностью придерживаюсь профессиональной этики, всё общение с клиентами строго
+        конфиденциально. Все записи, при их наличии, обезличены и надёжно защищены. Если я хочу
+        рассмотреть какую-либо ситуацию в своей статье, то делаю это только с разрешения клиента.
+      </p>
+    ),
+  },
+  {
+    question: 'Возможны ли скидки?',
+    answer: <p>Да, при покупке услуг в большом объеме. Обсуждается индивидуально.</p>,
+  },
+];
 
 export default function QuestionsPage() {
   const [activeIndices, setActiveIndices] = useState<number[]>([]);
   const [showForm, setShowForm] = useState(false);
-  const [questions, setQuestions] = useState<FAQItem[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const loadFAQs = async () => {
-      try {
-        setLoading(true);
-
-        const response = await fetch(`${API_BASE_URL}/faq/`);
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const faqData = await response.json();
-
-        if (Array.isArray(faqData)) {
-          setQuestions(faqData);
-        } else {
-          setQuestions(faqData.results || faqData.data || [faqData]);
-        }
-
-      } catch (err) {
-        console.error('Полная ошибка загрузки:', err);
-        setError('Не удалось загрузить вопросы');
-        setQuestions([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadFAQs();
-  }, []);
 
   const toggle = (index: number) => {
     setActiveIndices(prev =>
@@ -58,62 +171,32 @@ export default function QuestionsPage() {
     );
   };
 
-  const formatAnswer = (answerText: string) => {
-    if (!answerText) return <p>Нет ответа</p>;
-
-    const paragraphs = answerText.split('\n').filter((p: string) => p.trim());
-
-    return (
-      <>
-        {paragraphs.map((paragraph: string, index: number) => (
-          <p key={index} className={styles.answers}>
-            {paragraph}
-          </p>
-        ))}
-      </>
-    );
-  };
-
-  if (loading) {
-    return <div className={styles.pageWrapper}>Загрузка вопросов...</div>;
-  }
-
-
-  const displayQuestions = Array.isArray(questions) ? questions : [];
-
   return (
     <div className={styles.pageWrapper}>
       <section className={styles.questionsSection}>
         <h1 className={styles.title}>часто задаваемые вопросы</h1>
-
         <div className={styles.accordion}>
-          {displayQuestions.length === 0 ? (
-            <div>Нет вопросов для отображения</div>
-          ) : (
-            displayQuestions.map((item: FAQItem, index: number) => {
-              const isOpen = activeIndices.includes(index);
-              return (
-                <div key={item.id || index} className={styles.item}>
-                  <button
-                    className={`${styles.question} ${isOpen ? styles.open : ''}`}
-                    onClick={() => toggle(index)}
-                    aria-expanded={isOpen}
-                  >
-                    <span>{item.question || 'Без вопроса'}</span>
-                    <span className={styles.arrow}>{isOpen ? '▲' : '▼'}</span>
-                  </button>
+          {questions.map((item, index) => {
+            const isOpen = activeIndices.includes(index);
+            return (
+              <div key={index} className={styles.item}>
+                <button
+                  className={`${styles.question} ${isOpen ? styles.open : ''}`}
+                  onClick={() => toggle(index)}
+                  aria-expanded={isOpen}
+                >
+                  <span>{item.question}</span>
+                  <span className={styles.arrow}>{isOpen ? '▲' : '▼'}</span>
+                </button>
 
-                  {isOpen && (
-                    <div className={styles.answerWrapper}>
-                      <div className={styles.answer}>
-                        {formatAnswer(item.answer)}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              );
-            })
-          )}
+                {isOpen && (
+                  <div className={styles.answerWrapper}>
+                    <div className={styles.answer}>{item.answer}</div>
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
 
         <div className={styles.askBlock}>

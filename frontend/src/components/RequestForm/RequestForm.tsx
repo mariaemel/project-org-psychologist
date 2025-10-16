@@ -60,6 +60,7 @@ export default function RequestForm({ onClose, defaultServiceId, defaultServiceN
       }
     });
 
+    console.log('Payload:', payload);
 
     try {
       const res = await fetch(`${API_BASE_URL}/application/create/`, {
@@ -69,6 +70,7 @@ export default function RequestForm({ onClose, defaultServiceId, defaultServiceN
       });
 
       const data = await res.json();
+      console.log('Server response:', res.status, data);
 
       if (!res.ok) throw new Error('Ошибка при отправке');
 

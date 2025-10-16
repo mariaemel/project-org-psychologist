@@ -28,15 +28,6 @@ interface Service {
   client_type: 'individual' | 'organization';
 }
 
-interface AboutData {
-  id: number;
-  title: string;
-  content: string;
-  image: string | null;
-  created_at: string;
-  updated_at: string;
-}
-
 export default function HomePage() {
   const [showForm, setShowForm] = useState(false);
   const [formType, setFormType] = useState<null | 'request' | 'question'>(null);
@@ -48,28 +39,8 @@ export default function HomePage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const [aboutData, setAboutData] = useState<AboutData | null>(null);
-  const [aboutLoading, setAboutLoading] = useState(true);
-  const [aboutError, setAboutError] = useState<string | null>(null);
-
   const isIndividuals = type === 'individuals';
   const clientType = isIndividuals ? 'individual' : 'organization';
-
-  const fetchAboutData = async (): Promise<AboutData> => {
-    try {
-      const response = await fetch(`${API_BASE_URL}/homepage`);
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error('Ошибка загрузки данных "Обо мне":', error);
-      throw error;
-    }
-  };
 
   const fetchServices = async (clientType?: 'individual' | 'organization', limit?: number): Promise<Service[]> => {
     let allServices: Service[] = [];
@@ -98,31 +69,6 @@ export default function HomePage() {
       throw error;
     }
   };
-
-  useEffect(() => {
-    const loadAboutData = async () => {
-      try {
-        setAboutLoading(true);
-        const data = await fetchAboutData();
-        setAboutData(data);
-        setAboutError(null);
-      } catch (err) {
-        setAboutError('Не удалось загрузить информацию');
-        setAboutData({
-          id: 1,
-          title: 'ОБО МНЕ',
-          content: 'Более 10 лет я помогаю бизнесу становится эффективнее, анализируя и оптимизируя бизнес процессы и осуществляя работу с людьми. У меня индивидуальный подход к каждому конкретному человеку и бизнесу, напрямую связанный с его особенностями и направленный на максимальное раскрытие именно его потенциала и достижения его целей. Нет универсальных решений, есть только Вы и Ваш бизнес прекрасный и уникальный.',
-          image: null,
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString()
-        });
-      } finally {
-        setAboutLoading(false);
-      }
-    };
-
-    loadAboutData();
-  }, []);
 
   useEffect(() => {
     const loadServices = async () => {
@@ -185,40 +131,16 @@ export default function HomePage() {
         {showForm && <RequestForm onClose={() => setShowForm(false)} />}
       </section>
 
-
       {/* ABOUT */}
       <section className={aboutStyles.about} id="about">
         <div className={aboutStyles.experienceContent}>
           <div className={aboutStyles.experienceBlock}>
-            <div className={aboutStyles.imageBlock}>
-              {aboutLoading ? (
-                <div className={aboutStyles.imagePlaceholder}>Загрузка...</div>
-              ) : aboutData?.image ? (
-                <img
-                  src={`${aboutData.image}`}
-                  alt={aboutData.title || "Фотография"}
-                  className={aboutStyles.aboutImage}
-                />
-              ) : (
-                <div className={aboutStyles.imagePlaceholder}>Фото</div>
-              )}
-            </div>
-
+            <div className={aboutStyles.imageBlock}></div>
             <div className={aboutStyles.textBlock}>
-              {aboutLoading ? (
-                <div>Загрузка информации...</div>
-              ) : aboutError ? (
-                <div>Ошибка: {aboutError}</div>
-              ) : (
-                <>
-                  <h2 className={aboutStyles.aboutTitle}>
-                    {aboutData?.title || 'ОБО МНЕ'}
-                  </h2>
-                  <p>
-                    {aboutData?.content || 'Более 10 лет я помогаю бизнесу становится эффективнее...'}
-                  </p>
-                </>
-              )}
+              <h2 className={aboutStyles.aboutTitle}>ОБО МНЕ</h2>
+              <p>
+                Более 10 лет я помогаю бизнесу становится эффективнее, анализируя и оптимизируя бизнес процессы и осуществляя работу с людьми. У меня индивидуальный подход к каждому конкретному человеку и бизнесу, напрямую связанный с его особенностями и направленный на максимальное раскрытие именно его потенциала и достижения его целей. Нет универсальных решений, есть только Вы и Ваш бизнес прекрасный и уникальный.
+              </p>
             </div>
           </div>
         </div>
@@ -316,7 +238,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* TEAM BOOST */}
+      {/* TEAM BOOST (CTA) */}
       <section className={teamStyles.teamWorkSection}>
         <div className={teamStyles.container}>
           <div className={teamStyles.leftSide}>
