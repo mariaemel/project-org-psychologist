@@ -57,7 +57,6 @@ useEffect(() => {
     try {
       setLoading(true);
       const data = await fetchServices(tab);
-      console.log('Total services loaded:', data.length);
       setAllServices(data);
     } catch (err) {
       console.error('Fetch error:', err);
