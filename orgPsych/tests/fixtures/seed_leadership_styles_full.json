@@ -1,0 +1,872 @@
+[
+  {
+    "model": "tests.test",
+    "pk": 100,
+    "fields": {
+      "slug": "leadership-styles",
+      "title": "Стили руководителя",
+      "short_description": "Определяет, какой управленческий стиль для вас характернее: информирование, обучение, поддержка, делегирование.",
+      "instructions_md": "В каждой ситуации оцените КАЖДЫЙ из четырёх вариантов поведения по шкале от 0 (совсем не типично для вас) до 9 (очень типично для вас). У каждого варианта — свой балл. Не нужно выбирать один лучший.",
+      "est_minutes": 8,
+      "hero_image_url": "",
+      "seo_title": "Тест на стиль руководства",
+      "seo_description": "Информирование, обучение, поддержка или делегирование — какой у вас ведущий управленческий стиль?",
+      "og_image_url": "",
+      "is_published": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+
+  {
+    "model": "tests.question",
+    "pk": 1001,
+    "fields": {
+      "test": 100,
+      "order_index": 1,
+      "text": "1. Подчинённый работает уже год в вашем подразделении, но чувствует себя неуверенно, несмотря на опыт из прошлой компании. Ваши действия?",
+      "type": "scale",
+      "required": true,
+      "help_text": "Поставьте балл 0–9 каждому варианту поведения",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10011,
+    "fields": {
+      "question": 1001,
+      "order_index": 1,
+      "text": "Вы предоставите ему возможность спокойно работать и уверены, что со временем всё придёт в норму.",
+      "value": "LET_WORK_ALONE",
+      "dimension_code": "ДЕЛЕГИРОВАНИЕ",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10012,
+    "fields": {
+      "question": 1001,
+      "order_index": 2,
+      "text": "Вы выясните, необходима ли ему помощь, и учтёте его пожелания.",
+      "value": "CHECK_NEEDS",
+      "dimension_code": "ИНФОРМИРОВАНИЕ",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10013,
+    "fields": {
+      "question": 1001,
+      "order_index": 3,
+      "text": "Проведёте беседу о работе и выясните, в чём причина неуверенности.",
+      "value": "DISCUSS_CAUSE",
+      "dimension_code": "ОБУЧЕНИЕ",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10014,
+    "fields": {
+      "question": 1001,
+      "order_index": 4,
+      "text": "Проведёте беседу и подскажете, как лучше организовать работу для решения проблем.",
+      "value": "ADVISE_STRUCTURE",
+      "dimension_code": "ОБУЧЕНИЕ",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+
+  {
+    "model": "tests.question",
+    "pk": 1002,
+    "fields": {
+      "test": 100,
+      "order_index": 2,
+      "text": "2. Подчинённый с хорошим образованием и опытом теперь плохо справляется с обязанностями, хотя раньше решал проблемы сам. Ваши действия?",
+      "type": "scale",
+      "required": true,
+      "help_text": "Поставьте балл 0–9 каждому варианту поведения",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10021,
+    "fields": {
+      "question": 1002,
+      "order_index": 1,
+      "text": "Расскажете, как решить проблему.",
+      "value": "TELL_SOLUTION",
+      "dimension_code": "ОБУЧЕНИЕ",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10022,
+    "fields": {
+      "question": 1002,
+      "order_index": 2,
+      "text": "Проведёте беседу и выясните, хочет ли сотрудник поговорить о своих проблемах.",
+      "value": "LISTEN_PROBLEMS",
+      "dimension_code": "ПОДДЕРЖКА",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10023,
+    "fields": {
+      "question": 1002,
+      "order_index": 3,
+      "text": "Спросите, есть ли желание решать проблему совместно с вами.",
+      "value": "ASK_COOPERATE",
+      "dimension_code": "ДЕЛЕГИРОВАНИЕ",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10024,
+    "fields": {
+      "question": 1002,
+      "order_index": 4,
+      "text": "Подождёте, пока он сам решит проблему.",
+      "value": "WAIT_SELF",
+      "dimension_code": "ИНФОРМИРОВАНИЕ",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+
+  {
+    "model": "tests.question",
+    "pk": 1003,
+    "fields": {
+      "test": 100,
+      "order_index": 3,
+      "text": "3. Подчинённый получил новое задание, раньше такого не делал. Делает ошибки, злится, падает настроение. Вы уже обсуждали это, но изменений нет. Ваши действия?",
+      "type": "scale",
+      "required": true,
+      "help_text": "Поставьте балл 0–9 каждому варианту поведения",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10031,
+    "fields": {
+      "question": 1003,
+      "order_index": 1,
+      "text": "Выясните, почему для него эти ошибки так серьёзны.",
+      "value": "ASK_IMPORTANCE",
+      "dimension_code": "ПОДДЕРЖКА",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10032,
+    "fields": {
+      "question": 1003,
+      "order_index": 2,
+      "text": "Поговорите и объясните, как справляться со стрессом.",
+      "value": "COACH_STRESS",
+      "dimension_code": "ОБУЧЕНИЕ",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10033,
+    "fields": {
+      "question": 1003,
+      "order_index": 3,
+      "text": "Дадите возможность самому справиться с проблемой.",
+      "value": "LET_HANDLE",
+      "dimension_code": "ПОДДЕРЖКА",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10034,
+    "fields": {
+      "question": 1003,
+      "order_index": 4,
+      "text": "Представите задачу как вашу общую проблему, которую нужно решать вместе.",
+      "value": "FRAME_SHARED_PROBLEM",
+      "dimension_code": "ДЕЛЕГИРОВАНИЕ",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+
+  {
+    "model": "tests.question",
+    "pk": 1004,
+    "fields": {
+      "test": 100,
+      "order_index": 4,
+      "text": "4. Опытный подчинённый неверно расставляет приоритеты. Вы уже обсуждали это, но он не меняется. Ваши действия?",
+      "type": "scale",
+      "required": true,
+      "help_text": "Поставьте балл 0–9 каждому варианту поведения",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10041,
+    "fields": {
+      "question": 1004,
+      "order_index": 1,
+      "text": "Проведёте беседу и постараетесь убедить его в ваших приоритетах.",
+      "value": "CONVINCE_PRIORITIES",
+      "dimension_code": "ИНФОРМИРОВАНИЕ",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10042,
+    "fields": {
+      "question": 1004,
+      "order_index": 2,
+      "text": "Объясните, как выбирать приоритеты в работе.",
+      "value": "EXPLAIN_PRIORITIES",
+      "dimension_code": "ДЕЛЕГИРОВАНИЕ",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10043,
+    "fields": {
+      "question": 1004,
+      "order_index": 3,
+      "text": "Дадите дополнительную информацию, чтобы он сам решил проблему.",
+      "value": "GIVE_INFO",
+      "dimension_code": "ПОДДЕРЖКА",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10044,
+    "fields": {
+      "question": 1004,
+      "order_index": 4,
+      "text": "Подождёте, пока он сам решит проблему.",
+      "value": "WAIT_AGAIN",
+      "dimension_code": "ДЕЛЕГИРОВАНИЕ",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+
+  {
+    "model": "tests.question",
+    "pk": 1005,
+    "fields": {
+      "test": 100,
+      "order_index": 5,
+      "text": "5. Подчинённый, который работает уже 5 лет, неожиданно просит вашей помощи с проблемой. Ваши действия?",
+      "type": "scale",
+      "required": true,
+      "help_text": "Поставьте балл 0–9 каждому варианту поведения",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10051,
+    "fields": {
+      "question": 1005,
+      "order_index": 1,
+      "text": "Объясните, что лучше него эту проблему никто не решит.",
+      "value": "YOU_CAN_HANDLE",
+      "dimension_code": "ИНФОРМИРОВАНИЕ",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10052,
+    "fields": {
+      "question": 1005,
+      "order_index": 2,
+      "text": "Попробуете совместно найти решение.",
+      "value": "SOLVE_TOGETHER",
+      "dimension_code": "ОБУЧЕНИЕ",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10053,
+    "fields": {
+      "question": 1005,
+      "order_index": 3,
+      "text": "Выслушаете и предложите наилучшее решение проблемы.",
+      "value": "PROPOSE_SOLUTION",
+      "dimension_code": "ОБУЧЕНИЕ",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10054,
+    "fields": {
+      "question": 1005,
+      "order_index": 4,
+      "text": "Скажете, что лучше него эту проблему никто не решит, и предложите обсудить, как он видит организацию работы.",
+      "value": "DISCUSS_HIS_VIEW",
+      "dimension_code": "ПОДДЕРЖКА",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+
+  {
+    "model": "tests.question",
+    "pk": 1006,
+    "fields": {
+      "test": 100,
+      "order_index": 6,
+      "text": "6. Подчинённый получил задание месяц назад, но чувствует неуверенность. Ваши действия?",
+      "type": "scale",
+      "required": true,
+      "help_text": "Поставьте балл 0–9 каждому варианту поведения",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10061,
+    "fields": {
+      "question": 1006,
+      "order_index": 1,
+      "text": "Выясните в чём дело и проинструктируете, как выполнить задание.",
+      "value": "INSTRUCT_TASK",
+      "dimension_code": "ИНФОРМИРОВАНИЕ",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10062,
+    "fields": {
+      "question": 1006,
+      "order_index": 2,
+      "text": "Подтвердите, что верите в его способность справиться.",
+      "value": "EXPRESS_TRUST",
+      "dimension_code": "ДЕЛЕГИРОВАНИЕ",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10063,
+    "fields": {
+      "question": 1006,
+      "order_index": 3,
+      "text": "Дадите ему возможность спокойно работать — он сам разберётся.",
+      "value": "STEP_BACK",
+      "dimension_code": "ДЕЛЕГИРОВАНИЕ",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10064,
+    "fields": {
+      "question": 1006,
+      "order_index": 4,
+      "text": "Выясните проблему и будете вместе искать решения.",
+      "value": "CO_SOLVE",
+      "dimension_code": "ПОДДЕРЖКА",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+
+  {
+    "model": "tests.question",
+    "pk": 1007,
+    "fields": {
+      "test": 100,
+      "order_index": 7,
+      "text": "7. Команда говорит вам, что опытный сотрудник не справляется. Ваши действия?",
+      "type": "scale",
+      "required": true,
+      "help_text": "Поставьте балл 0–9 каждому варианту поведения",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10071,
+    "fields": {
+      "question": 1007,
+      "order_index": 1,
+      "text": "Сразу выясните, в чём дело, и что делать дальше.",
+      "value": "DIRECT_DIAGNOSE",
+      "dimension_code": "ДЕЛЕГИРОВАНИЕ",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10072,
+    "fields": {
+      "question": 1007,
+      "order_index": 2,
+      "text": "Сразу поговорите с сотрудником и поймёте, какие у него проблемы, и можете ли вы решить это вместе.",
+      "value": "DISCUSS_TOGETHER",
+      "dimension_code": "ДЕЛЕГИРОВАНИЕ",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10073,
+    "fields": {
+      "question": 1007,
+      "order_index": 3,
+      "text": "Спросите, что сотрудник думает об этой ситуации.",
+      "value": "ASK_OPINION",
+      "dimension_code": "ПОДДЕРЖКА",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10074,
+    "fields": {
+      "question": 1007,
+      "order_index": 4,
+      "text": "Не будете вмешиваться и дадите возможность ему самому решить проблему.",
+      "value": "NO_INTERVENTION",
+      "dimension_code": "ДЕЛЕГИРОВАНИЕ",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+
+  {
+    "model": "tests.question",
+    "pk": 1008,
+    "fields": {
+      "test": 100,
+      "order_index": 8,
+      "text": "8. Новый сотрудник справляется в целом хорошо, но у него есть сложности с некоторыми клиентами. Ваши действия?",
+      "type": "scale",
+      "required": true,
+      "help_text": "Поставьте балл 0–9 каждому варианту поведения",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10081,
+    "fields": {
+      "question": 1008,
+      "order_index": 1,
+      "text": "Выясните, как он видит проблему, и объясните, как работать с такими клиентами.",
+      "value": "EXPLAIN_CLIENTS",
+      "dimension_code": "ДЕЛЕГИРОВАНИЕ",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10082,
+    "fields": {
+      "question": 1008,
+      "order_index": 2,
+      "text": "Подождёте немного, чтобы он набрался опыта сам.",
+      "value": "WAIT_EXPERIENCE",
+      "dimension_code": "ПОДДЕРЖКА",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10083,
+    "fields": {
+      "question": 1008,
+      "order_index": 3,
+      "text": "Разберёте проблему вместе и предложите найти совместное решение.",
+      "value": "JOINT_SOLUTION",
+      "dimension_code": "ДЕЛЕГИРОВАНИЕ",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10084,
+    "fields": {
+      "question": 1008,
+      "order_index": 4,
+      "text": "Спросите, что он думает о своей работе.",
+      "value": "ASK_FEELINGS",
+      "dimension_code": "ПОДДЕРЖКА",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+
+  {
+    "model": "tests.question",
+    "pk": 1009,
+    "fields": {
+      "test": 100,
+      "order_index": 9,
+      "text": "9. Отдел получил новое задание, и вы не уверены, что все справятся. Раньше проблем не было. Ваши действия?",
+      "type": "scale",
+      "required": true,
+      "help_text": "Поставьте балл 0–9 каждому варианту поведения",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10091,
+    "fields": {
+      "question": 1009,
+      "order_index": 1,
+      "text": "Подождёте первых промежуточных результатов.",
+      "value": "WAIT_RESULTS",
+      "dimension_code": "ДЕЛЕГИРОВАНИЕ",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10092,
+    "fields": {
+      "question": 1009,
+      "order_index": 2,
+      "text": "Сразу встретитесь с сотрудниками и обсудите возможные проблемы.",
+      "value": "MEET_NOW",
+      "dimension_code": "ДЕЛЕГИРОВАНИЕ",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10093,
+    "fields": {
+      "question": 1009,
+      "order_index": 3,
+      "text": "Скажете, что уверены в их силах и готовы решать трудности совместно.",
+      "value": "EXPRESS_CONFIDENCE",
+      "dimension_code": "ПОДДЕРЖКА",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10094,
+    "fields": {
+      "question": 1009,
+      "order_index": 4,
+      "text": "Объясните, что нужно делать для выполнения задачи.",
+      "value": "GIVE_DIRECTIONS",
+      "dimension_code": "ДЕЛЕГИРОВАНИЕ",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+
+  {
+    "model": "tests.question",
+    "pk": 1010,
+    "fields": {
+      "test": 100,
+      "order_index": 10,
+      "text": "10. Новый сотрудник переведён из другого подразделения. Он работает хорошо, но иногда не уверен и ошибается. Ваши действия?",
+      "type": "scale",
+      "required": true,
+      "help_text": "Поставьте балл 0–9 каждому варианту поведения",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10101,
+    "fields": {
+      "question": 1010,
+      "order_index": 1,
+      "text": "Дадите возможность спокойно работать.",
+      "value": "LET_WORK",
+      "dimension_code": "ИНФОРМИРОВАНИЕ",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10102,
+    "fields": {
+      "question": 1010,
+      "order_index": 2,
+      "text": "Выясните, требуется ли ему помощь.",
+      "value": "ASK_SUPPORT",
+      "dimension_code": "ПОДДЕРЖКА",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10103,
+    "fields": {
+      "question": 1010,
+      "order_index": 3,
+      "text": "Расскажете о новой работе подробнее и предложите совместные шаги для исправления ошибок.",
+      "value": "EXPLAIN_AND_COACH",
+      "dimension_code": "ПОДДЕРЖКА",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10104,
+    "fields": {
+      "question": 1010,
+      "order_index": 4,
+      "text": "Скажете, что заметили его сильные стороны, и объясните, как лучше избегать ошибок.",
+      "value": "HIGHLIGHT_STRENGTHS",
+      "dimension_code": "ДЕЛЕГИРОВАНИЕ",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+
+  {
+    "model": "tests.question",
+    "pk": 1011,
+    "fields": {
+      "test": 100,
+      "order_index": 11,
+      "text": "11. В подразделении проблемы сотрудничества. Раньше коллектив решал подобные истории сам, но сейчас затянулось. Ваши действия?",
+      "type": "scale",
+      "required": true,
+      "help_text": "Поставьте балл 0–9 каждому варианту поведения",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10111,
+    "fields": {
+      "question": 1011,
+      "order_index": 1,
+      "text": "Объясните группе, как решить проблему, чтобы не пострадало дело.",
+      "value": "DIRECT_FIX",
+      "dimension_code": "ПОДДЕРЖКА",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10112,
+    "fields": {
+      "question": 1011,
+      "order_index": 2,
+      "text": "Сразу соберёте команду и скажете, что проблему надо решать конструктивно всем вместе.",
+      "value": "GROUP_MEETING",
+      "dimension_code": "ОБУЧЕНИЕ",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10113,
+    "fields": {
+      "question": 1011,
+      "order_index": 3,
+      "text": "Выскажете своё мнение и предложите помощь в разрешении ситуации.",
+      "value": "OFFER_HELP",
+      "dimension_code": "ПОДДЕРЖКА",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10114,
+    "fields": {
+      "question": 1011,
+      "order_index": 4,
+      "text": "Сообщите, что они должны найти выход сами, или вообще не будете вмешиваться.",
+      "value": "LET_TEAM_DECIDE",
+      "dimension_code": "ДЕЛЕГИРОВАНИЕ",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+
+  {
+    "model": "tests.question",
+    "pk": 1012,
+    "fields": {
+      "test": 100,
+      "order_index": 12,
+      "text": "12. Команда опытная, но из-за новых условий появились внутренние противоречия. Ваши действия?",
+      "type": "scale",
+      "required": true,
+      "help_text": "Поставьте балл 0–9 каждому варианту поведения",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10121,
+    "fields": {
+      "question": 1012,
+      "order_index": 1,
+      "text": "Поговорите с подчинёнными и расскажете, как бы вы решили их проблемы.",
+      "value": "TELL_HOW_TO_SOLVE",
+      "dimension_code": "ДЕЛЕГИРОВАНИЕ",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10122,
+    "fields": {
+      "question": 1012,
+      "order_index": 2,
+      "text": "Предложите решать такие проблемы совместно с вами.",
+      "value": "SOLVE_WITH_ME",
+      "dimension_code": "ДЕЛЕГИРОВАНИЕ",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10123,
+    "fields": {
+      "question": 1012,
+      "order_index": 3,
+      "text": "Убедите подчинённых самих решить проблему.",
+      "value": "ENCOURAGE_SELF_RESOLVE",
+      "dimension_code": "ДЕЛЕГИРОВАНИЕ",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 10124,
+    "fields": {
+      "question": 1012,
+      "order_index": 4,
+      "text": "Займёте позицию стороннего наблюдателя.",
+      "value": "STAY_OBSERVER",
+      "dimension_code": "ДЕЛЕГИРОВАНИЕ",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  }
+]

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from orgPsych.tests.models import Test, Option, Question, ResultDimension
+from .models import Test, Option, Question, ResultDimension
 
 
 class TestCardSerializer(serializers.ModelSerializer):
