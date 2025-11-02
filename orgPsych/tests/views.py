@@ -1,11 +1,13 @@
+from django.db import transaction
 from django.shortcuts import get_object_or_404
-from rest_framework import generics, status
+from rest_framework import generics, status, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Test, Question, Option, Attempt, Answer, Result, ShareLink
 from .serializers import (TestCardSerializer, TestDetailSerializer, QuestionWithProgressSerializer,
                           AttemptStartSerializer, SaveAnswerSerializer, PublicResultSerializer)
-from .services.scoring import compute_result
+from .services.scoring import compute_result, compute_leadership_result
+
 
 class TestListView(generics.ListAPIView):
     queryset = Test.objects.filter(is_published=True)
@@ -70,15 +72,23 @@ class AnswerAndNextView(APIView):
         return Response({"next_question": _question_payload(attempt.test, next_idx)})
 
 class AttemptFinishView(APIView):
+    @transaction.atomic
     def post(self, request, attempt_id: int):
         attempt = get_object_or_404(Attempt, pk=attempt_id)
-        if attempt.status == attempt.Status.COMPLETED and hasattr(attempt, "result"):
-            sl = attempt.share_link
+
+        if attempt.status == Attempt.Status.COMPLETED and hasattr(attempt, "result"):
+            sl = ShareLink.objects.filter(attempt=attempt, is_active=True).first()
+            if not sl:
+                sl = ShareLink.objects.create(attempt=attempt)
             return Response({"result_id": attempt.result.id, "result_url": f"/results/{sl.uuid}"})
+
         result = compute_result(attempt)
-        attempt.status = attempt.Status.COMPLETED
-        attempt.save(update_fields=["status"])
-        sl = ShareLink.objects.create(attempt=attempt)
+
+        attempt.status = Attempt.Status.COMPLETED
+        attempt.save(update_fields=["status", "updated_at"])
+
+        sl, _ = ShareLink.objects.get_or_create(attempt=attempt, is_active=True, defaults={})
+
         return Response({"result_id": result.id, "result_url": f"/results/{sl.uuid}"})
 
 class PublicResultView(APIView):
@@ -95,3 +105,4 @@ class PublicResultView(APIView):
             "actions": {"can_copy_link": True, "restart_url": f"/tests/{sl.attempt.test.slug}"}
         }
         return Response(data)
+
