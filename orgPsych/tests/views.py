@@ -22,10 +22,37 @@ def _q_count(test: Test) -> int:
     return test.questions.count()
 
 def _question_payload(test: Test, order_index: int):
-    q = get_object_or_404(Question, test=test, order_index=order_index)
-    data = QuestionWithProgressSerializer(q, context=None).data
-    data["progress"] = {"index": order_index, "total": _q_count(test)}
-    return data
+    try:
+        q = Question.objects.get(test=test, order_index=order_index)
+
+        options_data = []
+        for opt in q.options.all().order_by('order_index'):
+            options_data.append({
+                "id": opt.id,
+                "order_index": opt.order_index,
+                "text": opt.text,
+                "value": opt.value
+            })
+
+        data = {
+            "id": q.id,
+            "order_index": q.order_index,
+            "text": q.text,
+            "type": q.type,
+            "required": q.required,
+            "options": options_data,
+            "progress": {
+                "index": order_index,
+                "total": _q_count(test)
+            }
+        }
+
+        print(f"Returning question {order_index}: {data}")
+        return data
+
+    except Question.DoesNotExist:
+        print(f"Question {order_index} not found for test {test.slug}")
+        return None
 
 class AttemptStartView(APIView):
     def post(self, request):
@@ -47,21 +74,62 @@ class AnswerAndNextView(APIView):
         s = SaveAnswerSerializer(data=request.data)
         s.is_valid(raise_exception=True)
         q = get_object_or_404(Question, pk=s.validated_data["question_id"], test=attempt.test)
-        ans, _ = Answer.objects.get_or_create(attempt=attempt, question=q)
+
         if q.type == q.Types.SINGLE:
             opt = get_object_or_404(Option, pk=s.validated_data.get("option_id"), question=q)
-            ans.option_single = opt
-            ans.option_ids = []
-            ans.text_value = ""
+            ans, created = Answer.objects.get_or_create(
+                attempt=attempt,
+                question=q,
+                defaults={'option_single': opt, 'text_value': ''}
+            )
+            if not created:
+                ans.option_single = opt
+                ans.text_value = ""
+                ans.save()
+
         elif q.type == q.Types.MULTIPLE:
-            ans.option_single = None
-            ans.option_ids = s.validated_data.get("option_ids", [])
-            ans.text_value = ""
+            ans, created = Answer.objects.get_or_create(
+                attempt=attempt,
+                question=q,
+                defaults={'option_ids': s.validated_data.get("option_ids", [])}
+            )
+            if not created:
+                ans.option_ids = s.validated_data.get("option_ids", [])
+                ans.save()
+
+        elif q.type == q.Types.SCALE:
+            option_id = s.validated_data.get("option_id")
+            if option_id:
+                opt = get_object_or_404(Option, pk=option_id, question=q)
+                ans, created = Answer.objects.get_or_create(
+                    attempt=attempt,
+                    question=q,
+                    defaults={'option_single': opt, 'text_value': s.validated_data.get("text_value", "")}
+                )
+                if not created:
+                    ans.option_single = opt
+                    ans.text_value = s.validated_data.get("text_value", "")
+                    ans.save()
+            else:
+                ans, created = Answer.objects.get_or_create(
+                    attempt=attempt,
+                    question=q,
+                    defaults={'text_value': s.validated_data.get("text_value", "")}
+                )
+                if not created:
+                    ans.text_value = s.validated_data.get("text_value", "")
+                    ans.save()
+
         else:
-            ans.option_single = None
-            ans.option_ids = []
-            ans.text_value = s.validated_data.get("text_value","")
-        ans.save()
+            ans, created = Answer.objects.get_or_create(
+                attempt=attempt,
+                question=q,
+                defaults={'text_value': s.validated_data.get("text_value", "")}
+            )
+            if not created:
+                ans.text_value = s.validated_data.get("text_value", "")
+                ans.save()
+
         total = _q_count(attempt.test)
         next_idx = q.order_index + 1
         attempt.progress_index = q.order_index
@@ -80,7 +148,10 @@ class AttemptFinishView(APIView):
             sl = ShareLink.objects.filter(attempt=attempt, is_active=True).first()
             if not sl:
                 sl = ShareLink.objects.create(attempt=attempt)
-            return Response({"result_id": attempt.result.id, "result_url": f"/results/{sl.uuid}"})
+            return Response({
+                "result_id": attempt.result.id,
+                "result_url": f"/tests/leadership-styles/results/{sl.uuid}"
+            })
 
         result = compute_result(attempt)
 
@@ -89,7 +160,10 @@ class AttemptFinishView(APIView):
 
         sl, _ = ShareLink.objects.get_or_create(attempt=attempt, is_active=True, defaults={})
 
-        return Response({"result_id": result.id, "result_url": f"/results/{sl.uuid}"})
+        return Response({
+            "result_id": result.id,
+            "result_url": f"/tests/leadership-styles/results/{sl.uuid}"
+        })
 
 class PublicResultView(APIView):
     def get(self, request, uuid: str):
@@ -105,4 +179,3 @@ class PublicResultView(APIView):
             "actions": {"can_copy_link": True, "restart_url": f"/tests/{sl.attempt.test.slug}"}
         }
         return Response(data)
-

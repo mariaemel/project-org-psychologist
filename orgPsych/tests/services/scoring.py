@@ -1,4 +1,3 @@
-# tests/scoring.py
 from __future__ import annotations
 from dataclasses import dataclass
 from statistics import mean
@@ -48,8 +47,15 @@ def _parse_grade(val) -> int:
     return g if 1 <= g <= 9 else 0
 
 
+def _check_inconsistency(grades: List[int]) -> bool:
+    if len(grades) < 2:
+        return False
+    return max(grades) - min(grades) > 5
+
+
 def _aggregate_by_question(answers: List[Answer]) -> List[QuestionAggregate]:
     by_q: Dict[int, Dict] = {}
+
     for a in answers:
         qid = a.question_id
         item = by_q.setdefault(qid, {
@@ -58,32 +64,40 @@ def _aggregate_by_question(answers: List[Answer]) -> List[QuestionAggregate]:
             "dim_codes": [],
         })
         item["grades"].append(_parse_grade(a.text_value))
-        item["dim_codes"].append((a.option_single.dimension_code or "").strip())
+
+        dimension_code = ""
+        if a.option_single and hasattr(a.option_single, 'dimension_code') and a.option_single.dimension_code:
+            dimension_code = a.option_single.dimension_code.strip()
+        else:
+            dimension_code = f"Q{a.question.order_index}_OPT{getattr(a.option_single, 'id', '0')}"
+
+        item["dim_codes"].append(dimension_code)
 
     result: List[QuestionAggregate] = []
     for qid, data in by_q.items():
         grades = data["grades"][:4]
         if len(grades) < 4:
             grades = grades + [0] * (4 - len(grades))
-        gmax, gmin = max(grades), min(grades)
-        avg = float(mean(grades))
 
-        flat = (gmax - gmin) < 2
+        dim_codes = data["dim_codes"][:4]
+        if len(dim_codes) < 4:
+            dim_codes = dim_codes + [""] * (4 - len(dim_codes))
 
-        hi8 = sum(1 for g in grades if g >= 8)
-        mid57 = sum(1 for g in grades if 5 <= g <= 7)
-        inconsistent = (hi8 > 1) or (mid57 > 2)
+        avg = mean(grades) if grades else 0.0
+        flat = len(set(grades)) == 1
+        inconsistent = _check_inconsistency(grades)
 
         result.append(QuestionAggregate(
             question_id=qid,
             order_index=data["order_index"],
             grades=grades,
-            dim_codes=data["dim_codes"][:4],
+            dim_codes=dim_codes,
             avg=avg,
             flat=flat,
-            inconsistent=inconsistent,
+            inconsistent=inconsistent
         ))
-    result.sort(key=lambda q: q.order_index)
+
+    result.sort(key=lambda x: x.order_index)
     return result
 
 
@@ -204,6 +218,15 @@ def compute_leadership_result(attempt_id: int) -> Result:
     duration_sec = delta.total_seconds()
     summary_md, raw = _build_summary(scores, per_q, duration_sec)
 
+    viz_data = {
+        "type": "pie",
+        "data": {
+            "labels": [STYLE_TITLES[c] for c in STYLE_CODES],
+            "values": [scores[c] for c in STYLE_CODES],
+        }
+    }
+    raw["viz"] = viz_data
+
     result, _ = Result.objects.update_or_create(
         attempt=attempt,
         defaults={
@@ -230,4 +253,4 @@ def compute_result(attempt) -> Result:
     slug = attempt.test.slug
     if slug == "leadership-styles":
         return compute_leadership_result(attempt.id)
-    raise NotImplementedError(...)
+    raise NotImplementedError(f"Scoring not implemented for test: {slug}")

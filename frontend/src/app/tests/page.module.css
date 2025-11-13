@@ -1,0 +1,139 @@
+.pageBackground {
+  background: url('/service.png') no-repeat;
+  width: 100%;
+  padding: 20px 20px;
+}
+
+.testsContainer {
+  max-width: 1180px;
+  margin: 64px auto;
+  padding: 40px 20px;
+}
+
+.testsTitle {
+  font-size: 36px;
+  margin-bottom: 16px;
+  color: #9D9DCC;
+  font-weight: 800;
+  width: 474px;
+}
+
+.tests {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+}
+
+.vectorBackground {
+  position: absolute;
+  left: 25%;
+  top: 30%;
+  transform: translateY(-50%);
+  width: 400px;
+  height: 200px;
+  background-image: url('/vector-test.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 1;
+}
+
+.testsSubtitle {
+  font-size: 16px;
+  color: #333333;
+  width: 400px;
+  height: 190px;
+  margin-left: 125px;
+  margin-top: 50px;
+  text-align: justify;
+  z-index: 2;
+}
+
+.text{
+  display: flex;
+  margin-bottom: 50px;
+  width: 1000px;
+}
+
+.testsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+.testLink {
+  text-decoration: none;
+}
+
+.testCard {
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0px 8px 15px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  height: 100%;
+  width: 375px;
+}
+
+.testCard:hover {
+  border: solid 1px #57579980;
+}
+.testCard:hover .testTitle {
+  font-weight: 900;
+}
+.testImage {
+  height: 260px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 0 5px;
+  border-radius: 5px;
+}
+
+.testContent {
+  padding: 24px;
+  height: calc(100% - 260px);
+  display: flex;
+  flex-direction: column;
+  border-radius: 0 0 5px 5px;
+  position: relative;
+  z-index: 1;
+  background: white;
+  box-shadow: 1px -25px 64.3px rgba(157, 157, 204, 0.8);
+}
+
+.testCard:hover .testContent {
+  box-shadow:
+    1px -25px 64.3px rgba(157, 157, 204, 0.8);
+}
+
+.testTitle {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #9D9DCC;
+}
+
+.testDescription {
+  color: #333333;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  width: 300px;
+}
+
+.testMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.testTime {
+  padding: 4px 0px;
+  font-size: 14px;
+  color: #B3B3B3;
+}

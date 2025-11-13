@@ -13,7 +13,9 @@ export default function Breadcrumbs() {
       case 'services': return 'Услуги';
       case 'articles': return 'Статьи';
       case 'questions': return 'Вопросы';
+      case 'tests': return 'Тесты';
       case 'application': return 'Оставить заявку';
+
       default: return slug;
     }
   };

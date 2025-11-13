@@ -1,0 +1,220 @@
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  min-height: 80vh;
+  margin-top: 100px;
+}
+
+.breadcrumbs {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.breadcrumbs a {
+  color: #9D9DCC;
+  text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+.progressSection {
+  margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.progressBar {
+  width: 800px;
+  height: 40px;
+  background: #57579950;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  font-size: 14px;
+  color: white;
+  background: #575799;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.questionCard {
+  background: white;
+  padding: 40px;
+  border-radius: 5px;
+  box-shadow: 0 8px 30px #57579963;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.questionText {
+  font-size: 20px;
+  color: #333;
+  text-align: justify;
+  margin-bottom: 40px;
+  line-height: 1.4;
+  width: 800px;
+  font-weight: 400;
+}
+
+.optionsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-bottom: 30px;
+  width: 800px;
+}
+
+.optionWithScale {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.optionText {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 20px;
+  line-height: 1.4;
+  width: 100%;
+  text-align: justify;
+}
+
+.scaleContainer {
+  width: 800px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.gradientScale {
+  position: relative;
+  height: 40px;
+  cursor: pointer;
+  margin-bottom: 8px;
+  width: 800px;
+}
+
+.scaleBackground {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 18px;
+  background: linear-gradient(90deg, #E0E0FF, #575799);
+  border-radius: 5px;
+  transform: translateY(-50%);
+  width: 100%; /* Занимает всю ширину контейнера */
+}
+
+.scoreIndicator {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: left 0.2s ease;
+}
+
+.scoreCircle {
+  width: 40px;
+  height: 40px;
+  background: #9D9DCC;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 1px 8px rgba(157, 157, 204, 0.3);
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 800px;
+}
+
+.backButton {
+  background: none;
+  border: 2px solid #9D9DCC;
+  color: white;
+  background-color: #9D9DCC;
+  padding: 12px 44px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.backButton:hover {
+  color: white;
+  background: #afafe2;
+  border-color: #afafe2;
+  transform: translateY(-1px);
+}
+
+.nextButton {
+  background: #575799;
+  border: 2px solid #555592;
+  color: white;
+  padding: 12px 44px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  margin-left: auto;
+}
+
+.nextButton:hover:not(:disabled) {
+  background: #8a8ac4;
+  border-color: #8a8ac4;
+  transform: translateY(-1px);
+}
+
+.nextButton:disabled {
+  background: #ccc;
+  border-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.finishButton {
+  background: #575799;
+  border: 2px solid #575799;
+  color: white;
+  padding: 12px 44px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
+  transition: all 0.3s ease;
+  margin-left: auto;
+}
+
+.finishButton:hover:not(:disabled) {
+  background: #8a8ac4;
+  border-color: #8a8ac4;
+  transform: translateY(-1px);
+}
+
+.finishButton:disabled {
+  background: #ccc;
+  border-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}

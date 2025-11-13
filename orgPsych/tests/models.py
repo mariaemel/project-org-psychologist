@@ -267,6 +267,12 @@ class Answer(TimeStampedModel):
         blank=True,
     )
 
+    option_ids = models.JSONField(
+        default=list,
+        blank=True,
+        help_text="Список ID выбранных вариантов для multiple choice вопросов"
+    )
+
     text_value = models.TextField(
         blank=True,
         help_text="Значение ответа пользователя (балл 0..9, текст и т.д.)"

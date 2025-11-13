@@ -34,6 +34,7 @@ export default function MobileMenu() {
           <li className={styles.menuItem}><a href="/services">Услуги</a></li>
           <li className={styles.menuItem}><a href="/articles">Статьи</a></li>
           <li className={styles.menuItem}><a href="/questions">Вопросы</a></li>
+          <li className={styles.menuItem}><a href="/tests">Тесты</a></li>
           <li className={styles.menuItem}><a href="#" onClick={handleRequestClick}>Оставить заявку</a></li>
         </ul>
       </div>

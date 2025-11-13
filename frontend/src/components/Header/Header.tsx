@@ -10,9 +10,7 @@ export default function Header() {
   const [showForm, setShowForm] = useState(false);
   const pathname = usePathname()
   const [visible, setVisible] = useState(true);
-  const darkRoutes = ['/about', '/services', '/articles', '/questions'];
-  const isAboutPage = darkRoutes.includes(pathname);
-
+  const isHomePage = pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,7 +28,7 @@ export default function Header() {
   if (!visible) return null;
 
   return (
-    <header className={`${styles.header} ${isAboutPage ? styles.darkHeader : styles.lightHeader}`}>
+    <header className={`${styles.header} ${isHomePage ? styles.lightHeader : styles.darkHeader}`}>
       <div className={styles.container}>
         <div className={styles.left}>
           <nav className={styles.nav}>
@@ -39,9 +37,10 @@ export default function Header() {
             <a href="/services" className={pathname === '/services' ? styles.active : ''}>Услуги</a>
             <a href="/articles" className={pathname === '/articles' ? styles.active : ''}>Статьи</a>
             <a href="/questions" className={pathname === '/questions' ? styles.active : ''}>Вопросы</a>
+            <a href="/tests" className={pathname === '/tests' ? styles.active : ''}>Тесты</a>
           </nav>
         </div>
-        <button className={styles.cta}  onClick={() => setShowForm(true)}>Оставить заявку</button>
+        <button className={styles.cta} onClick={() => setShowForm(true)}>Оставить заявку</button>
       </div>
       {showForm && <RequestForm onClose={() => setShowForm(false)} />}
     </header>

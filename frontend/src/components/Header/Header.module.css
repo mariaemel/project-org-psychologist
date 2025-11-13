@@ -9,8 +9,8 @@
 
 .container {
   margin: 0 auto;
-  margin-right: 130px;
-  padding: 0 120px;
+  margin-right: 38px;
+  padding: 0 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,9 +19,8 @@
 .left {
   display: flex;
   align-items: center;
-  padding-left: 12px;
+  padding-left: 66px;
 }
-
 
 .nav {
   display: flex;

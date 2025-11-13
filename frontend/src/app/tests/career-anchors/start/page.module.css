@@ -1,0 +1,120 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  margin-top: 80px;
+}
+
+.header {
+  margin-bottom: 30px;
+}
+
+.breadcrumbs {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.breadcrumbs a {
+  color: #9D9DCC;
+  text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+
+.currentBreadcrumb {
+  color: #2b2b2b;
+  text-decoration: none;
+}
+
+.title {
+  font-size: 32px;
+  color: #333;
+}
+
+.progressSection {
+  margin-bottom: 40px;
+}
+
+.progressBar {
+  width: 100%;
+  height: 8px;
+  background: #f0f0f0;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: #4ECDC4;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.progressText {
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+}
+
+.questionCard {
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+}
+
+.questionText {
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+  margin-bottom: 40px;
+  line-height: 1.4;
+}
+
+.optionsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.optionButton {
+  padding: 20px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  background: white;
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.3s ease;
+}
+
+.optionButton:hover {
+  border-color: #4ECDC4;
+  background: #f0fffd;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.backButton {
+  background: none;
+  border: 2px solid #e0e0e0;
+  color: #666;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.backButton:hover {
+  border-color: #4ECDC4;
+  color: #4ECDC4;
+  background: #f0fffd;
+}

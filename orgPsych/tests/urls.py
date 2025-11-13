@@ -11,5 +11,5 @@ urlpatterns = [
     path("attempts/<int:attempt_id>/question/<int:idx>", QuestionGetView.as_view()),
     path("attempts/<int:attempt_id>/answer-and-next", AnswerAndNextView.as_view()),
     path("attempts/<int:attempt_id>/finish", AttemptFinishView.as_view()),
-    path("results/<uuid:uuid>", PublicResultView.as_view()),
+    path("leadership-styles/results/<uuid:uuid>", PublicResultView.as_view()),
 ]
