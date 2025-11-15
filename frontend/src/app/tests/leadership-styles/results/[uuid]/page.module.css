@@ -18,7 +18,7 @@
 .retry {
   padding: 4rem 2rem;
   max-width: 1200px;
-  margin: 80px auto;
+  margin: 120px auto;
 }
 
 .retryContainer {
@@ -93,6 +93,7 @@
     text-align: center;
   }
 }
+
 .topSection {
   display: grid;
   grid-template-columns: 400px 1fr;
@@ -128,13 +129,15 @@
   color: var(--accent-color);
   font-size: 64px;
   font-weight: 800;
-  margin-bottom: 1.5rem;
-  border-bottom: 2px solid #e5e7eb;
+  margin-bottom: 40px;
+  line-height: 120%;
+  border-bottom: 1px solid #B2B2B2;
 }
 
 .summaryContent {
   color: #374151;
-  font-size: 1.1rem;
+  font-size: 16px;
+  width: 600px;
 }
 
 .summaryContent strong {
@@ -143,8 +146,10 @@
 }
 
 .summaryContent em {
-  color: #6b7280;
   font-style: italic;
+  padding-left: 12px;
+  border-left: 3px solid var(--accent-color);
+  margin-left: 2px;
 }
 
 /* Раскрывающиеся секции */
@@ -157,7 +162,7 @@
 
 .section {
   background: #FBFBFB;
-  border-radius: 5px;
+  border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
 }
@@ -178,7 +183,7 @@
 
 .sectionTitle {
   color: #1f2937;
-  font-size: 1.25rem;
+  font-size: 22px;
   font-weight: 600;
   margin: 0;
   flex: 1;
@@ -195,6 +200,18 @@
   border-top: 1px solid #e5e7eb;
 }
 
+.description {
+  margin-bottom: 12px;
+  line-height: 1.5;
+  color: #333333;
+}
+
+.conclusion {
+  margin-top: 12px;
+  line-height: 1.5;
+  color: #333333;
+}
+
 .sectionList {
   list-style: none;
   padding: 0;
@@ -204,7 +221,6 @@
 .sectionList li {
   padding: 0.75rem 0;
   color: #374151;
-  border-bottom: 1px solid #f3f4f6;
   position: relative;
   padding-left: 1.5rem;
 }
@@ -227,10 +243,11 @@
   gap: 1rem;
   justify-content: left;
   padding: 2rem 0;
+  align-items: center;
 }
 
 .restartBtn, .saveBtn {
-  padding: 0.8rem 2.5rem;
+  padding: 12px 24px;
   border-radius: 5px;
   font-size: 16px;
   font-weight: 400;
@@ -238,26 +255,38 @@
   transition: all 0.2s;
   border: none;
   cursor: pointer;
-  border: 2px solid;
+  font-family: inherit;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 240px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  margin: 0;
 }
 
 .restartBtn {
   background: #9D9DCC;
   color: white;
-}
-
-.restartBtn:hover {
-  background: #8888b1;
+  border: 2px solid #9D9DCC;
 }
 
 .saveBtn {
   background: #575799;
   color: white;
+  border: 2px solid #575799;
+}
+
+.restartBtn:hover {
+  background: #8888b1;
+  border-color: #8888b1;
 }
 
 .saveBtn:hover {
   background: #6969b6;
-  color: white;
+  border-color: #6969b6;
 }
 
 /* Адаптивность */

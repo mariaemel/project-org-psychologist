@@ -37,7 +37,7 @@ export default function Header() {
             <a href="/services" className={pathname === '/services' ? styles.active : ''}>Услуги</a>
             <a href="/articles" className={pathname === '/articles' ? styles.active : ''}>Статьи</a>
             <a href="/questions" className={pathname === '/questions' ? styles.active : ''}>Вопросы</a>
-            <a href="/tests" className={pathname === '/tests' ? styles.active : ''}>Тесты</a>
+            <a href="/tests" className={pathname.startsWith('/tests') ? styles.active : ''}>Тесты</a>
           </nav>
         </div>
         <button className={styles.cta} onClick={() => setShowForm(true)}>Оставить заявку</button>

@@ -28,11 +28,13 @@ export default async function LeadershipTestPage() {
           </div>
 
           <p className={styles.description}>
-            {testData.short_description}
+            Узнайте, какой стиль управления вам ближе: директивный, обучающий, поддерживающий или делегирующий.<br/><br/>
+            Тест основан на модели ситуационного лидерства Херси и Бланшара и поможет понять, как вы взаимодействуете с подчинёнными в разных ситуациях.
           </p>
 
           <p className={styles.description}>
-            {testData.instructions_md}
+            {testData.instructions_md}<br/><br/>
+            Не существует «правильных» или «неправильных» ответов — важно ответить так, как вы поступаете на самом деле, а не как «следовало бы».
           </p>
 
           <Link href={`/tests/${testData.slug}/start`} className={styles.startButton}>
