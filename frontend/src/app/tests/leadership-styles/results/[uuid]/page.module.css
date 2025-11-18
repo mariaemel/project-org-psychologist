@@ -145,6 +145,10 @@
   font-weight: 600;
 }
 
+.summaryContent span {
+  color: var(--accent-color);
+}
+
 .summaryContent em {
   font-style: italic;
   padding-left: 12px;
@@ -178,7 +182,7 @@
 }
 
 .sectionHeader:hover {
-  background: #f1f5f9;
+  background: #e5e5e545;
 }
 
 .sectionTitle {
