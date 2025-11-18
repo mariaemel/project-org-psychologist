@@ -97,28 +97,57 @@ class AnswerAndNextView(APIView):
                 ans.option_ids = s.validated_data.get("option_ids", [])
                 ans.save()
 
+
         elif q.type == q.Types.SCALE:
-            option_id = s.validated_data.get("option_id")
-            if option_id:
-                opt = get_object_or_404(Option, pk=option_id, question=q)
-                ans, created = Answer.objects.get_or_create(
-                    attempt=attempt,
-                    question=q,
-                    defaults={'option_single': opt, 'text_value': s.validated_data.get("text_value", "")}
-                )
-                if not created:
-                    ans.option_single = opt
-                    ans.text_value = s.validated_data.get("text_value", "")
-                    ans.save()
+
+            grades = s.validated_data.get("grades")
+
+            if grades:
+                expected = q.options.count()
+
+                if len(grades) != expected:
+                    return Response(
+
+                        {"detail": f"Для вопроса требуется {expected} оценок, получено {len(grades)}"},
+
+                        status=status.HTTP_400_BAD_REQUEST,
+
+                    )
+
+                for item in grades:
+                    opt = get_object_or_404(Option, pk=item["option_id"], question=q)
+
+                    Answer.objects.update_or_create(
+
+                        attempt=attempt,
+
+                        question=q,
+
+                        option_single=opt,
+
+                        defaults={"text_value": str(item["value"])},
+
+                    )
+
             else:
-                ans, created = Answer.objects.get_or_create(
+                option_id = s.validated_data.get("option_id")
+
+                if option_id is None:
+                    return Response({"detail": "Передайте grades или option_id для SCALE"}, status=400)
+
+                opt = get_object_or_404(Option, pk=option_id, question=q)
+
+                Answer.objects.update_or_create(
+
                     attempt=attempt,
+
                     question=q,
-                    defaults={'text_value': s.validated_data.get("text_value", "")}
+
+                    option_single=opt,
+
+                    defaults={"text_value": s.validated_data.get("text_value", "")},
+
                 )
-                if not created:
-                    ans.text_value = s.validated_data.get("text_value", "")
-                    ans.save()
 
         else:
             ans, created = Answer.objects.get_or_create(

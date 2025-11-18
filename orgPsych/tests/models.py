@@ -2,8 +2,9 @@ from __future__ import annotations
 
 import uuid
 from django.db import models
-from django.core.validators import MinValueValidator
+from django.core.validators import MinValueValidator, ValidationError
 from django.utils import timezone
+from django.db.models import Q
 
 
 class TimeStampedModel(models.Model):
@@ -262,7 +263,7 @@ class Answer(TimeStampedModel):
         "Option",
         on_delete=models.CASCADE,
         related_name="answers_single",
-        help_text="Какой вариант оценивается / выбран",
+        help_text="Какой вариант оценивается / выбран (для single/scale)",
         null=True,
         blank=True,
     )
@@ -275,7 +276,7 @@ class Answer(TimeStampedModel):
 
     text_value = models.TextField(
         blank=True,
-        help_text="Значение ответа пользователя (балл 0..9, текст и т.д.)"
+        help_text="Значение ответа: для SCALE - балл 0..9 (строкой), для TEXT - произвольный текст"
     )
 
     saved_at = models.DateTimeField(
@@ -285,10 +286,22 @@ class Answer(TimeStampedModel):
 
     class Meta:
         ordering = ["attempt_id", "question_id", "option_single_id"]
-        unique_together = [("attempt", "question", "option_single")]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["attempt", "question", "option_single"],
+                condition=Q(option_single__isnull=False),
+                name="uniq_answer_per_option"
+            ),
+            models.UniqueConstraint(
+                fields=["attempt", "question"],
+                condition=Q(option_single__isnull=True),
+                name="uniq_free_answer_per_question"
+            ),
+        ]
         indexes = [
             models.Index(fields=["attempt", "question"]),
             models.Index(fields=["saved_at"]),
+            models.Index(fields=["option_single"]),
         ]
 
     def __str__(self) -> str:
@@ -298,16 +311,42 @@ class Answer(TimeStampedModel):
         qtype = self.question.type
 
         if qtype == Question.Types.SINGLE:
-            return
+            if not self.option_single_id:
+                raise ValidationError("Для SINGLE обязателен option_single.")
+            if self.option_ids:
+                raise ValidationError("Для SINGLE нельзя передавать option_ids.")
+            if self.text_value not in ("", None):
+                raise ValidationError("Для SINGLE text_value должен быть пустым.")
 
-        if qtype == Question.Types.MULTIPLE:
-            return
+        elif qtype == Question.Types.SCALE:
+            if not self.option_single_id:
+                raise ValidationError("Для SCALE обязателен option_single (одна запись на опцию).")
+            try:
+                g = int(str(self.text_value).strip())
+            except Exception:
+                raise ValidationError("Для SCALE text_value должен быть целым числом.")
+            if not (0 <= g <= 9):
+                raise ValidationError("Для SCALE text_value должен быть в диапазоне 0..9.")
+            if self.option_ids:
+                raise ValidationError("Для SCALE нельзя передавать option_ids.")
 
-        if qtype == Question.Types.SCALE:
-            return
+        elif qtype == Question.Types.MULTIPLE:
+            if self.option_single_id:
+                raise ValidationError("Для MULTIPLE option_single должен быть пустым.")
+            if not isinstance(self.option_ids, list):
+                raise ValidationError("Для MULTIPLE option_ids должен быть списком.")
+            if self.text_value not in ("", None):
+                raise ValidationError("Для MULTIPLE text_value должен быть пустым.")
 
-        if qtype == Question.Types.TEXT:
-            return
+        elif qtype == Question.Types.TEXT:
+            if self.option_single_id:
+                raise ValidationError("Для TEXT option_single должен быть пустым.")
+            if self.option_ids:
+                raise ValidationError("Для TEXT option_ids должен быть пустым.")
+
+        else:
+            raise ValidationError(f"Неизвестный тип вопроса: {qtype}")
+
 
 
 class Result(TimeStampedModel):

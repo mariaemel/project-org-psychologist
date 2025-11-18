@@ -52,3 +52,15 @@ class PublicResultSerializer(serializers.Serializer):
     summary_md = serializers.CharField()
     viz = serializers.DictField()
     actions = serializers.DictField()
+
+
+class ScaleGradeItemSerializer(serializers.Serializer):
+    option_id = serializers.IntegerField()
+    value = serializers.IntegerField(min_value=0, max_value=9)
+
+class SaveAnswerSerializer(serializers.Serializer):
+    question_id = serializers.IntegerField()
+    option_id = serializers.IntegerField(required=False)
+    option_ids = serializers.ListField(child=serializers.IntegerField(), required=False)
+    text_value = serializers.CharField(allow_blank=True, required=False)
+    grades = ScaleGradeItemSerializer(many=True, required=False)
