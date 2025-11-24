@@ -16,6 +16,32 @@ import styles from './page.module.css'
 
 ChartJS.register(ArcElement, Tooltip, Legend, Title)
 
+interface ResultFlags {
+  flat_questions: number[]
+  inconsistent_questions: number[]
+  overflow_questions: number[]
+  asymmetry: boolean
+  too_many_strongs: boolean
+  all_close: boolean
+  fast_attempt: boolean
+  duration_sec: number
+}
+
+interface TopStyle {
+  code: string
+  title: string
+  score: number
+  level: string
+  contextual?: boolean
+}
+
+interface ResultRawJson {
+  flags?: ResultFlags
+  top_styles?: TopStyle[]
+  scores?: Record<string, number>
+  levels?: Record<string, string>
+}
+
 interface ResultData {
   test: { slug: string; title: string }
   computed_at: string
@@ -33,6 +59,7 @@ interface ResultData {
       values: number[]
     }
   }
+  raw_json?: ResultRawJson
   actions: {
     can_copy_link: boolean
     restart_url: string
@@ -40,14 +67,26 @@ interface ResultData {
   }
 }
 
-const STYLE_CONFIG = {
+type StyleKey = 'ИНФОРМИРОВАНИЕ' | 'ОБУЧЕНИЕ' | 'ПОДДЕРЖКА' | 'ДЕЛЕГИРОВАНИЕ'
+
+const STYLE_CONFIG: Record<StyleKey, {
+  color: string
+  title: string
+  summary: string
+  sections: Array<{
+    title: string
+    items: string[]
+    description?: string | string[]
+    conclusion?: string
+  }>
+}> = {
   'ИНФОРМИРОВАНИЕ': {
     color: '#D94A3C',
     title: 'ИНФОРМИРОВАНИЕ',
     summary: `
-      <p>Ваш результат: <strong>Директивный стиль руководства</strong> <br/><em>У вас ярко выражен <span>директивный</span> (инструктирующий) стиль руководства.</em></p></br>
+      <p>Ваш результат: <strong>Директивный стиль руководства</strong> <br/><em>У вас <span>директивный</span> (инструктирующий) стиль руководства.</em></p></br>
       <p>Вы склонны самостоятельно определять цели и пути их достижения, чётко формулируете задачи и требуете их исполнения в соответствии с установленными стандартами.</p></br>
-      <p>Для вас важно, чтобы сотрудники точно понимали, что, как и когда нужно сделать. Вы предпочитаете держать процесс под контролем, обеспечивая выполнение работы по шагам и минимизируя неопределённость.</p>
+      <p>Для вас важно, чтобы сотрудники точно понимали, что, как и когда нужно сделать. Вы предпочитаете держать процесс под контролем, обеспечивая выполнение работы по шагам и минимизируя неопределённость.</p></br>
     `,
     sections: [
       {
@@ -64,7 +103,7 @@ const STYLE_CONFIG = {
       },
       {
         title: 'Когда этот стиль наиболее эффективен',
-        description: ['Директивный стиль наилучшим образом подходит для работы с сотрудниками уровня зрелости R1 — “Начинающий энтузиаст”, то есть: новыми или неопытными работниками, не обладающими необходимыми навыками для выполнения задач, но проявляющими высокий уровень мотивации и энтузиазма.',
+        description: ['Директивный стиль наилучшим образом подходит для работы с сотрудниками уровня зрелости R1 — "Начинающий энтузиаст", то есть: новыми или неопытными работниками, не обладающими необходимыми навыками для выполнения задач, но проявляющими высокий уровень мотивации и энтузиазма.',
                       'Таким сотрудникам нужны:'],
         items: [
           'четкие указания, стандарты и приоритеты,',
@@ -95,9 +134,9 @@ const STYLE_CONFIG = {
     color: '#FFCF4A',
     title: 'ОБУЧЕНИЕ',
     summary: `
-      <p>Ваш результат: <strong>Обучающий стиль руководства</strong><br/> <em>У вас ярко выражен <span>обучающий</span> (коучинговый) стиль руководства.</em></p></br>
+      <p>Ваш результат: <strong>Обучающий стиль руководства</strong><br/> <em>У вас <span>обучающий</span> (коучинговый) стиль руководства.</em></p></br>
       <p>Вы склонны сочетать высокую директивность с активной поддержкой. С одной стороны, вы ясно формулируете задачи и сохраняете ответственность за принятие решений. С другой — вовлекаете сотрудников в обсуждение, объясняете логику действий и помогаете им понять «почему» и «зачем» выполняется то или иное задание.</p></br>
-      <p>Ваш подход направлен не просто на выполнение задачи, а на развитие подчиненных, формирование у них уверенности и компетенций.</p>
+      <p>Ваш подход направлен не просто на выполнение задачи, а на развитие подчиненных, формирование у них уверенности и компетенций.</p></br>
     `,
     sections: [
       {
@@ -128,7 +167,7 @@ const STYLE_CONFIG = {
         items: [
           'Сотрудники могут начать чрезмерно зависеть от постоянных объяснений и поддержки.',
           'Перегрузка коммуникацией может замедлять процесс принятия решений.',
-          'Если не переходить вовремя к более делегирующему поводу, сотрудник может застрять на уровне ученичества.'
+          'Если не переходить вовремя к более делегирующему поводу, сотрудник может застрять на уровня ученичества.'
         ]
       },
       {
@@ -146,10 +185,10 @@ const STYLE_CONFIG = {
     color: '#29A80D',
     title: 'ПОДДЕРЖКА',
     summary: `
-      <p>Ваш результат: <strong>Обучающий стиль руководства</strong><br/>
-      <em>У вас выражен <span>поддерживающий</span> (совместный) стиль руководства.</em></p><br/>
+      <p>Ваш результат: <strong>Поддерживающий стиль руководства</strong><br/>
+      <em>У вас <span>поддерживающий</span> (совместный) стиль руководства.</em></p><br/>
       <p>Вы стремитесь к партнёрским отношениям с сотрудниками, активно вовлекаете их в процесс принятия решений, предоставляете свободу действий и одновременно поддерживаете морально</p><br/>
-      <p>Ваша цель — укрепить уверенность подчиненных, мотивировать их к самостоятельности и развить чувство ответственности за результат.</p>
+      <p>Ваша цель — укрепить уверенность подчиненных, мотивировать их к самостоятельности и развить чувство ответственности за результат.</p></br>
     `,
     sections: [
       {
@@ -166,7 +205,7 @@ const STYLE_CONFIG = {
       },
       {
         title: 'Когда этот стиль наиболее эффективен',
-        description: 'Поддерживающий стиль управления оптимален для работы с сотрудниками уровня зрелости R3 — “Осторожный исполнитель”, которые:',
+        description: 'Поддерживающий стиль управления оптимален для работы с сотрудниками уровня зрелости R3 — "Осторожный исполнитель", которые:',
         items: [
           'обладают знаниями и навыками для выполнения задач (средний или высокий уровень компетенции),',
           'могут работать самостоятельно, но не всегда уверены в себе,',
@@ -199,10 +238,10 @@ const STYLE_CONFIG = {
     color: '#1E86EA',
     title: 'ДЕЛЕГИРОВАНИЕ',
     summary: `
-      <p>Ваш результат: <strong>Обучающий стиль руководства</strong></p>
-      <p><em>У вас слабо выражен <span>делегирующий</span> (доверительный) стиль руководства.</em></p><br/>
+      <p>Ваш результат: <strong>Делегирующий стиль руководства</strong></p>
+      <p><em>У вас <span>делегирующий</span> (доверительный) стиль руководства.</em></p><br/>
       <p>Вы доверяете сотрудникам, предоставляете им свободу действий и возможность самостоятельно принимать решения. Ваш подход основан на уверенности в профессионализме подчиненных: вы обозначаете цели и сроки, а ответственность за способы достижения результата передаете им.</p><br/>
-      <p>Этот стиль демонстрирует зрелость руководителя, готовность отпустить избыточный контроль и выстраивать отношения на основе доверия и партнёрства.</p>
+      <p>Этот стиль демонстрирует зрелость руководителя, готовность отпустить избыточный контроль и выстраивать отношения на основе доверия и партнёрства.</p></br>
     `,
     sections: [
       {
@@ -219,7 +258,7 @@ const STYLE_CONFIG = {
       },
       {
         title: 'Когда этот стиль наиболее эффективен',
-        description: 'Делегирующий стиль подходит для сотрудников уровня зрелости R4 — “Уверенный профессионал”, которые:',
+        description: 'Делегирующий стиль подходит для сотрудников уровня зрелости R4 — "Уверенный профессионал", которые:',
         items: [
           'имеют высокий уровень компетентности и устойчивую эффективность,',
           'мотивированы внутренне, гордятся своими результатами,',
@@ -232,9 +271,9 @@ const STYLE_CONFIG = {
       {
         title: 'Возможные риски при чрезмерной делегации',
         items: [
-          'Сотрудники могут привыкнуть полагаться на эмоциональную поддержку и избегать полной ответственности.',
-          'При избыточной вовлеченности руководителя принятие решений может замедляться.',
-          'Если не вовремя перейти к делегирующему стилю, развитие самостоятельности сотрудников может застопориться.'
+          'Слишком раннее делегирование может привести к ошибкам и срыву сроков.',
+          'Недостаточный контроль может привести к потере управления ситуацией.',
+          'Сотрудники могут чувствовать себя брошенными без достаточной поддержки.'
         ]
       },
       {
@@ -251,46 +290,112 @@ const STYLE_CONFIG = {
   }
 }
 
+const getExpressionLevel = (score: number): string => {
+  if (score <= 20) return "Стиль не выражен";
+  if (score <= 30) return "Слабо выражен";
+  if (score <= 70) return "Выражен";
+  return "Ярко выражен";
+};
+
+// для получения текста с правильной степенью выраженности
+const getSummaryWithExpression = (styleCode: string, score: number, originalSummary: string): string => {
+  const expressionLevel = getExpressionLevel(score);
+  let expressionText = "";
+
+  switch (expressionLevel) {
+    case "Ярко выражен":
+      expressionText = "ярко выражен";
+      break;
+    case "Выражен":
+      expressionText = "выражен";
+      break;
+    case "Слабо выражен":
+      expressionText = "слабо выражен";
+      break;
+    default:
+      expressionText = "выражен";
+  }
+
+  const styleName = getStyleName(styleCode);
+  return originalSummary
+    .replace(/У вас <span>/g, `У вас ${expressionText} <span>`)
+    .replace(new RegExp(`У вас ${styleName}`, 'g'), `У вас ${expressionText} ${styleName}`);
+};
+
+const getStyleName = (code: string): string => {
+  const styleMap: Record<string, string> = {
+    'ИНФОРМИРОВАНИЕ': 'директивный',
+    'ОБУЧЕНИЕ': 'обучающий',
+    'ПОДДЕРЖКА': 'поддерживающий',
+    'ДЕЛЕГИРОВАНИЕ': 'делегирующий'
+  };
+  return styleMap[code.toUpperCase()] || 'стиль';
+};
+
+const getStyleConfig = (code: string) => {
+  const upperCode = code.toUpperCase() as StyleKey;
+  return STYLE_CONFIG[upperCode];
+};
+
 export default function ResultPage() {
-  const params = useParams()
-  const [result, setResult] = useState<ResultData | null>(null)
-  const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-  const [openSections, setOpenSections] = useState<Record<number, boolean>>({})
+  const params = useParams();
+  const [result, setResult] = useState<ResultData | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     const fetchResult = async () => {
       try {
-        const data = await getResult(params.uuid as string)
-        setResult(data)
+        const data = await getResult(params.uuid as string);
+        setResult(data);
       } catch (err: any) {
-        setError(`Не удалось загрузить результаты: ${err.message}`)
+        setError(`Не удалось загрузить результаты: ${err.message}`);
       } finally {
-        setIsLoading(false)
+        setIsLoading(false);
       }
-    }
-    if (params.uuid) fetchResult()
-  }, [params.uuid])
+    };
+    if (params.uuid) fetchResult();
+  }, [params.uuid]);
 
-  if (isLoading) return <div className={styles.loading}>Загрузка...</div>
+  const toggleSection = (key: string) => {
+    setOpenSections(prev => ({ ...prev, [key]: !prev[key] }));
+  };
+
+  if (isLoading) return <div className={styles.loading}>Загрузка...</div>;
   if (error || !result)
     return (
       <div className={styles.error}>
         <h3>Ошибка</h3>
         <p>{error || 'Результаты не найдены'}</p>
       </div>
-    )
+    );
 
-  const maxScore = Math.max(...result.dimensions.map(d => d.score));
-  const leaders = result.dimensions.filter(d => d.score === maxScore);
+  // проверка на крайние случаи по флагам из бека
+  const flags = result.raw_json?.flags;
+  const topStyles = result.raw_json?.top_styles || [];
 
-  const sortedScores = result.dimensions
-    .map(d => d.score)
-    .sort((a, b) => b - a);
+  console.log('Крайние случаи', flags);
+  console.log('Главные стили', topStyles);
+  console.log('Все стили', result.dimensions);
 
-  const hasClearLeader = true;
+  const hasVeryStrongStyle = result.dimensions.some(d => d.score > 70);
+  const sortedDimensions = [...result.dimensions].sort((a, b) => b.score - a.score);
 
-  if (!hasClearLeader || leaders.length > 1) {
+  const hasCriticalIssues = flags ? (
+    flags.flat_questions?.length > 0 ||
+    flags.inconsistent_questions?.length > 0 ||
+    flags.overflow_questions?.length > 0 ||
+    flags.asymmetry ||
+    flags.all_close ||
+    flags.fast_attempt ||
+    (flags.too_many_strongs && !hasVeryStrongStyle &&
+    sortedDimensions[2]?.score > (sortedDimensions[1].score / 2) &&
+    sortedDimensions[2]?.level !== "Слабо выражен")
+  ) : false;
+
+  // если есть проблемы И нет ярко выраженного стиля, то ошибка
+  if (hasCriticalIssues && !hasVeryStrongStyle) {
     return (
       <div className={styles.retry}>
         <div className={styles.retryContainer}>
@@ -308,23 +413,37 @@ export default function ResultPage() {
           </div>
         </div>
       </div>
-    )
+    );
   }
 
-  const main = leaders[0]
-  const mainStyle = STYLE_CONFIG[main.code.toUpperCase() as keyof typeof STYLE_CONFIG]
+  let mainStyleCode = topStyles[0]?.code;
+  let mainStyle = mainStyleCode ? getStyleConfig(mainStyleCode) : null;
+
+  if (!mainStyle && result.dimensions && result.dimensions.length > 0) {
+    const leadingDimension = result.dimensions.reduce((prev, current) =>
+      (prev.score > current.score) ? prev : current
+    );
+    mainStyleCode = leadingDimension.code;
+    mainStyle = getStyleConfig(mainStyleCode);
+  }
 
   if (!mainStyle) {
     return (
       <div className={styles.error}>
         <h3>Ошибка</h3>
-        <p>Неизвестный стиль руководства: {main.title}</p>
+        <p>Не удалось определить стиль руководства. Данные могут быть некорректными.</p>
       </div>
-    )
+    );
   }
 
+  const totalScore = result.dimensions.reduce((sum, dim) => sum + dim.score, 0);
+  const labelsWithPercentages = result.viz.data.labels.map((label, index) => {
+    const percentage = totalScore > 0 ? Math.round((result.viz.data.values[index] / totalScore) * 100) : 0;
+    return `${label} (${percentage}%)`;
+  });
+
   const chartData = {
-    labels: result.viz.data.labels,
+    labels: labelsWithPercentages,
     datasets: [
       {
         data: result.viz.data.values,
@@ -338,19 +457,42 @@ export default function ResultPage() {
         borderColor: '#fff'
       }
     ]
-  }
+  };
 
   const chartOptions = {
     plugins: {
       legend: {
         position: 'bottom' as const,
         labels: {
-          boxWidth: 20,
-          padding: 15,
-          usePointStyle: true,
-          pointStyle: 'circle',
+          boxWidth: 14,
+          boxHeight: 14,
+          padding: 10,
+          margin: 12,
+          usePointStyle: false,
           font: {
-            size: 12
+            size: 13,
+            family: "'Nunito Sans', sans-serif"
+          },
+
+          generateLabels: function(chart: any) {
+            const data = chart.data;
+            if (data.labels.length && data.datasets.length) {
+              return data.labels.map((label: string, i: number) => {
+                const value = data.datasets[0].data[i];
+                const percentage = totalScore > 0 ? Math.round((value / totalScore) * 100) : 0;
+
+                return {
+                  text: `${label}`,
+                  fillStyle: data.datasets[0].backgroundColor[i],
+                  strokeStyle: data.datasets[0].borderColor,
+                  lineWidth: data.datasets[0].borderWidth,
+                  pointStyle: 'rect',
+                  hidden: false,
+                  index: i
+                };
+              });
+            }
+            return [];
           }
         }
       },
@@ -360,7 +502,8 @@ export default function ResultPage() {
           label: function(context: any) {
             const label = context.label || '';
             const value = context.raw || 0;
-            return `${label}: ${value} баллов`;
+            const percentage = totalScore > 0 ? Math.round((value / totalScore) * 100) : 0;
+            return `${label.replace(/ \(\d+%\)$/, '')}: ${value} баллов (${percentage}%)`;
           }
         }
       }
@@ -368,20 +511,23 @@ export default function ResultPage() {
     maintainAspectRatio: false,
     responsive: true,
     layout: {
-    padding: {
-      top: 0,
-      bottom: -8
+      padding: {
+        top: 40
+      }
     }
-  }
+  };
 
-  }
+  const expressedStyles = result.dimensions.filter(dim =>
+    dim.level === "Выражен" || dim.level === "Ярко выражен"
+  ).sort((a, b) => b.score - a.score);
 
-  const toggleSection = (idx: number) => {
-    setOpenSections(prev => ({ ...prev, [idx]: !prev[idx] }))
-  }
+  const mainStyles = expressedStyles.length >= 2 && expressedStyles[1].score > 40
+    ? expressedStyles.slice(0, 2)
+    : expressedStyles.slice(0, 1);
 
   return (
     <div className={styles.container}>
+      {/* круговая диаграмма */}
       <div className={styles.topSection}>
         <div className={styles.chartContainer}>
           <div className={styles.chart}>
@@ -390,91 +536,163 @@ export default function ResultPage() {
         </div>
 
         <div className={styles.summary}>
-          <h1 className={styles.title} style={{ color: mainStyle.color }}>
-            {mainStyle.title}
-          </h1>
-          <div
-            className={styles.summaryContent}
-            dangerouslySetInnerHTML={{
-              __html: mainStyle.summary
-              .replace(
-                /<span>/g,
-                `<span style="color: ${mainStyle.color}; font-weight: 600;">`
-              )
-              .replace(
-                /<em>/g,
-                `<em style="border-left: 3px solid ${mainStyle.color}; padding-left: 12px; margin-left: 2px; font-style: italic; display: inline-block;">`
-              )
-            }}
-          />
+          {/* для одного стиля */}
+          {mainStyles.length === 1 && (
+            <>
+              <h1 className={styles.title} style={{ color: getStyleConfig(mainStyles[0].code)?.color }}>
+                {getStyleConfig(mainStyles[0].code)?.title || mainStyles[0].title}
+              </h1>
+              <div
+                className={styles.summaryContent}
+                dangerouslySetInnerHTML={{
+                  __html: getSummaryWithExpression(
+                    mainStyles[0].code,
+                    mainStyles[0].score,
+                    getStyleConfig(mainStyles[0].code)?.summary || ''
+                  )
+                    .replace(/<span>/g, `<span style="color: ${getStyleConfig(mainStyles[0].code)?.color}; font-weight: 600;">`)
+                    .replace(/<em>/g, `<em style="border-left: 3px solid ${getStyleConfig(mainStyles[0].code)?.color}; padding-left: 12px; margin-left: 2px; font-style: italic; display: inline-block;">`)
+                }}
+              />
+            </>
+          )}
+
+          {/* для двух стилей заголовок */}
+          {mainStyles.length === 2 && (
+            <h1 className={styles.title} style={{ color: '#333' }}>
+              Ваши ведущие стили руководства
+            </h1>
+          )}
         </div>
       </div>
 
-      <div className={styles.sections}>
-        {mainStyle.sections.map((section: any, idx: number) => (
-          <div key={idx} className={styles.section}>
-            <div
-              className={styles.sectionHeader}
-              onClick={() => toggleSection(idx)}
-              style={{ borderLeftColor: mainStyle.color }}
-            >
-              <h2
-                className={styles.sectionTitle}
-                style={{ color: mainStyle.color }}
-              >
-                {section.title}
-              </h2>
-              <span
-                className={styles.arrow}
-                style={{ color: mainStyle.color }}
-              >
-                {openSections[idx] ? '▲' : '▼'}
-              </span>
-            </div>
+      {/* для двух стилей блоки в ряд под диаграммой */}
+      {mainStyles.length === 2 && (
+        <div className={styles.stylesRow}>
+          {mainStyles.map((style, index) => {
+            const styleConfig = getStyleConfig(style.code);
+            if (!styleConfig) return null;
 
-            {openSections[idx] && (
-              <div className={styles.sectionContent}>
-                {section.description && (
-                  <p className={styles.description}>{section.description}</p>
-                )}
-
-                {section.items && section.items.length > 0 && (
-                  <ul className={styles.sectionList}>
-                    {section.items.map((item: string, itemIdx: number) => (
-                      <li key={itemIdx}>{item}</li>
-                    ))}
-                  </ul>
-                )}
-
-                {section.conclusion && (
-                  <p className={styles.conclusion}>{section.conclusion}</p>
-                )}
+            return (
+              <div key={index} className={styles.styleCard} style={{ borderLeftColor: styleConfig.color }}>
+                <h2 style={{ color: styleConfig.color }}>
+                  {styleConfig.title}
+                </h2>
+                <div
+                  className={styles.styleContent}
+                  dangerouslySetInnerHTML={{
+                    __html: getSummaryWithExpression(
+                      style.code,
+                      style.score,
+                      styleConfig.summary || ''
+                    )
+                      .replace(/<span>/g, `<span style="color: ${styleConfig.color}; font-weight: 600;">`)
+                      .replace(/<em>/g, `<em style="border-left: 3px solid ${styleConfig.color}; padding-left: 12px; margin-left: 2px; font-style: italic; display: inline-block;">`)
+                  }}
+                />
               </div>
-            )}
-          </div>
-        ))}
+            );
+          })}
+        </div>
+      )}
+
+      {/* секции для всех главных стилей */}
+      <div className={styles.sections}>
+        {mainStyles.map((mainStyle, styleIndex) => {
+          const styleConfig = getStyleConfig(mainStyle.code);
+          if (!styleConfig) return null;
+
+          return (
+            <div key={styleIndex} className={styles.styleSection}>
+              {mainStyles.length === 2 && (
+                <div className={styles.styleHeader}>
+                  <h2 className={styles.styleTitle} style={{ color: styleConfig.color }}>
+                    {styleConfig.title}
+                  </h2>
+                </div>
+              )}
+
+              {/* раскрывающиеся секции */}
+              {styleConfig.sections.map((section: any, idx: number) => {
+                const sectionKey = `${styleIndex}-${idx}`;
+
+                return (
+                  <div key={idx} className={styles.section}>
+                    <div
+                      className={styles.sectionHeader}
+                      onClick={() => toggleSection(sectionKey)}
+                      style={{
+                        borderLeftColor: styleConfig.color,
+                        borderTopColor: styleConfig.color
+                      }}
+                    >
+                      <h3 className={styles.sectionTitle} style={{ color: styleConfig.color }}>
+                        {section.title}
+                      </h3>
+                      <span className={styles.arrow} style={{ color: styleConfig.color }}>
+                        {openSections[sectionKey] ? '▲' : '▼'}
+                      </span>
+                    </div>
+
+                    {openSections[sectionKey] && (
+                      <div
+                        className={styles.sectionContent}
+                        style={{
+                          borderLeftColor: styleConfig.color,
+                          borderBottomColor: styleConfig.color
+                        }}
+                      >
+                        {section.description && (
+                          <div className={styles.description}>
+                            {Array.isArray(section.description)
+                              ? section.description.map((desc: string, i: number) => (
+                                  <p key={i}>{desc}</p>
+                                ))
+                              : <p>{section.description}</p>
+                            }
+                          </div>
+                        )}
+
+                        {section.items && section.items.length > 0 && (
+                          <ul className={styles.sectionList}>
+                            {section.items.map((item: string, itemIdx: number) => (
+                              <li key={itemIdx} className={styles.listItem}>
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+
+                        {section.conclusion && (
+                          <p className={styles.conclusion}>
+                            {section.conclusion}
+                          </p>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          );
+        })}
       </div>
 
+      {/* кнопки */}
       <div className={styles.actions}>
-        <button
-          className={styles.saveBtn}
-          onClick={() => {
-            const currentUrl = window.location.href;
-            navigator.clipboard.writeText(currentUrl);
-            alert('Ссылка на результат скопирована в буфер обмена!');
-          }}
-        >
+        <button className={styles.saveBtn} onClick={() => {
+          const currentUrl = window.location.href;
+          navigator.clipboard.writeText(currentUrl);
+          alert('Ссылка на результат скопирована в буфер обмена!');
+        }}>
           Сохранить результат
         </button>
-        <button
-          className={styles.restartBtn}
-          onClick={() => {
-            window.location.href = result.actions.restart_url;
-          }}
-        >
+        <button className={styles.restartBtn} onClick={() => {
+          window.location.href = result.actions.restart_url;
+        }}>
           Пройти заново
         </button>
       </div>
     </div>
-  )
+  );
 }

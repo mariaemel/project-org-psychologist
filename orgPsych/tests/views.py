@@ -199,12 +199,23 @@ class PublicResultView(APIView):
         sl = get_object_or_404(ShareLink, uuid=uuid, is_active=True)
         result = sl.attempt.result
         dims = result.dimensions.all()
+        viz_data = result.raw_json.get('viz') if result.raw_json else {
+            "type": "radar",
+            "data": {
+                "labels": [d.code for d in dims],
+                "values": [d.score for d in dims]
+            }
+        }
+
         data = {
             "test": {"slug": sl.attempt.test.slug, "title": sl.attempt.test.title},
             "computed_at": result.computed_at,
             "dimensions": [{"code": d.code, "title": d.title, "score": d.score, "level": d.level, "explanation_md": d.explanation_md} for d in dims],
             "summary_md": result.summary_md,
-            "viz": {"type":"radar","data":{"labels":[d.code for d in dims], "values":[d.score for d in dims]}},
-            "actions": {"can_copy_link": True, "restart_url": f"/tests/{sl.attempt.test.slug}"}
+            "viz": viz_data,
+            "actions": {"can_copy_link": True, "restart_url": f"/tests/{sl.attempt.test.slug}"},
+            "raw_json": result.raw_json
         }
-        return Response(data)
+
+        serializer = PublicResultSerializer(data)
+        return Response(serializer.data)
