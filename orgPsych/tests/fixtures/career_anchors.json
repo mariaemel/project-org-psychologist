@@ -1,0 +1,1127 @@
+[
+  {
+    "model": "tests.test",
+    "pk": 200,
+    "fields": {
+      "slug": "career-anchors",
+      "title": "Опросник карьерных ориентаций (Якоря карьеры)",
+      "short_description": "Определяет структуру ваших карьерных ориентаций (якорей) и доминирующие мотивы в выборе карьеры.",
+      "instructions_md": "Вам будет предложено 41 утверждение.\\n\\n**Утверждения 1–21** — оцените, насколько оно для вас важно (1 — совсем не важно, 10 — исключительно важно).\\n\\n**Утверждения 22–41** — оцените степень согласия (1 — совсем не согласен, 10 — полностью согласен).\\n\\nОтвечайте интуитивно, как чувствуете сейчас.",
+      "est_minutes": 10,
+      "hero_image_url": "",
+      "seo_title": "Тест «Якоря карьеры» (Э. Шейн)",
+      "seo_description": "Выявляет ведущие карьерные якоря: компетентность, менеджмент, автономия, стабильность работы/места, служение, вызов, интеграция стилей жизни, предпринимательство.",
+      "og_image_url": "",
+      "is_published": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20001,
+    "fields": {
+      "test": 200,
+      "order_index": 1,
+      "text": "Строить карьеру в пределах конкретной научной или технической сферы",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2000101,
+    "fields": {
+      "question": 20001,
+      "order_index": 1,
+      "text": "Оценка по шкале 1–10",
+      "value": "Q1",
+      "dimension_code": "COMPETENCE",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20009,
+    "fields": {
+      "test": 200,
+      "order_index": 9,
+      "text": "Продолжать работу по своей специальности, а не уходить в несвязанное руководство",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2000901,
+    "fields": {
+      "question": 20009,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q9",
+      "dimension_code": "COMPETENCE",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20017,
+    "fields": {
+      "test": 200,
+      "order_index": 17,
+      "text": "Посвятить всю жизнь избранной профессии",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2001701,
+    "fields": {
+      "question": 20017,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q17",
+      "dimension_code": "COMPETENCE",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20025,
+    "fields": {
+      "test": 200,
+      "order_index": 25,
+      "text": "Соглашусь на руководящую должность только в сфере моей профессиональной компетенции",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2002501,
+    "fields": {
+      "question": 20025,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q25",
+      "dimension_code": "COMPETENCE",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20033,
+    "fields": {
+      "test": 200,
+      "order_index": 33,
+      "text": "Скорее уйду из организации, чем буду работать вне своей профессии",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2003301,
+    "fields": {
+      "question": 20033,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q33",
+      "dimension_code": "COMPETENCE",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20002,
+    "fields": {
+      "test": 200,
+      "order_index": 2,
+      "text": "Осуществлять наблюдение и контроль над людьми, влиять на них",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2000201,
+    "fields": {
+      "question": 20002,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q2",
+      "dimension_code": "MANAGEMENT",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20010,
+    "fields": {
+      "test": 200,
+      "order_index": 10,
+      "text": "Быть первым руководителем в организации",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2001001,
+    "fields": {
+      "question": 20010,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q10",
+      "dimension_code": "MANAGEMENT",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20018,
+    "fields": {
+      "test": 200,
+      "order_index": 18,
+      "text": "Занять высокую руководящую должность",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2001801,
+    "fields": {
+      "question": 20018,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q18",
+      "dimension_code": "MANAGEMENT",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20026,
+    "fields": {
+      "test": 200,
+      "order_index": 26,
+      "text": "Хотел бы наблюдать за работой других и интегрировать их деятельность",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2002601,
+    "fields": {
+      "question": 20026,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q26",
+      "dimension_code": "MANAGEMENT",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20034,
+    "fields": {
+      "test": 200,
+      "order_index": 34,
+      "text": "Считать карьеру успешной, когда стану руководителем высокого уровня",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2003401,
+    "fields": {
+      "question": 20034,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q34",
+      "dimension_code": "MANAGEMENT",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20003,
+    "fields": {
+      "test": 200,
+      "order_index": 3,
+      "text": "Делать всё по-своему и не быть стеснённым правилами организации",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2000301,
+    "fields": {
+      "question": 20003,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q3",
+      "dimension_code": "AUTONOMY",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20011,
+    "fields": {
+      "test": 200,
+      "order_index": 11,
+      "text": "Иметь работу без режимных и организационных ограничений",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2001101,
+    "fields": {
+      "question": 20011,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q11",
+      "dimension_code": "AUTONOMY",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20019,
+    "fields": {
+      "test": 200,
+      "order_index": 19,
+      "text": "Максимальная свобода в выборе характера занятий и времени выполнения",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2001901,
+    "fields": {
+      "question": 20019,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q19",
+      "dimension_code": "AUTONOMY",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20027,
+    "fields": {
+      "test": 200,
+      "order_index": 27,
+      "text": "В карьере более всего заботился о свободе и автономии",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2002701,
+    "fields": {
+      "question": 20027,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q27",
+      "dimension_code": "AUTONOMY",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20035,
+    "fields": {
+      "test": 200,
+      "order_index": 35,
+      "text": "Не хочу, чтобы меня стесняла какая-нибудь организация или бизнес",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2003501,
+    "fields": {
+      "question": 20035,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q35",
+      "dimension_code": "AUTONOMY",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20004,
+    "fields": {
+      "test": 200,
+      "order_index": 4,
+      "text": "Постоянное место работы с окладом и соцзащитой",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2000401,
+    "fields": {
+      "question": 20004,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q4",
+      "dimension_code": "STABILITY_JOB",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20012,
+    "fields": {
+      "test": 200,
+      "order_index": 12,
+      "text": "Работать в организации, обеспечивающей стабильность на длительный срок",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2001201,
+    "fields": {
+      "question": 20012,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q12",
+      "dimension_code": "STABILITY_JOB",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20036,
+    "fields": {
+      "test": 200,
+      "order_index": 36,
+      "text": "Предпочёл бы длительный контракт в организации",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2003601,
+    "fields": {
+      "question": 20036,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q36",
+      "dimension_code": "STABILITY_JOB",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20020,
+    "fields": {
+      "test": 200,
+      "order_index": 20,
+      "text": "Оставаться на одном месте жительства, даже если предлагают повышение",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2002001,
+    "fields": {
+      "question": 20020,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q20",
+      "dimension_code": "STABILITY_RESIDENCE",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20028,
+    "fields": {
+      "test": 200,
+      "order_index": 28,
+      "text": "Для меня важнее остаться на нынешнем месте жительства",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2002801,
+    "fields": {
+      "question": 20028,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q28",
+      "dimension_code": "STABILITY_RESIDENCE",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20041,
+    "fields": {
+      "test": 200,
+      "order_index": 41,
+      "text": "Предпочитаю работу без командировок",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2004101,
+    "fields": {
+      "question": 20041,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q41",
+      "dimension_code": "STABILITY_RESIDENCE",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20005,
+    "fields": {
+      "test": 200,
+      "order_index": 5,
+      "text": "Использовать умение общаться на пользу людям",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2000501,
+    "fields": {
+      "question": 20005,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q5",
+      "dimension_code": "SERVICE",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20013,
+    "fields": {
+      "test": 200,
+      "order_index": 13,
+      "text": "Сделать мир лучше, применяя свои способности",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2001301,
+    "fields": {
+      "question": 20013,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q13",
+      "dimension_code": "SERVICE",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20021,
+    "fields": {
+      "test": 200,
+      "order_index": 21,
+      "text": "Использовать умения и талант для служения важной цели",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2002101,
+    "fields": {
+      "question": 20021,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q21",
+      "dimension_code": "SERVICE",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20029,
+    "fields": {
+      "test": 200,
+      "order_index": 29,
+      "text": "Искал работу, где приношу пользу другим",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2002901,
+    "fields": {
+      "question": 20029,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q29",
+      "dimension_code": "SERVICE",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20037,
+    "fields": {
+      "test": 200,
+      "order_index": 37,
+      "text": "Хотел бы посвятить карьеру достижению полезной цели",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2003701,
+    "fields": {
+      "question": 20037,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q37",
+      "dimension_code": "SERVICE",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20006,
+    "fields": {
+      "test": 200,
+      "order_index": 6,
+      "text": "Работать над почти неразрешимыми проблемами",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2000601,
+    "fields": {
+      "question": 20006,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q6",
+      "dimension_code": "CHALLENGE",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20014,
+    "fields": {
+      "test": 200,
+      "order_index": 14,
+      "text": "Соревноваться с другими и побеждать",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2001401,
+    "fields": {
+      "question": 20014,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q14",
+      "dimension_code": "CHALLENGE",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20022,
+    "fields": {
+      "test": 200,
+      "order_index": 22,
+      "text": "Единственная цель карьеры — находить и решать трудные проблемы",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2002201,
+    "fields": {
+      "question": 20022,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q22",
+      "dimension_code": "CHALLENGE",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20030,
+    "fields": {
+      "test": 200,
+      "order_index": 30,
+      "text": "Соревнование и выигрыш — важнейшая часть моей карьеры",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2003001,
+    "fields": {
+      "question": 20030,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q30",
+      "dimension_code": "CHALLENGE",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20038,
+    "fields": {
+      "test": 200,
+      "order_index": 38,
+      "text": "Чувствую себя преуспевающим, когда есть трудные задачи или соревнование",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2003801,
+    "fields": {
+      "question": 20038,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q38",
+      "dimension_code": "CHALLENGE",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20007,
+    "fields": {
+      "test": 200,
+      "order_index": 7,
+      "text": "Баланс семьи и карьеры",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2000701,
+    "fields": {
+      "question": 20007,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q7",
+      "dimension_code": "LIFESTYLE",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20015,
+    "fields": {
+      "test": 200,
+      "order_index": 15,
+      "text": "Строить карьеру так, чтобы не менять мой образ жизни",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2001501,
+    "fields": {
+      "question": 20015,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q15",
+      "dimension_code": "LIFESTYLE",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20023,
+    "fields": {
+      "test": 200,
+      "order_index": 23,
+      "text": "Всегда уделяю одинаковое внимание семье и карьере",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2002301,
+    "fields": {
+      "question": 20023,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q23",
+      "dimension_code": "LIFESTYLE",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20031,
+    "fields": {
+      "test": 200,
+      "order_index": 31,
+      "text": "Карьера имеет смысл, если позволяет вести желаемую жизнь",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2003101,
+    "fields": {
+      "question": 20031,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q31",
+      "dimension_code": "LIFESTYLE",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20039,
+    "fields": {
+      "test": 200,
+      "order_index": 39,
+      "text": "Образ жизни важнее успеха в карьере",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2003901,
+    "fields": {
+      "question": 20039,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q39",
+      "dimension_code": "LIFESTYLE",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20008,
+    "fields": {
+      "test": 200,
+      "order_index": 8,
+      "text": "Создать и построить нечто своё",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2000801,
+    "fields": {
+      "question": 20008,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q8",
+      "dimension_code": "ENTREPRENEURSHIP",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20016,
+    "fields": {
+      "test": 200,
+      "order_index": 16,
+      "text": "Создать новое коммерческое предприятие",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2001601,
+    "fields": {
+      "question": 20016,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q16",
+      "dimension_code": "ENTREPRENEURSHIP",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20024,
+    "fields": {
+      "test": 200,
+      "order_index": 24,
+      "text": "Всегда в поиске идей для собственного дела",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2002401,
+    "fields": {
+      "question": 20024,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q24",
+      "dimension_code": "ENTREPRENEURSHIP",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20032,
+    "fields": {
+      "test": 200,
+      "order_index": 32,
+      "text": "Предпринимательская деятельность — центральная часть моей карьеры",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2003201,
+    "fields": {
+      "question": 20032,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q32",
+      "dimension_code": "ENTREPRENEURSHIP",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 20040,
+    "fields": {
+      "test": 200,
+      "order_index": 40,
+      "text": "Всегда хотел основать и построить свой бизнес",
+      "type": "scale",
+      "required": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 2004001,
+    "fields": {
+      "question": 20040,
+      "order_index": 1,
+      "text": "Оценка 1–10",
+      "value": "Q40",
+      "dimension_code": "ENTREPRENEURSHIP",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  }
+]

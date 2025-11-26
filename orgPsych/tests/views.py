@@ -6,7 +6,7 @@ from rest_framework.views import APIView
 from .models import Test, Question, Option, Attempt, Answer, Result, ShareLink
 from .serializers import (TestCardSerializer, TestDetailSerializer, QuestionWithProgressSerializer,
                           AttemptStartSerializer, SaveAnswerSerializer, PublicResultSerializer)
-from .services.scoring import compute_result, compute_leadership_result
+from .services.scoring import compute_result
 
 
 class TestListView(generics.ListAPIView):
@@ -179,7 +179,7 @@ class AttemptFinishView(APIView):
                 sl = ShareLink.objects.create(attempt=attempt)
             return Response({
                 "result_id": attempt.result.id,
-                "result_url": f"/tests/leadership-styles/results/{sl.uuid}"
+                "result_url": f"/tests/{attempt.test.slug}/results/{sl.uuid}"
             })
 
         result = compute_result(attempt)
@@ -191,20 +191,30 @@ class AttemptFinishView(APIView):
 
         return Response({
             "result_id": result.id,
-            "result_url": f"/tests/leadership-styles/results/{sl.uuid}"
+            "result_url": f"/tests/{attempt.test.slug}/results/{sl.uuid}"
         })
 
 class PublicResultView(APIView):
-    def get(self, request, uuid: str):
+    def get(self, request, slug: str, uuid: str):
         sl = get_object_or_404(ShareLink, uuid=uuid, is_active=True)
+        if sl.attempt.test.slug != slug:
+            return Response({"detail": "Not found"}, status=404)
+
         result = sl.attempt.result
         dims = result.dimensions.all()
         data = {
             "test": {"slug": sl.attempt.test.slug, "title": sl.attempt.test.title},
             "computed_at": result.computed_at,
-            "dimensions": [{"code": d.code, "title": d.title, "score": d.score, "level": d.level, "explanation_md": d.explanation_md} for d in dims],
+            "dimensions": [
+                {"code": d.code, "title": d.title, "score": d.score, "level": d.level, "explanation_md": d.explanation_md}
+                for d in dims
+            ],
             "summary_md": result.summary_md,
-            "viz": {"type":"radar","data":{"labels":[d.code for d in dims], "values":[d.score for d in dims]}},
+            "viz": {
+                "type": "radar",
+                "data": {"labels": [d.code for d in dims], "values": [d.score for d in dims]}
+            },
             "actions": {"can_copy_link": True, "restart_url": f"/tests/{sl.attempt.test.slug}"}
         }
         return Response(data)
+

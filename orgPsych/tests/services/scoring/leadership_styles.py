@@ -1,5 +1,4 @@
 from __future__ import annotations
-
 from dataclasses import dataclass
 from statistics import mean
 from typing import Dict, List, Tuple
@@ -7,18 +6,15 @@ from typing import Dict, List, Tuple
 from django.db import transaction
 from django.utils import timezone
 
-from ..models import Answer, Attempt, Result, ResultDimension
-
+from ...models import Answer, Attempt, Result, ResultDimension
 
 STYLE_CODES = ("ИНФОРМИРОВАНИЕ", "ОБУЧЕНИЕ", "ПОДДЕРЖКА", "ДЕЛЕГИРОВАНИЕ")
-
 STYLE_TITLES = {
     "ИНФОРМИРОВАНИЕ": "Информирование (директивный/инструктирующий)",
     "ОБУЧЕНИЕ": "Обучение (коучинговый)",
     "ПОДДЕРЖКА": "Поддержка (совместный)",
     "ДЕЛЕГИРОВАНИЕ": "Делегирование (доверительный)",
 }
-
 
 def level_for(score: int) -> str:
     if score <= 20:
@@ -29,7 +25,6 @@ def level_for(score: int) -> str:
         return "Выражен"
     return "Ярко выражен"
 
-
 @dataclass
 class QuestionAggregate:
     question_id: int
@@ -39,82 +34,52 @@ class QuestionAggregate:
     avg: float
     flat: bool
     inconsistent: bool
-    overflow: bool
-
 
 def _parse_grade(val) -> int:
     try:
         g = int(str(val).strip())
     except Exception:
         return 0
-    return g if 0 <= g <= 9 else 0
-
+    return g if 1 <= g <= 9 else 0
 
 def _check_inconsistency(grades: List[int]) -> bool:
     if len(grades) < 2:
         return False
-    return (max(grades) - min(grades)) > 5
-
-
-def _check_overflow(grades: List[int]) -> bool:
-    gt7 = sum(1 for g in grades if g > 7)
-    btw5_7 = sum(1 for g in grades if 5 <= g <= 7)
-    return (gt7 > 1) or (btw5_7 > 2)
-
+    return max(grades) - min(grades) > 5
 
 def _aggregate_by_question(answers: List[Answer]) -> List[QuestionAggregate]:
     by_q: Dict[int, Dict] = {}
-
     for a in answers:
-        qid = a.question_id
-        item = by_q.setdefault(
-            qid,
-            {
-                "order_index": a.question.order_index,
-                "grades": [],
-                "dim_codes": [],
-            },
-        )
-
+        item = by_q.setdefault(a.question_id, {
+            "order_index": a.question.order_index,
+            "grades": [],
+            "dim_codes": [],
+        })
         item["grades"].append(_parse_grade(a.text_value))
-
-        if a.option_single and getattr(a.option_single, "dimension_code", None):
-            dim_code = a.option_single.dimension_code.strip()
+        if a.option_single and getattr(a.option_single, "dimension_code", ""):
+            dim = a.option_single.dimension_code.strip()
         else:
-            dim_code = f"Q{a.question.order_index}_OPT{getattr(a.option_single, 'id', '0')}"
-        item["dim_codes"].append(dim_code)
+            dim = f"Q{a.question.order_index}_OPT{getattr(a.option_single, 'id', '0')}"
+        item["dim_codes"].append(dim)
 
     result: List[QuestionAggregate] = []
     for qid, data in by_q.items():
-        grades = data["grades"][:4]
-        if len(grades) < 4:
-            grades += [0] * (4 - len(grades))
-
-        dim_codes = data["dim_codes"][:4]
-        if len(dim_codes) < 4:
-            dim_codes += [""] * (4 - len(dim_codes))
-
+        grades = (data["grades"][:4] + [0, 0, 0, 0])[:4]
+        dim_codes = (data["dim_codes"][:4] + ["", "", "", ""])[:4]
         avg = mean(grades) if grades else 0.0
         flat = len(set(grades)) == 1
         inconsistent = _check_inconsistency(grades)
-        overflow = _check_overflow(grades)
-
-        result.append(
-            QuestionAggregate(
-                question_id=qid,
-                order_index=data["order_index"],
-                grades=grades,
-                dim_codes=dim_codes,
-                avg=avg,
-                flat=flat,
-                inconsistent=inconsistent,
-                overflow=overflow,
-            )
-        )
-
+        result.append(QuestionAggregate(
+            question_id=qid,
+            order_index=data["order_index"],
+            grades=grades,
+            dim_codes=dim_codes,
+            avg=avg,
+            flat=flat,
+            inconsistent=inconsistent,
+        ))
     result.sort(key=lambda x: x.order_index)
     return result
-
 
 def _sum_scores(per_q: List[QuestionAggregate]) -> Dict[str, int]:
     scores = {code: 0 for code in STYLE_CODES}
@@ -124,7 +89,6 @@ def _sum_scores(per_q: List[QuestionAggregate]) -> Dict[str, int]:
                 scores[code] += int(grade)
     return scores
 
-
 def _detect_asymmetry(per_q: List[QuestionAggregate]) -> bool:
     avgs = [q.avg for q in per_q]
     if not avgs:
@@ -133,25 +97,17 @@ def _detect_asymmetry(per_q: List[QuestionAggregate]) -> bool:
     low = sum(1 for a in avgs if a <= 2.0)
     return (2 <= high <= 3) and (low >= (len(avgs) - high - 1))
 
-
 def _too_many_strongs(scores: Dict[str, int]) -> bool:
     sorted_scores = sorted(scores.values(), reverse=True)
     if len(sorted_scores) < 3:
         return False
-    second = sorted_scores[1]
-    third = sorted_scores[2]
-    return (third * 2) > second
-
+    top2, top3 = sorted_scores[1], sorted_scores[2]
+    return top3 * 2 > top2
 
 def _all_close(scores: Dict[str, int]) -> bool:
     return (max(scores.values()) - min(scores.values())) < 10
 
-
-def _build_summary(
-    scores: Dict[str, int],
-    per_q: List[QuestionAggregate],
-    duration_sec: float,
-) -> Tuple[str, Dict]:
+def _build_summary(scores: Dict[str, int], per_q: List[QuestionAggregate], duration_sec: float) -> Tuple[str, Dict]:
     levels = {code: level_for(v) for code, v in scores.items()}
     sorted_items = sorted(scores.items(), key=lambda x: x[1], reverse=True)
     main_code, main_score = sorted_items[0]
@@ -159,7 +115,6 @@ def _build_summary(
 
     flat_questions = [q.order_index for q in per_q if q.flat]
     inconsistent_questions = [q.order_index for q in per_q if q.inconsistent]
-    overflow_questions = [q.order_index for q in per_q if q.overflow]
     asymmetry = _detect_asymmetry(per_q)
     many_strongs = _too_many_strongs(scores)
     close_all = _all_close(scores)
@@ -168,7 +123,6 @@ def _build_summary(
     flags = {
         "flat_questions": flat_questions,
         "inconsistent_questions": inconsistent_questions,
-        "overflow_questions": overflow_questions,
         "asymmetry": asymmetry,
         "too_many_strongs": many_strongs,
         "all_close": close_all,
@@ -177,23 +131,16 @@ def _build_summary(
     }
 
     lines = []
-    lines.append(
-        f"Ваш ведущий стиль: **{STYLE_TITLES.get(main_code, main_code)}** ({main_score} баллов)."
-    )
+    lines.append(f"Ваш ведущий стиль: **{STYLE_TITLES.get(main_code, main_code)}** ({main_score} баллов).")
     lines.append(f"Уровень выраженности: {levels[main_code]}.")
-
     if second_score > 0:
-        lines.append(
-            f"Также заметен стиль: **{STYLE_TITLES.get(second_code, second_code)}** ({second_score} баллов)."
-        )
+        lines.append(f"Также заметен стиль: **{STYLE_TITLES.get(second_code, second_code)}** ({second_score} баллов).")
 
     warn = []
     if flat_questions:
         warn.append(f"Однотипные оценки в ситуациях: {flat_questions}.")
     if inconsistent_questions:
         warn.append(f"Неконсистентные распределения в ситуациях: {inconsistent_questions}.")
-    if overflow_questions:
-        warn.append(f"Переполнение оценок в ситуациях: {overflow_questions}.")
     if asymmetry:
         warn.append("Высокие оценки сосредоточены лишь в нескольких ситуациях — профиль может быть ситуационным.")
     if close_all:
@@ -202,14 +149,12 @@ def _build_summary(
         warn.append("Слишком много выраженных стилей одновременно — требуется уточнение.")
     if fast_attempt:
         warn.append("Прохождение было очень быстрым (<2 минут) — ответы могут быть невнимательными.")
-
     if warn:
         lines.append("")
         lines.append("Замечания по достоверности:")
         lines += [f"- {w}" for w in warn]
 
     summary_md = "\n".join(lines)
-
     raw = {
         "scores": scores,
         "levels": levels,
@@ -220,71 +165,34 @@ def _build_summary(
                 "grades": q.grades,
                 "flat": q.flat,
                 "inconsistent": q.inconsistent,
-                "overflow": q.overflow,
                 "avg": q.avg,
             }
             for q in per_q
         ],
         "flags": flags,
-    }
-
-    top_styles = []
-    for code, sc in sorted_items[:2]:
-        top_styles.append(
-            {
-                "code": code,
-                "title": STYLE_TITLES.get(code, code),
-                "score": sc,
-                "level": levels[code],
+        "viz": {
+            "type": "pie",
+            "data": {
+                "labels": [STYLE_TITLES[c] for c in STYLE_CODES],
+                "values": [scores[c] for c in STYLE_CODES],
             }
-        )
-
-    if len(sorted_items) >= 3:
-        third_code, third_score = sorted_items[2]
-        third_level = levels[third_code]
-        include_third = (third_score <= (second_score / 2.0)) and (third_level == "Слабо выражен")
-        if include_third:
-            top_styles.append(
-                {
-                    "code": third_code,
-                    "title": STYLE_TITLES.get(third_code, third_code),
-                    "score": third_score,
-                    "level": third_level,
-                    "contextual": True,
-                }
-            )
-
-    raw["top_styles"] = top_styles
-
+        }
+    }
     return summary_md, raw
 
-
 @transaction.atomic
-def compute_leadership_result(attempt_id: int) -> Result:
-    attempt = Attempt.objects.select_related("test").get(pk=attempt_id)
-
+def compute(attempt: Attempt) -> Result:
     answers = (
         Answer.objects
         .select_related("question", "option_single")
         .filter(attempt=attempt)
     )
-
     per_q = _aggregate_by_question(list(answers))
     scores = _sum_scores(per_q)
 
     delta = (attempt.updated_at - attempt.started_at) if attempt.updated_at else (timezone.now() - attempt.started_at)
     duration_sec = delta.total_seconds()
-
     summary_md, raw = _build_summary(scores, per_q, duration_sec)
-
-    viz_data = {
-        "type": "pie",
-        "data": {
-            "labels": [STYLE_TITLES[c] for c in STYLE_CODES],
-            "values": [scores[c] for c in STYLE_CODES],
-        },
-    }
-    raw["viz"] = viz_data
 
     result, _ = Result.objects.update_or_create(
         attempt=attempt,
@@ -292,9 +200,8 @@ def compute_leadership_result(attempt_id: int) -> Result:
             "summary_md": summary_md,
             "raw_json": raw,
             "computed_at": timezone.now(),
-        },
+        }
     )
-
     result.dimensions.all().delete()
     for code in STYLE_CODES:
         ResultDimension.objects.create(
@@ -305,12 +212,4 @@ def compute_leadership_result(attempt_id: int) -> Result:
             level=level_for(scores.get(code, 0)),
             explanation_md="",
         )
-
     return result
-
-
-def compute_result(attempt) -> Result:
-    slug = attempt.test.slug
-    if slug == "leadership-styles":
-        return compute_leadership_result(attempt.id)
-    raise NotImplementedError(f"Scoring not implemented for test: {slug}")
