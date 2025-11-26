@@ -52,6 +52,7 @@ class PublicResultSerializer(serializers.Serializer):
     summary_md = serializers.CharField()
     viz = serializers.DictField()
     actions = serializers.DictField()
+    raw_json = serializers.DictField()
 
 
 class ScaleGradeItemSerializer(serializers.Serializer):

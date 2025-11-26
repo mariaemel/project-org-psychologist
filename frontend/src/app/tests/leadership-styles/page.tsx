@@ -14,7 +14,7 @@ export default async function LeadershipTestPage() {
 
       <div className={styles.content}>
         <img
-          src={testData.hero_image_url || '/leadership.png'}
+          src={testData.hero_image_url || '/gray.png'}
           alt={testData.title}
           className={styles.image}
         />
