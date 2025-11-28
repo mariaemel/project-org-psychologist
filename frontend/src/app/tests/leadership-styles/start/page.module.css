@@ -117,7 +117,7 @@
   background: linear-gradient(90deg, #E0E0FF, #575799);
   border-radius: 5px;
   transform: translateY(-50%);
-  width: 100%; /* Занимает всю ширину контейнера */
+  width: 100%;
 }
 
 .scoreIndicator {
