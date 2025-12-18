@@ -16,7 +16,7 @@ const tests = [
     slug: 'disc',
     title: 'DISC',
     description: 'Тест помогает определить ваш стиль поведения и коммуникации — доминирование, влияние, стабильность или добросовестность.',
-    time: '15 минут на прохождение',
+    time: '10 минут на прохождение',
     color: '#D9D9D9',
     image: '/disc.png'
   },
@@ -24,7 +24,7 @@ const tests = [
     slug: 'career-anchors',
     title: 'Якоря карьеры',
     description: 'Тест выявляет ваши внутренние мотивы и приоритеты в профессиональной сфере',
-    time: '15 минут на прохождение',
+    time: '10 минут на прохождение',
     color: '#D9D9D9',
     image: '/career.png'
   }
@@ -37,7 +37,7 @@ export default function TestsPage() {
     <div className={styles.pageBackground}>
       <div className={styles.testsContainer}>
         <div className={styles.text}>
-          <h1 className={styles.testsTitle}>
+          <h1 className={styles.testsTitle} style={{ fontWeight: 700 }}>
             тесты и диагностические методики
           </h1>
           <div className={styles.tests}>

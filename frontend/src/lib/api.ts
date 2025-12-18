@@ -1,5 +1,4 @@
-const API_BASE_URL = 'http://127.0.0.1:8000';
-
+import { API_BASE_URL } from '@/config';
 export interface Article {
   id: number;
   title: string;
@@ -186,6 +185,16 @@ export interface TestDetail {
 }
 
 export async function fetchTestDetail(slug: string): Promise<TestDetail> {
+  const response = await fetch(`${API_BASE_URL}/tests/${slug}`);
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch test data');
+  }
+
+  return response.json();
+}
+
+export async function fetchTestDetailCareer(slug: string): Promise<TestDetail> {
   const response = await fetch(`${API_BASE_URL}/tests/${slug}`);
 
   if (!response.ok) {

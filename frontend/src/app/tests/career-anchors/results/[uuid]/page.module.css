@@ -1,0 +1,279 @@
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 110px 20px 60px;
+  line-height: 1.6;
+}
+
+.loading, .error {
+  text-align: center;
+  padding: 4rem 2rem;
+  font-size: 1.2rem;
+  margin-top: 100px;
+}
+
+.error {
+  color: #dc2626;
+}
+
+.error .restartBtn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #575799;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+/* Заголовок */
+.chartTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: #575799;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* диаграмма */
+.chartSection {
+  margin-bottom: 3rem;
+}
+
+.chartContainer {
+  padding: 2rem 1.5rem 2rem 2rem;
+  position: relative;
+  overflow: visible;
+}
+
+.chartWrapper {
+  height: 500px;
+  position: relative;
+  overflow: visible;
+}
+
+/* два столбца с инфой */
+.infoColumns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  margin-left: 42px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.anchorCard {
+ width: 450px;
+}
+
+.anchorHeader {
+  margin-bottom: 1.5rem;
+}
+
+.anchorTitle {
+  font-size: 16px;
+  font-weight: 400;
+  color: #333333;
+  margin-bottom: 1rem;
+}
+
+.anchorName {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #C8C8C8;
+}
+
+.anchorDescription {
+  font-size: 16px;
+  text-align: justify;
+  line-height: 1.6;
+  color: #333333;
+}
+
+.anchorDescription p {
+  margin-bottom: 1rem;
+}
+
+.anchorDescription p:last-child {
+  margin-bottom: 0;
+}
+
+.noSecondary {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+  font-style: italic;
+}
+
+/* крайний случай */
+.specialMessage {
+  margin-bottom: 3rem;
+}
+
+.messageCard {
+  width: 404px;
+  text-align: justify;
+  margin-left: 42px;
+}
+
+.messageTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: #575799;
+  margin-bottom: 1.5rem;
+}
+
+.messageText {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.messageText p {
+  margin-bottom: 1rem;
+  font-size: 16px;
+}
+
+/* кнопки */
+.actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  padding: 2rem 0;
+  margin-top: 2rem;
+}
+
+.restartBtn, .saveBtn {
+  padding: 12px 24px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.2s;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 240px;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+.restartBtn {
+  background: #9D9DCC;
+  color: white;
+  border: 2px solid #9D9DCC;
+}
+
+.saveBtn {
+  background: #575799;
+  color: white;
+  border: 2px solid #575799;
+}
+
+.restartBtn:hover {
+  background: #8888b1;
+  border-color: #8888b1;
+  transform: translateY(-2px);
+}
+
+.saveBtn:hover {
+  background: #6969b6;
+  border-color: #6969b6;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 1024px) {
+  .scoresGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 90px 15px 40px;
+  }
+
+  .chartTitle {
+    font-size: 22px;
+  }
+
+  .chartContainer {
+    padding: 1.5rem 1rem 1.5rem 1.5rem;
+  }
+
+  .chartWrapper {
+    height: 400px;
+  }
+
+  .infoColumns {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .anchorCard {
+    padding: 1.5rem;
+  }
+
+  .anchorTitle {
+    font-size: 18px;
+  }
+
+  .anchorName {
+    font-size: 20px;
+  }
+
+  .scoreValue {
+    font-size: 24px;
+  }
+
+  .scoresGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .restartBtn, .saveBtn {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chartWrapper {
+    height: 350px;
+  }
+
+  .chartTitle {
+    font-size: 20px;
+  }
+
+  .anchorTitle {
+    font-size: 16px;
+  }
+
+  .anchorName {
+    font-size: 18px;
+  }
+
+  .scoreValue {
+    font-size: 22px;
+  }
+
+  .scoreBadge {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}

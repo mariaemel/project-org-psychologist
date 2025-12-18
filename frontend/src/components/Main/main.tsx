@@ -10,12 +10,12 @@ import servicesStyles from './Services.module.css';
 import teamStyles from './TeamBoost.module.css';
 
 import Image from 'next/image';
-import photoRoom from '/public/gotov.png';
+import photoRoom from '@/images/gotov.png';
+import { API_BASE_URL } from '@/config';
 
 const RequestForm = dynamic(() => import('@/components/RequestForm/RequestForm'), { ssr: false });
 const QuestionsFormPortal = dynamic(() => import('@/components/QuestionsForm/QuestionsFormPortal'), { ssr: false });
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000';
 
 interface Service {
   id: number;

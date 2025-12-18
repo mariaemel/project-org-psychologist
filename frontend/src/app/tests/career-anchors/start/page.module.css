@@ -1,16 +1,13 @@
 .container {
-  max-width: 800px;
+  max-width: 1180px;
   margin: 0 auto;
   padding: 40px 20px;
-  margin-top: 80px;
-}
-
-.header {
-  margin-bottom: 30px;
+  min-height: 80vh;
+  margin-top: 100px;
 }
 
 .breadcrumbs {
-  font-size: 16px;
+  font-size: 14px;
   color: #666;
   margin-bottom: 30px;
 }
@@ -24,97 +21,241 @@
   text-decoration: underline;
 }
 
-
-.currentBreadcrumb {
-  color: #2b2b2b;
-  text-decoration: none;
-}
-
-.title {
-  font-size: 32px;
-  color: #333;
-}
-
 .progressSection {
   margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .progressBar {
-  width: 100%;
-  height: 8px;
-  background: #f0f0f0;
+  width: 900px;
+  height: 40px;
+  background: #57579950;
   border-radius: 4px;
   margin-bottom: 10px;
   overflow: hidden;
+  position: relative;
 }
 
 .progressFill {
   height: 100%;
-  background: #4ECDC4;
+  font-size: 14px;
+  color: white;
+  background: #575799;
   border-radius: 4px;
   transition: width 0.3s ease;
-}
-
-.progressText {
-  font-size: 14px;
-  color: #666;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  font-weight: 500;
+  min-width: 60px;
 }
 
 .questionCard {
   background: white;
-  padding: 40px;
-  border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  padding: 50px;
+  border-radius: 5px;
+  box-shadow: 0 8px 30px #57579963;
   margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+}
+
+.questionHeader {
+  text-align: justify;
+  margin-bottom: 50px;
+  text-align: center;
+  width: 900px;
 }
 
 .questionText {
   font-size: 24px;
   color: #333;
-  text-align: center;
-  margin-bottom: 40px;
-  line-height: 1.4;
-}
-
-.optionsContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.optionButton {
-  padding: 20px;
-  border: 2px solid #e0e0e0;
-  border-radius: 12px;
-  background: white;
-  font-size: 16px;
-  color: #333;
-  cursor: pointer;
   text-align: left;
-  transition: all 0.3s ease;
+  margin-top: 30px;
+  margin-bottom: -20px;
+  line-height: 1.5;
+  font-weight: 400;
+  font-size: 22px;
 }
 
-.optionButton:hover {
-  border-color: #4ECDC4;
-  background: #f0fffd;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+.questionType {
+  font-size: 16px;
+  color: #666;
+  margin: 0;
+  text-align: left;
+}
+
+.scaleSection {
+  margin: 40px 0;
+  width: 900px;
+}
+
+.scaleContainer {
+  width: 100%;
+}
+
+.gradientScale {
+  position: relative;
+  height: 50px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.scaleBackground {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 22px;
+  background: linear-gradient(90deg, #E0E0FF, #575799);
+  border-radius: 5px;
+  transform: translateY(-50%);
+  width: 100%;
+}
+
+.scoreIndicator {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: left 0.2s ease;
+}
+
+.scoreCircle {
+  width: 40px;
+  height: 40px;
+  background: #9D9DCC;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(157, 157, 204, 0.4);
+  border: 2px solid white;
+}
+
+
+.scaleLabel {
+  font-size: 16px;
+  color: #666;
+  font-weight: 500;
+  flex: 1;
+  text-align: center;
+}
+
+.scaleNumber {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: -45px;
+  margin-top: 20px;
+  width: 86%;
+}
+
+.scaleDescriptions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: -20px;
+  width: 100%;
+}
+
+.scaleDescription {
+  font-size: 14px;
+  color: #888;
+  text-align: center;
+  flex: 1;
+}
+
+.scaleDescription:first-child {
+  text-align: left;
+}
+
+.scaleDescription:last-child {
+  text-align: right;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 900px;
+  margin-top: 40px;
 }
 
 .backButton {
   background: none;
-  border: 2px solid #e0e0e0;
-  color: #666;
-  padding: 12px 24px;
-  border-radius: 8px;
+  border: 2px solid #9D9DCC;
+  color: white;
+  background-color: #9D9DCC;
+  padding: 12px 44px;
+  border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
   transition: all 0.3s ease;
 }
 
 .backButton:hover {
-  border-color: #4ECDC4;
-  color: #4ECDC4;
-  background: #f0fffd;
+  color: white;
+  background: #afafe2;
+  border-color: #afafe2;
+  transform: translateY(-1px);
+}
+
+.nextButton {
+  background: #575799;
+  border: 2px solid #555592;
+  color: white;
+  padding: 12px 44px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  margin-left: auto;
+}
+
+.nextButton:hover:not(:disabled) {
+  background: #8a8ac4;
+  border-color: #8a8ac4;
+  transform: translateY(-1px);
+}
+
+.nextButton:disabled {
+  background: #ccc;
+  border-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.finishButton {
+  background: #575799;
+  border: 2px solid #575799;
+  color: white;
+  padding: 12px 44px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
+  transition: all 0.3s ease;
+  margin-left: auto;
+}
+
+.finishButton:hover:not(:disabled) {
+  background: #8a8ac4;
+  border-color: #8a8ac4;
+  transform: translateY(-1px);
+}
+
+.finishButton:disabled {
+  background: #ccc;
+  border-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
