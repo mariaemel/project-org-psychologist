@@ -17,6 +17,8 @@ import {
   FontSpec
 } from 'chart.js'
 import styles from './page.module.css'
+import { copyToClipboard } from "@/lib/clipboard";
+
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
@@ -529,13 +531,22 @@ export default function CareerAnchorsResultPage() {
       )}
 
       <div className={styles.actions}>
-        <button className={styles.saveBtn} onClick={() => {
-          const currentUrl = window.location.href
-          navigator.clipboard.writeText(currentUrl)
-          alert('Ссылка на результат скопирована в буфер обмена!')
-        }}>
+        <button
+          className={styles.saveBtn}
+          onClick={async () => {
+            const url = window.location.href;
+            const ok = await copyToClipboard(url);
+
+            if (ok) {
+              alert("Ссылка на результат скопирована в буфер обмена!");
+            } else {
+              window.prompt("Не получилось скопировать автоматически. Скопируйте вручную:", url);
+            }
+          }}
+        >
           Сохранить результат
         </button>
+
         <button className={styles.restartBtn} onClick={() => {
           window.location.href = result.actions.restart_url
         }}>

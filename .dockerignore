@@ -1,0 +1,27 @@
+**/__pycache__
+**/*.pyc
+**/*.pyo
+**/*.pyd
+**/.pytest_cache
+**/.mypy_cache
+**/.ruff_cache
+**/.idea
+**/.vscode
+**/.DS_Store
+
+# Python virtualenvs
+**/venv
+**/.venv
+
+# Node
+**/node_modules
+**/.next
+**/out
+
+# Local DB snapshots
+**/*.sqlite3
+**/*.sqlite3.*
+
+# Git
+.git
+.gitignore
