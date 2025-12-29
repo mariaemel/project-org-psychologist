@@ -682,19 +682,26 @@ export default function ResultPage() {
 
       {/* кнопки */}
       <div className={styles.actions}>
-        <button
-          className={styles.saveBtn}
-          onClick={async () => {
-            const url = window.location.href;
-            const ok = await copyToClipboard(url);
-
-            if (ok) {
-              alert("Ссылка на результат скопирована в буфер обмена!");
-            } else {
-              window.prompt("Не получилось скопировать автоматически. Скопируй вручную:", url);
-            }
-          }}
-        >
+        <button className={styles.saveBtn} onClick={() => {
+          const currentUrl = window.location.href;
+          const textArea = document.createElement('textarea');
+          textArea.value = currentUrl;
+          textArea.style.position = 'fixed';
+          textArea.style.left = '-999999px';
+          textArea.style.top = '-999999px';
+          document.body.appendChild(textArea);
+          textArea.focus();
+          textArea.select();
+          
+          try {
+            document.execCommand('copy');
+            alert('Ссылка скопирована в буфер обмена!');
+          } catch (err) {
+            prompt('Скопируйте ссылку вручную:', currentUrl);
+          }
+          
+          document.body.removeChild(textArea);
+        }}>
           Сохранить результат
         </button>
 
