@@ -13,7 +13,7 @@ import {
   Title
 } from 'chart.js'
 import styles from './page.module.css'
-import { copyToClipboard } from "@/lib/clipboard";
+
 
 
 ChartJS.register(ArcElement, Tooltip, Legend, Title)
@@ -527,6 +527,48 @@ export default function ResultPage() {
     ? expressedStyles.slice(0, 2)
     : expressedStyles.slice(0, 1);
 
+  const copyUrlToClipboard = () => {
+    const currentUrl = window.location.href;
+  
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(currentUrl)
+        .then(() => {
+          alert('Ссылка скопирована в буфер обмена');
+        })
+        .catch(() => {
+          fallbackCopyTextToClipboard(currentUrl);
+        });
+    } else {
+      fallbackCopyTextToClipboard(currentUrl);
+    }
+  };
+  
+  const fallbackCopyTextToClipboard = (text: string) => {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '0';
+    textArea.style.top = '0';
+    textArea.style.opacity = '0';
+    
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    
+    try {
+      const successful = document.execCommand('copy');
+      if (successful) {
+        alert('Ссылка скопирована в буфер обмена');
+      } else {
+        prompt('Скопируйте ссылку вручную:', text);
+      }
+    } catch (err) {
+      prompt('Скопируйте ссылку вручную:', text);
+    }
+    
+    document.body.removeChild(textArea);
+  };
+  
   return (
     <div className={styles.container}>
       {/* круговая диаграмма */}
@@ -682,26 +724,10 @@ export default function ResultPage() {
 
       {/* кнопки */}
       <div className={styles.actions}>
-        <button className={styles.saveBtn} onClick={() => {
-          const currentUrl = window.location.href;
-          const textArea = document.createElement('textarea');
-          textArea.value = currentUrl;
-          textArea.style.position = 'fixed';
-          textArea.style.left = '-999999px';
-          textArea.style.top = '-999999px';
-          document.body.appendChild(textArea);
-          textArea.focus();
-          textArea.select();
-          
-          try {
-            document.execCommand('copy');
-            alert('Ссылка скопирована в буфер обмена!');
-          } catch (err) {
-            prompt('Скопируйте ссылку вручную:', currentUrl);
-          }
-          
-          document.body.removeChild(textArea);
-        }}>
+        <button 
+          className={styles.saveBtn} 
+          onClick={copyUrlToClipboard}
+        >
           Сохранить результат
         </button>
 
