@@ -1,0 +1,2820 @@
+[
+  {
+    "model": "tests.test",
+    "pk": 300,
+    "fields": {
+      "slug": "disc",
+      "title": "DISC",
+      "short_description": "Определяет ваш поведенческий стиль (D/I/S/C) «в работе» и «в стрессе» на основе ранжирования утверждений.",
+      "instructions_md": "В каждом вопросе есть **4 утверждения**. Расположите их по степени соответствия вам:\n\n- **1** — наиболее про вас\n- **2** — скорее про вас\n- **3** — скорее не про вас\n- **4** — наименее про вас\n\nВ каждом вопросе **каждое число 1–4 используется один раз**.\n\nПервые 20 вопросов — профиль **«В работе»**, следующие 20 — профиль **«В стрессе»**.\n\nОтвечайте быстро, не раздумывая слишком долго.",
+      "est_minutes": 10,
+      "hero_image_url": "",
+      "seo_title": "DISC тест — поведенческие стили (D/I/S/C)",
+      "seo_description": "Тест DISC помогает определить ведущий поведенческий стиль (Dominance/Influence/Steadiness/Conscientiousness) в рабочем режиме и под стрессом.",
+      "og_image_url": "",
+      "is_published": true,
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30001,
+    "fields": {
+      "test": 300,
+      "order_index": 1,
+      "text": "«Я наиболее … / Я наименее …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000101,
+    "fields": {
+      "question": 30001,
+      "order_index": 1,
+      "text": "Сразу включаю людей, чтобы быстрее договориться.",
+      "value": "W01_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000102,
+    "fields": {
+      "question": 30001,
+      "order_index": 2,
+      "text": "Уточняю критерии успеха, чтобы всё было измеримо.",
+      "value": "W01_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000103,
+    "fields": {
+      "question": 30001,
+      "order_index": 3,
+      "text": "Быстро фиксирую цель и беру на себя первый шаг.",
+      "value": "W01_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000104,
+    "fields": {
+      "question": 30001,
+      "order_index": 4,
+      "text": "Договариваюсь о спокойном ритме и понятных ожиданиях.",
+      "value": "W01_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30002,
+    "fields": {
+      "test": 300,
+      "order_index": 2,
+      "text": "«На встречах я наиболее … / … наименее …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000201,
+    "fields": {
+      "question": 30002,
+      "order_index": 1,
+      "text": "Задаю уточняющие вопросы и фиксирую детали.",
+      "value": "W02_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000202,
+    "fields": {
+      "question": 30002,
+      "order_index": 2,
+      "text": "Слежу, чтобы всех услышали и никого не «срезали».",
+      "value": "W02_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000203,
+    "fields": {
+      "question": 30002,
+      "order_index": 3,
+      "text": "Подвожу к решению и обозначаю следующий шаг.",
+      "value": "W02_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000204,
+    "fields": {
+      "question": 30002,
+      "order_index": 4,
+      "text": "Поддерживаю живой диалог и снимаю напряжение.",
+      "value": "W02_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30003,
+    "fields": {
+      "test": 300,
+      "order_index": 3,
+      "text": "«Когда информации мало, я наиболее … / … наименее …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000301,
+    "fields": {
+      "question": 30003,
+      "order_index": 1,
+      "text": "Делаю рабочее предположение и двигаюсь дальше.",
+      "value": "W03_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000302,
+    "fields": {
+      "question": 30003,
+      "order_index": 2,
+      "text": "Собираю факты и уточняю источники.",
+      "value": "W03_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000303,
+    "fields": {
+      "question": 30003,
+      "order_index": 3,
+      "text": "Обсуждаю с людьми, чтобы собрать общую картину.",
+      "value": "W03_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000304,
+    "fields": {
+      "question": 30003,
+      "order_index": 4,
+      "text": "Предпочитаю подождать данных, чтобы не раскачивать процесс.",
+      "value": "W03_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30004,
+    "fields": {
+      "test": 300,
+      "order_index": 4,
+      "text": "«Я наиболее ценю … / Я наименее ценю …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000401,
+    "fields": {
+      "question": 30004,
+      "order_index": 1,
+      "text": "Стабильный, предсказуемый темп.",
+      "value": "W04_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000402,
+    "fields": {
+      "question": 30004,
+      "order_index": 2,
+      "text": "Ясные правила и качество.",
+      "value": "W04_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000403,
+    "fields": {
+      "question": 30004,
+      "order_index": 3,
+      "text": "Атмосферу и контакт с людьми.",
+      "value": "W04_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000404,
+    "fields": {
+      "question": 30004,
+      "order_index": 4,
+      "text": "Возможность реально влиять на результат.",
+      "value": "W04_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30005,
+    "fields": {
+      "test": 300,
+      "order_index": 5,
+      "text": "«Если нужно убедить коллег, я наиболее … / … наименее …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000501,
+    "fields": {
+      "question": 30005,
+      "order_index": 1,
+      "text": "«Заражаю» идеей и подаю через образ/историю.",
+      "value": "W05_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000502,
+    "fields": {
+      "question": 30005,
+      "order_index": 2,
+      "text": "Показываю расчёты, критерии и последствия.",
+      "value": "W05_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000503,
+    "fields": {
+      "question": 30005,
+      "order_index": 3,
+      "text": "Ищу вариант, который сохраняет отношения и снижает трение.",
+      "value": "W05_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000504,
+    "fields": {
+      "question": 30005,
+      "order_index": 4,
+      "text": "Формулирую четкое решение и почему это эффективнее.",
+      "value": "W05_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30006,
+    "fields": {
+      "test": 300,
+      "order_index": 6,
+      "text": "«В совместной работе я наиболее … / … наименее …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000601,
+    "fields": {
+      "question": 30006,
+      "order_index": 1,
+      "text": "Помогаю согласовать ожидания и поддерживаю людей.",
+      "value": "W06_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000602,
+    "fields": {
+      "question": 30006,
+      "order_index": 2,
+      "text": "Беру сложный участок и «разруливаю» препятствия.",
+      "value": "W06_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000603,
+    "fields": {
+      "question": 30006,
+      "order_index": 3,
+      "text": "Выстраиваю порядок: чек-листы, критерии, контроль.",
+      "value": "W06_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000604,
+    "fields": {
+      "question": 30006,
+      "order_index": 4,
+      "text": "Держу коммуникацию и поддерживаю общий тонус.",
+      "value": "W06_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30007,
+    "fields": {
+      "test": 300,
+      "order_index": 7,
+      "text": "«Когда выбираю приоритет, я наиболее … / … наименее …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000701,
+    "fields": {
+      "question": 30007,
+      "order_index": 1,
+      "text": "Выбираю то, что снизит ошибки и повысит качество.",
+      "value": "W07_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000702,
+    "fields": {
+      "question": 30007,
+      "order_index": 2,
+      "text": "Выбираю то, что быстрее приближает к цели.",
+      "value": "W07_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000703,
+    "fields": {
+      "question": 30007,
+      "order_index": 3,
+      "text": "Выбираю то, что сохраняет устойчивость и ритм.",
+      "value": "W07_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000704,
+    "fields": {
+      "question": 30007,
+      "order_index": 4,
+      "text": "Выбираю то, что поддержит взаимодействие людей.",
+      "value": "W07_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30008,
+    "fields": {
+      "test": 300,
+      "order_index": 8,
+      "text": "«В переписке я наиболее … / … наименее …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000801,
+    "fields": {
+      "question": 30008,
+      "order_index": 1,
+      "text": "Пишу коротко и сразу предлагаю следующий шаг.",
+      "value": "W08_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000802,
+    "fields": {
+      "question": 30008,
+      "order_index": 2,
+      "text": "Держу спокойный тон и избегаю резких формулировок.",
+      "value": "W08_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000803,
+    "fields": {
+      "question": 30008,
+      "order_index": 3,
+      "text": "Прошу конкретику и уточняю формулировки.",
+      "value": "W08_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000804,
+    "fields": {
+      "question": 30008,
+      "order_index": 4,
+      "text": "Слежу за «человеческим» тоном, чтобы не терялся контакт.",
+      "value": "W08_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30009,
+    "fields": {
+      "test": 300,
+      "order_index": 9,
+      "text": "«Когда что-то идёт не по плану, я наиболее … / … наименее …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000901,
+    "fields": {
+      "question": 30009,
+      "order_index": 1,
+      "text": "Разбираю причины и правлю правила/процедуры.",
+      "value": "W09_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000902,
+    "fields": {
+      "question": 30009,
+      "order_index": 2,
+      "text": "Быстро собираю людей и синхронизирую ожидания.",
+      "value": "W09_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000903,
+    "fields": {
+      "question": 30009,
+      "order_index": 3,
+      "text": "Принимаю решение и перестраиваю курс.",
+      "value": "W09_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3000904,
+    "fields": {
+      "question": 30009,
+      "order_index": 4,
+      "text": "Стабилизирую процесс, чтобы не было паники и сбоев.",
+      "value": "W09_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30010,
+    "fields": {
+      "test": 300,
+      "order_index": 10,
+      "text": "«Я наиболее предпочитаю договорённости … / … наименее …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001001,
+    "fields": {
+      "question": 30010,
+      "order_index": 1,
+      "text": "Короткие и ясные – чтобы всем было легко следовать.",
+      "value": "W10_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001002,
+    "fields": {
+      "question": 30010,
+      "order_index": 2,
+      "text": "Как ориентир: если мешают – упрощаю по ходу.",
+      "value": "W10_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001003,
+    "fields": {
+      "question": 30010,
+      "order_index": 3,
+      "text": "Точные и недвусмысленные – чтобы не было разночтений.",
+      "value": "W10_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001004,
+    "fields": {
+      "question": 30010,
+      "order_index": 4,
+      "text": "Такие, чтобы всем было спокойно и одинаково понятно.",
+      "value": "W10_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30011,
+    "fields": {
+      "test": 300,
+      "order_index": 11,
+      "text": "«При постановке задачи я наиболее … / … наименее …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001101,
+    "fields": {
+      "question": 30011,
+      "order_index": 1,
+      "text": "Определяю требования, ограничения и критерии приёмки.",
+      "value": "W11_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001102,
+    "fields": {
+      "question": 30011,
+      "order_index": 2,
+      "text": "Обсуждаю, кто как понимает «хороший результат».",
+      "value": "W11_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001103,
+    "fields": {
+      "question": 30011,
+      "order_index": 3,
+      "text": "Договариваюсь о ритме и взаимной поддержке.",
+      "value": "W11_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001104,
+    "fields": {
+      "question": 30011,
+      "order_index": 4,
+      "text": "Формулирую результат и срок.",
+      "value": "W11_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30012,
+    "fields": {
+      "test": 300,
+      "order_index": 12,
+      "text": "«Когда даю обратную связь, я наиболее … / … наименее …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001201,
+    "fields": {
+      "question": 30012,
+      "order_index": 1,
+      "text": "Начинаю так, чтобы сохранить доверие и контакт.",
+      "value": "W12_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001202,
+    "fields": {
+      "question": 30012,
+      "order_index": 2,
+      "text": "Опираюсь на факты, примеры и критерии.",
+      "value": "W12_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001203,
+    "fields": {
+      "question": 30012,
+      "order_index": 3,
+      "text": "Говорю прямо и по сути.",
+      "value": "W12_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001204,
+    "fields": {
+      "question": 30012,
+      "order_index": 4,
+      "text": "Подбираю форму, чтобы человек вышел с мотивацией.",
+      "value": "W12_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30013,
+    "fields": {
+      "test": 300,
+      "order_index": 13,
+      "text": "«Осваивая новое, я наиболее … / … наименее …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001301,
+    "fields": {
+      "question": 30013,
+      "order_index": 1,
+      "text": "Иду в первоисточники и структурирую знания.",
+      "value": "W13_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001302,
+    "fields": {
+      "question": 30013,
+      "order_index": 2,
+      "text": "Двигаюсь шаг за шагом, чтобы «уложилось».",
+      "value": "W13_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001303,
+    "fields": {
+      "question": 30013,
+      "order_index": 3,
+      "text": "Учусь через обсуждение и обмен опытом.",
+      "value": "W13_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001304,
+    "fields": {
+      "question": 30013,
+      "order_index": 4,
+      "text": "Пробую на практике и быстро делаю выводы.",
+      "value": "W13_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30014,
+    "fields": {
+      "test": 300,
+      "order_index": 14,
+      "text": "«В групповом решении я наиболее … / … наименее …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001401,
+    "fields": {
+      "question": 30014,
+      "order_index": 1,
+      "text": "Призываю к выбору и ответственности.",
+      "value": "W14_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001402,
+    "fields": {
+      "question": 30014,
+      "order_index": 2,
+      "text": "Помогаю договориться и удержать общий контакт.",
+      "value": "W14_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001403,
+    "fields": {
+      "question": 30014,
+      "order_index": 3,
+      "text": "Проверяю критерии и риски перед фиксацией решения.",
+      "value": "W14_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001404,
+    "fields": {
+      "question": 30014,
+      "order_index": 4,
+      "text": "Ищу вариант, с которым всем будет спокойно работать.",
+      "value": "W14_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30015,
+    "fields": {
+      "test": 300,
+      "order_index": 15,
+      "text": "«Я наиболее теряю мотивацию, если … / … наименее …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001501,
+    "fields": {
+      "question": 30015,
+      "order_index": 1,
+      "text": "Мало живого общения и обратной связи.",
+      "value": "W15_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001502,
+    "fields": {
+      "question": 30015,
+      "order_index": 2,
+      "text": "Нельзя повлиять на результат и решения.",
+      "value": "W15_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001503,
+    "fields": {
+      "question": 30015,
+      "order_index": 3,
+      "text": "Нет ясности и стандартов, «всё как-нибудь».",
+      "value": "W15_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001504,
+    "fields": {
+      "question": 30015,
+      "order_index": 4,
+      "text": "Постоянное напряжение, трения и конфликты.",
+      "value": "W15_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30016,
+    "fields": {
+      "test": 300,
+      "order_index": 16,
+      "text": "«Получив задачу, я наиболее хочу … / … наименее хочу …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001601,
+    "fields": {
+      "question": 30016,
+      "order_index": 1,
+      "text": "Понятные договорённости и поддержку в процессе.",
+      "value": "W16_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001602,
+    "fields": {
+      "question": 30016,
+      "order_index": 2,
+      "text": "Быстрый контакт и короткие согласования.",
+      "value": "W16_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001603,
+    "fields": {
+      "question": 30016,
+      "order_index": 3,
+      "text": "Четкие критерии и доступ к данным/контексту.",
+      "value": "W16_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001604,
+    "fields": {
+      "question": 30016,
+      "order_index": 4,
+      "text": "Свободу действий и право принимать решения.",
+      "value": "W16_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30017,
+    "fields": {
+      "test": 300,
+      "order_index": 17,
+      "text": "«В планировании я наиболее … / … наименее …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001701,
+    "fields": {
+      "question": 30017,
+      "order_index": 1,
+      "text": "Намечаю короткий план и начинаю делать.",
+      "value": "W17_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001702,
+    "fields": {
+      "question": 30017,
+      "order_index": 2,
+      "text": "Ставлю реалистичный ритм и буферы.",
+      "value": "W17_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001703,
+    "fields": {
+      "question": 30017,
+      "order_index": 3,
+      "text": "Синхронизирую ожидания через обсуждение.",
+      "value": "W17_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001704,
+    "fields": {
+      "question": 30017,
+      "order_index": 4,
+      "text": "Детализирую этапы и риски.",
+      "value": "W17_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30018,
+    "fields": {
+      "test": 300,
+      "order_index": 18,
+      "text": "«В споре по задаче я наиболее … / … наименее …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001801,
+    "fields": {
+      "question": 30018,
+      "order_index": 1,
+      "text": "Перевожу разговор в критерии и факты.",
+      "value": "W18_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001802,
+    "fields": {
+      "question": 30018,
+      "order_index": 2,
+      "text": "Обозначаю позицию и цель без «обходных путей».",
+      "value": "W18_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001803,
+    "fields": {
+      "question": 30018,
+      "order_index": 3,
+      "text": "Снижаю напряжение и ищу компромисс.",
+      "value": "W18_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001804,
+    "fields": {
+      "question": 30018,
+      "order_index": 4,
+      "text": "Стараюсь договориться так, чтобы всем было ок.",
+      "value": "W18_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30019,
+    "fields": {
+      "test": 300,
+      "order_index": 19,
+      "text": "«Когда дедлайн близко, я наиболее … / … наименее …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001901,
+    "fields": {
+      "question": 30019,
+      "order_index": 1,
+      "text": "Держу устойчивый темп, чтобы не сорваться.",
+      "value": "W19_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001902,
+    "fields": {
+      "question": 30019,
+      "order_index": 2,
+      "text": "Отсекаю лишнее и «дожимаю» результат.",
+      "value": "W19_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001903,
+    "fields": {
+      "question": 30019,
+      "order_index": 3,
+      "text": "Поддерживаю коммуникацию, чтобы никто не выпал.",
+      "value": "W19_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3001904,
+    "fields": {
+      "question": 30019,
+      "order_index": 4,
+      "text": "Перепроверяю и страхую качество.",
+      "value": "W19_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30020,
+    "fields": {
+      "test": 300,
+      "order_index": 20,
+      "text": "«Я наиболее доволен результатом, когда … / … наименее доволен, когда …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002001,
+    "fields": {
+      "question": 30020,
+      "order_index": 1,
+      "text": "Всё сделано корректно и без заметных ошибок.",
+      "value": "W20_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002002,
+    "fields": {
+      "question": 30020,
+      "order_index": 2,
+      "text": "Люди довольны и вовлечены.",
+      "value": "W20_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002003,
+    "fields": {
+      "question": 30020,
+      "order_index": 3,
+      "text": "Цель достигнута быстро и ощутимо.",
+      "value": "W20_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002004,
+    "fields": {
+      "question": 30020,
+      "order_index": 4,
+      "text": "Всё прошло ровно и без лишнего напряжения.",
+      "value": "W20_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30021,
+    "fields": {
+      "test": 300,
+      "order_index": 21,
+      "text": "«Под давлением сроков я наиболее … / … наименее …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002101,
+    "fields": {
+      "question": 30021,
+      "order_index": 1,
+      "text": "Больше коммуницирую, чтобы удержать поддержку.",
+      "value": "S21_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002102,
+    "fields": {
+      "question": 30021,
+      "order_index": 2,
+      "text": "Жёстче расставляю приоритеты и ускоряю решения.",
+      "value": "S21_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002103,
+    "fields": {
+      "question": 30021,
+      "order_index": 3,
+      "text": "Уточняю детали и перепроверяю, чтобы снизить риск.",
+      "value": "S21_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002104,
+    "fields": {
+      "question": 30021,
+      "order_index": 4,
+      "text": "Стараюсь держать спокойствие и не накалять.",
+      "value": "S21_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30022,
+    "fields": {
+      "test": 300,
+      "order_index": 22,
+      "text": "«В неопределенности я наиболее … / … наименее …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002201,
+    "fields": {
+      "question": 30022,
+      "order_index": 1,
+      "text": "Собираю максимум информации и сверяю источники.",
+      "value": "S22_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002202,
+    "fields": {
+      "question": 30022,
+      "order_index": 2,
+      "text": "Держусь за привычные шаги и стабильный ритм.",
+      "value": "S22_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002203,
+    "fields": {
+      "question": 30022,
+      "order_index": 3,
+      "text": "Ищу людей, с кем можно быстро обсудить.",
+      "value": "S22_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002204,
+    "fields": {
+      "question": 30022,
+      "order_index": 4,
+      "text": "Беру контроль и задаю направление.",
+      "value": "S22_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30023,
+    "fields": {
+      "test": 300,
+      "order_index": 23,
+      "text": "«В стрессе я наиболее заметно … / … наименее заметно …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002301,
+    "fields": {
+      "question": 30023,
+      "order_index": 1,
+      "text": "Становлюсь тише и больше «внутри себя».",
+      "value": "S23_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002302,
+    "fields": {
+      "question": 30023,
+      "order_index": 2,
+      "text": "Становлюсь внимательнее к деталям и формулировкам.",
+      "value": "S23_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002303,
+    "fields": {
+      "question": 30023,
+      "order_index": 3,
+      "text": "Становлюсь прямее и требовательнее к темпу.",
+      "value": "S23_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002304,
+    "fields": {
+      "question": 30023,
+      "order_index": 4,
+      "text": "Становлюсь эмоциональнее и говорю больше.",
+      "value": "S23_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30024,
+    "fields": {
+      "test": 300,
+      "order_index": 24,
+      "text": "«Когда я раздражен, я наиболее … / … наименее …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002401,
+    "fields": {
+      "question": 30024,
+      "order_index": 1,
+      "text": "Перехожу на прямые формулировки и сокращаю обсуждения.",
+      "value": "S24_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002402,
+    "fields": {
+      "question": 30024,
+      "order_index": 2,
+      "text": "Беру паузу и откладываю разговор, чтобы остыло.",
+      "value": "S24_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002403,
+    "fields": {
+      "question": 30024,
+      "order_index": 3,
+      "text": "Пытаюсь разрядить, но могу перескакивать между темами.",
+      "value": "S24_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002404,
+    "fields": {
+      "question": 30024,
+      "order_index": 4,
+      "text": "Усиливаю внимание к корректности и деталям.",
+      "value": "S24_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30025,
+    "fields": {
+      "test": 300,
+      "order_index": 25,
+      "text": "«Под нагрузкой я наиболее нуждаюсь в … / … наименее нуждаюсь в …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002501,
+    "fields": {
+      "question": 30025,
+      "order_index": 1,
+      "text": "Ясных правилах и проверяемости.",
+      "value": "S25_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002502,
+    "fields": {
+      "question": 30025,
+      "order_index": 2,
+      "text": "Контакте и человеческой поддержке.",
+      "value": "S25_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002503,
+    "fields": {
+      "question": 30025,
+      "order_index": 3,
+      "text": "Свободе действий и праве решать.",
+      "value": "S25_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002504,
+    "fields": {
+      "question": 30025,
+      "order_index": 4,
+      "text": "Стабильности и понятном ритме.",
+      "value": "S25_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30026,
+    "fields": {
+      "test": 300,
+      "order_index": 26,
+      "text": "«В личном конфликте я наиболее … / … наименее …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002601,
+    "fields": {
+      "question": 30026,
+      "order_index": 1,
+      "text": "Пытаюсь восстановить контакт через разговор.",
+      "value": "S26_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002602,
+    "fields": {
+      "question": 30026,
+      "order_index": 2,
+      "text": "Сглаживаю и стараюсь не разрушить отношения.",
+      "value": "S26_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002603,
+    "fields": {
+      "question": 30026,
+      "order_index": 3,
+      "text": "Ухожу в факты/формулировки, чтобы всё было корректно.",
+      "value": "S26_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002604,
+    "fields": {
+      "question": 30026,
+      "order_index": 4,
+      "text": "Закрываю вопрос быстро и жестко, чтобы не тянуть.",
+      "value": "S26_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30027,
+    "fields": {
+      "test": 300,
+      "order_index": 27,
+      "text": "«Когда я устал, я наиболее … / … наименее …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002701,
+    "fields": {
+      "question": 30027,
+      "order_index": 1,
+      "text": "Хочу тишины и предсказуемости.",
+      "value": "S27_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002702,
+    "fields": {
+      "question": 30027,
+      "order_index": 2,
+      "text": "Требую конкретики и сокращаю обсуждения.",
+      "value": "S27_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002703,
+    "fields": {
+      "question": 30027,
+      "order_index": 3,
+      "text": "Перепроверяю больше обычного и замедляюсь.",
+      "value": "S27_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002704,
+    "fields": {
+      "question": 30027,
+      "order_index": 4,
+      "text": "Ищу стимул/вдохновение и легче отвлекаюсь.",
+      "value": "S27_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30028,
+    "fields": {
+      "test": 300,
+      "order_index": 28,
+      "text": "«В перегрузе я наиболее … / … наименее …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002801,
+    "fields": {
+      "question": 30028,
+      "order_index": 1,
+      "text": "Ухожу в детали, чтобы «не наделать ошибок».",
+      "value": "S28_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002802,
+    "fields": {
+      "question": 30028,
+      "order_index": 2,
+      "text": "Больше общаюсь и переключаюсь между задачами.",
+      "value": "S28_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002803,
+    "fields": {
+      "question": 30028,
+      "order_index": 3,
+      "text": "Держусь за привычные задачи и замедляюсь.",
+      "value": "S28_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002804,
+    "fields": {
+      "question": 30028,
+      "order_index": 4,
+      "text": "Беру «самое важное» и продавливаю до конца.",
+      "value": "S28_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30029,
+    "fields": {
+      "test": 300,
+      "order_index": 29,
+      "text": "«Когда меня критикуют, я наиболее … / … наименее …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002901,
+    "fields": {
+      "question": 30029,
+      "order_index": 1,
+      "text": "Пытаюсь объясниться и вернуть расположение.",
+      "value": "S29_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002902,
+    "fields": {
+      "question": 30029,
+      "order_index": 2,
+      "text": "Прошу конкретные примеры и критерии.",
+      "value": "S29_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002903,
+    "fields": {
+      "question": 30029,
+      "order_index": 3,
+      "text": "Защищаю позицию и отвечаю прямо.",
+      "value": "S29_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3002904,
+    "fields": {
+      "question": 30029,
+      "order_index": 4,
+      "text": "Стараюсь понять ожидания и не спорить резко.",
+      "value": "S29_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30030,
+    "fields": {
+      "test": 300,
+      "order_index": 30,
+      "text": "«Когда вокруг хаос, я наиболее … / … наименее …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003001,
+    "fields": {
+      "question": 30030,
+      "order_index": 1,
+      "text": "Распределяю задачи и беру управление.",
+      "value": "S30_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003002,
+    "fields": {
+      "question": 30030,
+      "order_index": 2,
+      "text": "Держу спокойствие и базовую рутину.",
+      "value": "S30_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003003,
+    "fields": {
+      "question": 30030,
+      "order_index": 3,
+      "text": "Навожу порядок через правила и списки.",
+      "value": "S30_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003004,
+    "fields": {
+      "question": 30030,
+      "order_index": 4,
+      "text": "Объединяю людей и налаживаю связь.",
+      "value": "S30_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30031,
+    "fields": {
+      "test": 300,
+      "order_index": 31,
+      "text": "«В стрессе я наиболее ценю … / … наименее ценю …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003101,
+    "fields": {
+      "question": 30031,
+      "order_index": 1,
+      "text": "Тёплое человеческое отношение.",
+      "value": "S31_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003102,
+    "fields": {
+      "question": 30031,
+      "order_index": 2,
+      "text": "Возможность быстро действовать.",
+      "value": "S31_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003103,
+    "fields": {
+      "question": 30031,
+      "order_index": 3,
+      "text": "Спокойную предсказуемость.",
+      "value": "S31_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003104,
+    "fields": {
+      "question": 30031,
+      "order_index": 4,
+      "text": "Чёткие правила.",
+      "value": "S31_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30032,
+    "fields": {
+      "test": 300,
+      "order_index": 32,
+      "text": "«В решении «срочно», я наиболее … / … наименее …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003201,
+    "fields": {
+      "question": 30032,
+      "order_index": 1,
+      "text": "Прошу время на проверку и данные.",
+      "value": "S32_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003202,
+    "fields": {
+      "question": 30032,
+      "order_index": 2,
+      "text": "Выбираю вариант и беру ответственность.",
+      "value": "S32_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003203,
+    "fields": {
+      "question": 30032,
+      "order_index": 3,
+      "text": "Советуюсь, чтобы почувствовать поддержку/контекст.",
+      "value": "S32_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003204,
+    "fields": {
+      "question": 30032,
+      "order_index": 4,
+      "text": "Ищу вариант с меньшим напряжением для всех.",
+      "value": "S32_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30033,
+    "fields": {
+      "test": 300,
+      "order_index": 33,
+      "text": "«Если план сорвался, я наиболее … / … наименее …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003301,
+    "fields": {
+      "question": 30033,
+      "order_index": 1,
+      "text": "Сразу созваниваюсь/пишу, чтобы договориться заново.",
+      "value": "S33_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003302,
+    "fields": {
+      "question": 30033,
+      "order_index": 2,
+      "text": "Сохраняю ритм и поддерживаю устойчивость команды.",
+      "value": "S33_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003303,
+    "fields": {
+      "question": 30033,
+      "order_index": 3,
+      "text": "Перестраиваю и двигаюсь дальше без долгих обсуждений.",
+      "value": "S33_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003304,
+    "fields": {
+      "question": 30033,
+      "order_index": 4,
+      "text": "Разбираю причину и ставлю «защиту» в процессе.",
+      "value": "S33_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30034,
+    "fields": {
+      "test": 300,
+      "order_index": 34,
+      "text": "«Под сильным давлением я наиболее вероятно … / … наименее вероятно …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003401,
+    "fields": {
+      "question": 30034,
+      "order_index": 1,
+      "text": "Жёстче держусь за точность и формулировки.",
+      "value": "S34_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003402,
+    "fields": {
+      "question": 30034,
+      "order_index": 2,
+      "text": "Больше ищу поддержку через разговор.",
+      "value": "S34_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003403,
+    "fields": {
+      "question": 30034,
+      "order_index": 3,
+      "text": "Больше требую скорости и результата.",
+      "value": "S34_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003404,
+    "fields": {
+      "question": 30034,
+      "order_index": 4,
+      "text": "Чаще беру паузу и избегаю острых ситуаций.",
+      "value": "S34_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30035,
+    "fields": {
+      "test": 300,
+      "order_index": 35,
+      "text": "«Когда меня долго не понимают, я наиболее … / … наименее …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003501,
+    "fields": {
+      "question": 30035,
+      "order_index": 1,
+      "text": "Упрощаю до «делаем так» и усиливаю напор.",
+      "value": "S35_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003502,
+    "fields": {
+      "question": 30035,
+      "order_index": 2,
+      "text": "Делаю шаг назад и ищу спокойный способ объяснить.",
+      "value": "S35_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003503,
+    "fields": {
+      "question": 30035,
+      "order_index": 3,
+      "text": "Требую точных определений и переформулирую.",
+      "value": "S35_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003504,
+    "fields": {
+      "question": 30035,
+      "order_index": 4,
+      "text": "Объясняю иначе, иногда через эмоцию/пример.",
+      "value": "S35_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30036,
+    "fields": {
+      "test": 300,
+      "order_index": 36,
+      "text": "«В стрессовых переговорах я наиболее … / … наименее …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003601,
+    "fields": {
+      "question": 30036,
+      "order_index": 1,
+      "text": "Проверяю документы/формулировки, чтобы не было дыр.",
+      "value": "S36_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003602,
+    "fields": {
+      "question": 30036,
+      "order_index": 2,
+      "text": "Сохраняю доброжелательность и ровный тон.",
+      "value": "S36_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003603,
+    "fields": {
+      "question": 30036,
+      "order_index": 3,
+      "text": "Ищу точки контакта и разряжаю напряжение.",
+      "value": "S36_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003604,
+    "fields": {
+      "question": 30036,
+      "order_index": 4,
+      "text": "Фиксирую границы и условия.",
+      "value": "S36_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30037,
+    "fields": {
+      "test": 300,
+      "order_index": 37,
+      "text": "«Когда ресурса мало, я наиболее … / … наименее …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003701,
+    "fields": {
+      "question": 30037,
+      "order_index": 1,
+      "text": "Стараюсь сохранить стабильность и не конфликтовать.",
+      "value": "S37_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003702,
+    "fields": {
+      "question": 30037,
+      "order_index": 2,
+      "text": "Держусь за порядок и перепроверки.",
+      "value": "S37_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003703,
+    "fields": {
+      "question": 30037,
+      "order_index": 3,
+      "text": "Делаю только ключевое и «дожимаю».",
+      "value": "S37_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003704,
+    "fields": {
+      "question": 30037,
+      "order_index": 4,
+      "text": "Ищу поддержку у людей и могу распыляться.",
+      "value": "S37_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30038,
+    "fields": {
+      "test": 300,
+      "order_index": 38,
+      "text": "«Когда я нервничаю, мне наиболее помогает … / … наименее помогает …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003801,
+    "fields": {
+      "question": 30038,
+      "order_index": 1,
+      "text": "Четкий план действий.",
+      "value": "S38_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003802,
+    "fields": {
+      "question": 30038,
+      "order_index": 2,
+      "text": "Чек-лист/правила, чтобы не ошибиться.",
+      "value": "S38_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003803,
+    "fields": {
+      "question": 30038,
+      "order_index": 3,
+      "text": "Разговор и эмоциональная поддержка.",
+      "value": "S38_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003804,
+    "fields": {
+      "question": 30038,
+      "order_index": 4,
+      "text": "Тишина и спокойный ритм.",
+      "value": "S38_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30039,
+    "fields": {
+      "test": 300,
+      "order_index": 39,
+      "text": "«Если случилась ошибка, я наиболее … / … наименее …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003901,
+    "fields": {
+      "question": 30039,
+      "order_index": 1,
+      "text": "Разбираю причину и ставлю защиту от повторения.",
+      "value": "S39_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003902,
+    "fields": {
+      "question": 30039,
+      "order_index": 2,
+      "text": "Исправляю быстро и иду дальше.",
+      "value": "S39_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003903,
+    "fields": {
+      "question": 30039,
+      "order_index": 3,
+      "text": "Стараюсь не обвинять и поддержать людей.",
+      "value": "S39_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3003904,
+    "fields": {
+      "question": 30039,
+      "order_index": 4,
+      "text": "Обсуждаю, чтобы снять напряжение и восстановить контакт.",
+      "value": "S39_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 30040,
+    "fields": {
+      "test": 300,
+      "order_index": 40,
+      "text": "«Под давлением я наиболее беру роль … / … наименее беру роль …»",
+      "type": "scale",
+      "required": true,
+      "help_text": "Назначьте каждому утверждению место **1–4** (1 — наиболее про вас, 4 — наименее). В одном вопросе числа не повторяются.",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3004001,
+    "fields": {
+      "question": 30040,
+      "order_index": 1,
+      "text": "Коммуникатора, который держит контакт.",
+      "value": "S40_I",
+      "dimension_code": "I",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3004002,
+    "fields": {
+      "question": 30040,
+      "order_index": 2,
+      "text": "Контроля качества, который ловит ошибки.",
+      "value": "S40_C",
+      "dimension_code": "C",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3004003,
+    "fields": {
+      "question": 30040,
+      "order_index": 3,
+      "text": "Стабилизатора, который удерживает ритм.",
+      "value": "S40_S",
+      "dimension_code": "S",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "tests.option",
+    "pk": 3004004,
+    "fields": {
+      "question": 30040,
+      "order_index": 4,
+      "text": "Лидера, который принимает решения.",
+      "value": "S40_D",
+      "dimension_code": "D",
+      "weights_json": {},
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  }
+]

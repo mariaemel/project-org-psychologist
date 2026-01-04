@@ -4,11 +4,13 @@ from django.core.exceptions import ImproperlyConfigured
 
 from .leadership_styles import compute as compute_leadership_styles
 from .career_anchors import compute as compute_career_anchors
+from .disc import compute as compute_disc
 from ...models import Attempt, Result
 
 _REGISTRY: Dict[str, Callable[[Attempt], Result]] = {
     "leadership-styles": compute_leadership_styles,
     "career-anchors": compute_career_anchors,
+    "disc": compute_disc,
 }
 
 def compute_result(attempt: Attempt) -> Result:

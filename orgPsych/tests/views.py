@@ -202,19 +202,39 @@ class PublicResultView(APIView):
 
         result = sl.attempt.result
         dims = result.dimensions.all()
+
+        raw_json = result.raw_json or {}
+        viz = raw_json.get("viz")
+        if not viz:
+            viz = {
+                "type": "radar",
+                "data": {
+                    "labels": [d.title or d.code for d in dims],
+                    "values": [d.score for d in dims],
+                },
+            }
+
         data = {
             "test": {"slug": sl.attempt.test.slug, "title": sl.attempt.test.title},
             "computed_at": result.computed_at,
             "dimensions": [
-                {"code": d.code, "title": d.title, "score": d.score, "level": d.level, "explanation_md": d.explanation_md}
+                {
+                    "code": d.code,
+                    "title": d.title,
+                    "score": d.score,
+                    "level": d.level,
+                    "explanation_md": d.explanation_md,
+                }
                 for d in dims
             ],
             "summary_md": result.summary_md,
-            "viz": {
-                "type": "radar",
-                "data": {"labels": [d.code for d in dims], "values": [d.score for d in dims]}
+            "viz": viz,
+            "raw_json": raw_json,
+            "actions": {
+                "can_copy_link": True,
+                "restart_url": f"/tests/{sl.attempt.test.slug}",
+                "result_url": f"/tests/{sl.attempt.test.slug}/results/{sl.uuid}",
             },
-            "actions": {"can_copy_link": True, "restart_url": f"/tests/{sl.attempt.test.slug}"}
         }
         return Response(data)
 
