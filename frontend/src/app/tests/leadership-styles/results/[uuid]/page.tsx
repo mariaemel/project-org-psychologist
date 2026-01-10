@@ -750,47 +750,6 @@ export default function ResultPage() {
           `
 
           const copyButton = document.createElement('button')
-          copyButton.textContent = 'Копировать'
-          copyButton.style.cssText = `
-            background-color: #575799;
-            color: white;
-            border: none;
-            padding: 0 20px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
-            transition: background-color 0.2s;
-          `
-
-          copyButton.onmouseover = () => {
-            copyButton.style.backgroundColor = '#6969b6'
-          }
-          copyButton.onmouseout = () => {
-            copyButton.style.backgroundColor = '#575799'
-          }
-
-          copyButton.onclick = async () => {
-            try {
-              await navigator.clipboard.writeText(currentUrl)
-              const originalText = copyButton.textContent
-              copyButton.textContent = '✓ Скопировано!'
-              copyButton.style.backgroundColor = '#4CAF50'
-
-              setTimeout(() => {
-                copyButton.textContent = originalText
-                copyButton.style.backgroundColor = '#575799'
-              }, 2000)
-            } catch (err) {
-              console.error('Ошибка при копировании:', err)
-              copyButton.textContent = 'Ошибка!'
-              copyButton.style.backgroundColor = '#f44336'
-
-              setTimeout(() => {
-                copyButton.textContent = 'Копировать'
-                copyButton.style.backgroundColor = '#575799'
-              }, 2000)
-            }
-          }
 
           const buttonContainer = document.createElement('div')
           buttonContainer.style.cssText = `
