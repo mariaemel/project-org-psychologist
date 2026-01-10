@@ -63,7 +63,6 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-
 }
 
 .questionHeader {
@@ -141,7 +140,6 @@
   box-shadow: 0 4px 12px rgba(157, 157, 204, 0.4);
   border: 2px solid white;
 }
-
 
 .scaleLabel {
   font-size: 16px;
@@ -258,4 +256,416 @@
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
+}
+
+.progressText {
+  display: none;
+  font-size: 16px;
+  color: #575799;
+  font-weight: 800;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    margin-top: 80px;
+    padding: 30px 20px;
+  }
+
+  .progressBar,
+  .questionHeader,
+  .scaleSection,
+  .navigation {
+    width: 100%;
+    max-width: 800px;
+  }
+
+  .questionCard {
+    padding: 40px 30px;
+  }
+
+  .questionText {
+    font-size: 20px;
+    margin-top: 25px;
+  }
+
+  .scoreCircle {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin-top: 70px;
+    padding: 25px 15px;
+  }
+
+  .breadcrumbs {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  .questionCard {
+    padding: 30px 20px;
+    box-shadow: 0 4px 20px #57579940;
+  }
+
+  .progressSection {
+    margin-bottom: 30px;
+  }
+
+  .progressBar {
+    height: 35px;
+    width: 100%;
+    max-width: 600px;
+    display: none;
+  }
+
+  .progressFill {
+    font-size: 13px;
+    min-width: 55px;
+  }
+
+  .progressText {
+    display: block !important;
+    font-size: 18px;
+    color: #9D9DCC;
+    font-weight: 600;
+    margin-bottom: 24px;
+    text-align: left;
+    width: 100%;
+  }
+
+  .questionHeader {
+    margin-bottom: 35px;
+    width: 100%;
+  }
+
+  .questionType {
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .questionText {
+    font-size: 18px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: -15px;
+    line-height: 1.4;
+  }
+
+  .scaleSection {
+    margin: 30px 0;
+    width: 100%;
+  }
+
+  .gradientScale {
+    height: 45px;
+    margin-bottom: 15px;
+  }
+
+  .scaleBackground {
+    height: 20px;
+  }
+
+  .scoreCircle {
+    width: 36px;
+    height: 36px;
+    font-size: 15px;
+  }
+
+  .scaleNumber {
+    width: 92%;
+    margin-bottom: -40px;
+  }
+
+  .scaleDescription {
+    font-size: 13px;
+  }
+
+  .navigation {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+  }
+
+  .backButton {
+    padding: 14px 20px;
+    font-size: 15px;
+    min-height: 46px;
+    min-width: 120px;
+  }
+
+  .nextButton,
+  .finishButton {
+    padding: 14px 20px;
+    font-size: 15px;
+    min-height: 46px;
+    min-width: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin-top: 60px;
+    padding: 20px 12px;
+  }
+
+  .breadcrumbs {
+    font-size: 12px;
+    margin-bottom: 15px;
+    line-height: 1.4;
+  }
+
+  .questionCard {
+    padding: 25px 16px;
+    box-shadow: none;
+  }
+
+  .progressSection {
+    margin-bottom: 25px;
+  }
+
+  .progressBar {
+    height: 32px;
+    border-radius: 3px;
+    display: none;
+  }
+
+  .progressFill {
+    font-size: 12px;
+    min-width: 50px;
+  }
+
+  .progressText {
+    display: block !important;
+    font-size: 16px;
+    color: #9D9DCC;
+    font-weight: 600;
+    margin-bottom: 24px;
+    text-align: left;
+    width: 100%;
+  }
+
+  .questionHeader {
+    margin-bottom: 30px;
+  }
+
+  .questionType {
+    font-size: 14px;
+  }
+
+  .questionText {
+    font-size: 16px;
+    margin-top: 15px;
+    margin-bottom: -10px;
+    line-height: 1.4;
+  }
+
+  .scaleSection {
+    margin: 25px 0;
+  }
+
+  .gradientScale {
+    height: 40px;
+    margin-bottom: 12px;
+  }
+
+  .scaleBackground {
+    height: 18px;
+    border-radius: 4px;
+  }
+
+  .scoreCircle {
+    width: 34px;
+    height: 34px;
+    font-size: 14px;
+  }
+
+  .scaleNumber {
+    width: 94%;
+    margin-bottom: -35px;
+    margin-top: 15px;
+  }
+
+  .scaleDescriptions {
+    margin-top: -15px;
+  }
+
+  .scaleDescription {
+    font-size: 12px;
+    line-height: 1.3;
+  }
+
+  .navigation {
+    margin-top: 25px;
+  }
+
+  .backButton,
+  .nextButton,
+  .finishButton {
+    padding: 18px 16px;
+    font-size: 14px;
+    min-height: 44px;
+    min-width: 110px;
+  }
+}
+
+@media (max-width: 432px) {
+  .container {
+    margin-top: 50px;
+    padding: 15px 10px;
+  }
+
+  .breadcrumbs {
+    font-size: 11px;
+    margin-bottom: 12px;
+  }
+
+  .questionCard {
+    padding: 20px 14px;
+    box-shadow: none;
+  }
+
+  .progressBar {
+    height: 30px;
+    display: none;
+  }
+
+  .progressFill {
+    font-size: 11px;
+    min-width: 45px;
+  }
+
+  .progressText {
+    display: block !important;
+    font-size: 15px;
+    color: #9D9DCC;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .questionText {
+    font-size: 15px;
+  }
+
+  .questionType {
+    font-size: 13px;
+  }
+
+  .gradientScale {
+    height: 38px;
+  }
+
+  .scoreCircle {
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+  }
+
+  .scaleDescription {
+    font-size: 11px;
+  }
+
+  .navigation {
+    margin-top: 20px;
+  }
+
+  .backButton,
+  .nextButton,
+  .finishButton {
+    padding: 12px 20px;
+    font-size: 14px;
+    min-height: 44px;
+    min-width: 100px;
+  }
+}
+
+@media (max-width: 320px) {
+  .container {
+    margin-top: 40px;
+    padding: 12px 8px;
+  }
+
+  .questionCard {
+    padding: 18px 12px;
+    box-shadow: none;
+  }
+
+  .progressBar {
+    height: 28px;
+    display: none;
+  }
+
+  .questionText {
+    font-size: 14px;
+  }
+
+  .progressText {
+    display: block !important;
+    font-size: 14px;
+    color: #9D9DCC;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .questionType {
+    font-size: 12px;
+  }
+
+  .gradientScale {
+    height: 35px;
+  }
+
+  .scaleBackground {
+    height: 16px;
+  }
+
+  .scoreCircle {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+  }
+
+  .navigation {
+    gap: 6px;
+    margin-top: 15px;
+  }
+
+  .backButton,
+  .nextButton,
+  .finishButton {
+    padding: 8px 12px;
+    font-size: 12px;
+    min-height: 40px;
+    flex: 1;
+    min-width: 90px;
+  }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+  .container {
+    padding: 15px 12px;
+  }
+
+  .questionCard {
+    padding: 20px 15px;
+  }
+
+  .navigation {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .backButton,
+  .nextButton,
+  .finishButton {
+    width: auto;
+    flex: 1;
+    min-width: 0;
+  }
 }

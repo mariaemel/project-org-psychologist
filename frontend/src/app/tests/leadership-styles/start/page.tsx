@@ -258,6 +258,10 @@ export default function LeadershipStartPage() {
               </div>
             </div>
           </div>
+
+          <div className={styles.progressText}>
+            {currentQuestion.progress?.index || currentQuestionIndex} из {currentQuestion.progress?.total || 12}
+          </div>
         </div>
 
         <h2 className={styles.questionText}>

@@ -3,6 +3,10 @@
   margin: 0 auto;
   padding: 60px 20px;
   margin-top: 80px;
+
+  @media (max-width: 432px) {
+    max-width: 432px;
+  }
 }
 
 .breadcrumbs {
@@ -143,31 +147,213 @@
   box-shadow: 0 4px 15px rgba(176, 107, 255, 0.3);
 }
 
+@media (max-width: 1024px) {
+  .container {
+    padding: 40px 30px;
+    margin-top: 60px;
+  }
+
+  .image {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+}
+
 @media (max-width: 768px) {
+  .container {
+    padding: 30px 20px;
+    margin-top: 50px;
+  }
+
+  .image {
+    width: 100%;
+    height: 280px;
+  }
+
+  .content {
+    gap: 35px;
+  }
+
+  .textContent {
+    padding-top: 30px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .description {
+    font-size: 15px;
+    margin-bottom: 25px;
+  }
+
+  .instructionsList {
+    font-size: 15px;
+  }
+
+  .startButton {
+    padding: 12px 40px;
+    font-size: 15px;
+    display: block;
+    text-align: center;
+    width: fit-content;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 25px 16px;
+    margin-top: 40px;
+  }
+
+  .breadcrumbs {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  .image {
+    width: 100%;
+    height: 200px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
+
+  .textContent {
+    padding-top: 25px;
+  }
+
+  .title {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  .timeBadge {
+    font-size: 14px;
+  }
+
+  .description {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+
+  .instructionsList {
+    font-size: 14px;
+    padding-left: 1rem;
+    line-height: 1.5;
+  }
+
+  .sublist {
+    font-size: 13px;
+    padding-left: 1rem;
+  }
+
+  .startButton {
+    padding: 12px 50px;
+    font-size: 14px;
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 432px) {
+  .container {
+    padding: 20px 12px;
+    margin-top: 30px;
+  }
+
+  .breadcrumbs {
+    font-size: 12px;
+    margin-bottom: 15px;
+  }
+
+  .image {
+    height: 200px;
+    width: 100%;
+    border-radius: 6px;
+  }
+
+  .title {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .timeBadge {
+    font-size: 13px;
+  }
+
+  .description {
+    font-size: 13px;
+  }
+
+  .instructionsList {
+    font-size: 13px;
+  }
+
+  .sublist {
+    font-size: 12px;
+  }
+
+  .startButton {
+    padding: 11px 30px;
+    font-size: 13px;
+    max-width: 40%;
+  }
+}
+
+@media (max-width: 320px) {
+  .container {
+    padding: 15px 10px;
+  }
+
+  .image {
+    height: 150px;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+
+  .timeBadge {
+    font-size: 12px;
+  }
+
+  .description,
+  .instructionsList {
+    font-size: 12px;
+  }
+
+  .sublist {
+    font-size: 11px;
+  }
+
+  .startButton {
+    padding: 10px 25px;
+    font-size: 12px;
+    max-width: 240px;
+  }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
   .container {
     padding: 20px 15px;
   }
 
-  .content {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  .imagePlaceholder {
+  .image {
     height: 200px;
-    font-size: 20px;
   }
 
-  .title {
-    font-size: 28px;
+  .content {
+    display: flex;
+    flex-direction: column;
   }
 
-  .description {
-    font-size: 16px;
-  }
-
-  .startButton {
-    width: 100%;
-    text-align: center;
+  .textContent {
+    padding-top: 20px;
   }
 }

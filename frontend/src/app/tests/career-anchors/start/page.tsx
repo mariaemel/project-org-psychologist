@@ -222,10 +222,14 @@ export default function CareerAnchorsTestPage() {
               className={styles.progressFill}
               style={{ width: `${progress}%` }}
             >
-              <div style={{marginLeft: '8px', paddingTop: '2px', color: 'white'}}>
-              {currentQuestion.progress?.index || currentQuestionIndex} из {currentQuestion.progress?.total || 41}
+              <div style={{marginLeft: '15px', paddingTop: '2px', color: 'white'}}>
+                {currentQuestion.progress?.index || currentQuestionIndex} из {currentQuestion.progress?.total || 12}
               </div>
             </div>
+          </div>
+
+          <div className={styles.progressText}>
+            {currentQuestion.progress?.index || currentQuestionIndex} из {currentQuestion.progress?.total || 12}
           </div>
         </div>
 

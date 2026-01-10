@@ -3,12 +3,43 @@
   margin: 0 auto;
   padding: 60px 20px;
   margin-top: 80px;
+
+  @media (max-width: 768px) {
+    padding: 40px 16px;
+    margin-top: 60px;
+  }
+
+  @media (max-width: 432px) {
+    padding: 24px 12px;
+    margin-top: 50px;
+  }
+
+  @media (max-width: 360px) {
+    padding: 20px 10px;
+    margin-top: 40px;
+  }
 }
 
 .breadcrumbs {
   font-size: 14px;
   color: #666;
   margin-bottom: 30px;
+  line-height: 1.4;
+
+  @media (max-width: 768px) {
+    font-size: 13px;
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 432px) {
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 360px) {
+    font-size: 11px;
+    margin-bottom: 16px;
+  }
 }
 
 .breadcrumbs a {
@@ -20,22 +51,66 @@
   text-decoration: underline;
 }
 
+.content {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  align-items: flex-start;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  @media (max-width: 432px) {
+    gap: 24px;
+  }
+
+  @media (max-width: 360px) {
+    gap: 20px;
+  }
+}
+
 .image {
   width: 1155px;
   height: 410px;
   background-color: #D9D9D9;
   box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-}
+  object-fit: cover;
+  border-radius: 8px;
 
-.content {
-  display: block;
-  grid-template-columns: 1fr 1fr;
-  gap: 50px;
-  align-items: start;
+  @media (max-width: 1200px) {
+    width: 100%;
+    height: 350px;
+  }
+
+  @media (max-width: 992px) {
+    height: 300px;
+  }
+
+  @media (max-width: 768px) {
+    height: 250px;
+    order: 1;
+  }
+
+  @media (max-width: 432px) {
+    height: 200px;
+    width: 100%;
+    border-radius: 6px;
+  }
+
+  @media (max-width: 360px) {
+    height: 180px;
+  }
 }
 
 .textContent {
   padding-top: 50px;
+
+  @media (max-width: 768px) {
+    padding-top: 0;
+    order: 1;
+  }
 }
 
 .title {
@@ -44,16 +119,53 @@
   margin-bottom: 16px;
   line-height: 1.2;
   font-weight: 600;
+
+  @media (max-width: 768px) {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  @media (max-width: 432px) {
+    font-size: 22px;
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+
+  @media (max-width: 360px) {
+    font-size: 20px;
+  }
 }
 
 .meta {
   margin-bottom: 24px;
+
+  @media (max-width: 768px) {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 432px) {
+    margin-bottom: 16px;
+  }
 }
 
 .timeBadge {
   color: #B3B3B3;
   padding: 6px 0px;
   font-size: 16px;
+
+  @media (max-width: 768px) {
+    font-size: 15px;
+  }
+
+  @media (max-width: 432px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 360px) {
+    font-size: 13px;
+  }
 }
 
 .description {
@@ -61,52 +173,31 @@
   line-height: 1.6;
   color: #555;
   margin-bottom: 30px;
-}
+  text-align: justify;
 
-.features {
-  background: #f8f9ff;
-  padding: 24px;
-  border-radius: 12px;
-  margin-bottom: 30px;
-}
+  @media (max-width: 768px) {
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 24px;
+  }
 
-.featuresTitle {
-  font-size: 20px;
-  color: #333;
-  margin-bottom: 16px;
-}
+  @media (max-width: 432px) {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
 
-.featuresList {
-  color: #555;
-  line-height: 1.6;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.featuresList li {
-  margin-bottom: 8px;
-  position: relative;
-  padding-left: 20px;
-}
-
-.featuresList li:before {
-  content: '•';
-  color: #625ebe;
-  font-weight: bold;
-  position: absolute;
-  left: 0;
-}
-
-.featuresList li:last-child {
-  margin-bottom: 0;
+  @media (max-width: 360px) {
+    font-size: 13px;
+    margin-bottom: 18px;
+  }
 }
 
 .startButton {
   display: inline-block;
   background: #575799;
   color: white;
-  padding: 10px 60px;
+  padding: 12px 60px;
   border-radius: 5px;
   text-decoration: none;
   font-size: 16px;
@@ -114,6 +205,28 @@
   transition: all 0.3s ease;
   border: none;
   cursor: pointer;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 12px 40px;
+    font-size: 15px;
+  }
+
+  @media (max-width: 432px) {
+    max-width: 40%;
+    padding: 14px 30px;
+    font-size: 14px;
+    border-radius: 4px;
+  }
+
+  @media (max-width: 360px) {
+    padding: 12px 24px;
+    font-size: 13px;
+  }
 }
 
 .startButton:hover {
@@ -122,31 +235,71 @@
   box-shadow: 0 4px 15px rgba(176, 107, 255, 0.3);
 }
 
+.buttonWrapper {
+  @media (max-width: 768px) {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+}
+
 @media (max-width: 768px) {
-  .container {
-    padding: 20px 15px;
-  }
-
-  .content {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  .imagePlaceholder {
-    height: 200px;
-    font-size: 20px;
-  }
-
-  .title {
-    font-size: 28px;
+  .breadcrumbs {
+    word-break: break-word;
   }
 
   .description {
-    font-size: 16px;
+    hyphens: auto;
+  }
+}
+
+@media (max-width: 320px) {
+  .container {
+    padding: 16px 8px;
+    margin-top: 30px;
+  }
+
+  .image {
+    height: 150px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .description {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .timeBadge {
+    font-size: 12px;
   }
 
   .startButton {
+    padding: 10px 20px;
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .image {
     width: 100%;
-    text-align: center;
+    height: 300px;
+  }
+
+  .textContent {
+    padding-top: 20px;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .startButton:active {
+    transform: scale(0.98);
+    background: #4d4a83;
+  }
+
+  .breadcrumbs a:active {
+    opacity: 0.7;
   }
 }

@@ -27,6 +27,10 @@
 
 .contacts {
   margin-left: 100px;
+
+  @media (max-width: 432px) {
+    margin-top: -232px;
+  }
 }
 
 .contacts h4 {
@@ -35,7 +39,7 @@
   font-size: 18px;
   color: #ffffff;
 
-  @media (max-width: 427px){
+  @media (max-width: 432px){
     font-size: 16px;
   }
 }
@@ -49,7 +53,7 @@
 .sections li {
   margin-bottom: 0.5rem;
 
-  @media (max-width: 427px){
+  @media (max-width: 432px){
     font-size: 14px;
   }
 }
@@ -69,7 +73,7 @@
   margin: 0.5rem 0;
   color: #ffffff;
 
-  @media (max-width: 427px){
+  @media (max-width: 432px){
     font-size: 14px;
   }
 }

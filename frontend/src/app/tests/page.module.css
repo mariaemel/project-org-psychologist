@@ -1,13 +1,37 @@
 .pageBackground {
   background: url('/service.png') no-repeat;
   width: 100%;
-  padding: 20px 20px;
+  padding: 20px;
+
+  @media (max-width: 768px) {
+    background: white;
+    padding: 16px;
+  }
+
+  @media (max-width: 432px) {
+    padding: 12px;
+  }
 }
 
 .testsContainer {
   max-width: 1180px;
   margin: 64px auto;
   padding: 40px 20px;
+
+  @media (max-width: 1024px) {
+    margin: 40px auto;
+    padding: 30px 16px;
+  }
+
+  @media (max-width: 768px) {
+    margin: 30px auto;
+    padding: 20px 12px;
+  }
+
+  @media (max-width: 432px) {
+    margin: 20px auto;
+    padding: 16px 8px;
+  }
 }
 
 .testsTitle {
@@ -16,12 +40,40 @@
   color: #9D9DCC;
   font-weight: 800;
   width: 474px;
+
+  @media (max-width: 1024px) {
+    font-size: 32px;
+    width: 100%;
+    max-width: 474px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 28px;
+    margin-bottom: 12px;
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  @media (max-width: 432px) {
+    font-size: 24px;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  @media (max-width: 360px) {
+    font-size: 22px;
+  }
 }
 
 .tests {
   display: flex;
   align-items: flex-start;
   position: relative;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .vectorBackground {
@@ -35,6 +87,31 @@
   background-repeat: no-repeat;
   background-size: contain;
   z-index: 1;
+
+  @media (max-width: 1024px) {
+    width: 350px;
+    height: 175px;
+    left: 20%;
+  }
+
+  @media (max-width: 768px) {
+    position: relative;
+    left: 0;
+    top: 0;
+    transform: none;
+    width: 300px;
+    height: 150px;
+    margin: 20px auto;
+    order: 2;
+    background-size: 0;
+  }
+
+  @media (max-width: 432px) {
+    width: 250px;
+    height: 125px;
+    margin: 16px auto;
+    background-size: 0;
+  }
 }
 
 .testsSubtitle {
@@ -46,22 +123,100 @@
   margin-top: 50px;
   text-align: justify;
   z-index: 2;
+
+  @media (max-width: 1024px) {
+    width: 350px;
+    margin-left: 100px;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    margin: 0;
+    margin-top: 0;
+    text-align: center;
+    order: 1;
+    padding: 0 20px;
+  }
+
+  @media (max-width: 432px) {
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 10px 12px;
+  }
+
+  @media (max-width: 360px) {
+    font-size: 13px;
+    padding: 0 8px;
+  }
 }
 
-.text{
+.text {
   display: flex;
   margin-bottom: 50px;
   width: 1000px;
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    max-width: 1000px;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  @media (max-width: 432px) {
+    margin-bottom: 30px;
+  }
 }
 
 .testsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 30px;
+  justify-items: center;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 432px) {
+    gap: 16px;
+    width: 100%;
+    margin-top: -120px;
+  }
 }
 
 .testLink {
   text-decoration: none;
+  display: block;
+  width: 100%;
+
+  @media (min-width: 601px) and (max-width: 768px) {
+    max-width: 280px;
+  }
+
+  @media (max-width: 600px) {
+    max-width: 100%;
+  }
 }
 
 .testCard {
@@ -73,14 +228,45 @@
   cursor: pointer;
   height: 100%;
   width: 375px;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 1200px) {
+    width: 350px;
+  }
+
+  @media (max-width: 1024px) {
+    width: 320px;
+  }
+
+  @media (max-width: 900px) {
+    width: 300px;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 600px) {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  @media (max-width: 432px) {
+    border-radius: 4px;
+  }
 }
 
 .testCard:hover {
   border: solid 1px #57579980;
 }
+
 .testCard:hover .testTitle {
   font-weight: 900;
 }
+
 .testImage {
   height: 260px;
   background-size: cover;
@@ -92,6 +278,14 @@
   position: relative;
   margin: 0 5px;
   border-radius: 5px;
+
+  @media (max-width: 1024px) {
+    height: 220px;
+  }
+
+  @media (max-width: 768px) {
+    height: 200px;
+  }
 }
 
 .testContent {
@@ -104,11 +298,20 @@
   z-index: 1;
   background: white;
   box-shadow: 1px -25px 64.3px rgba(157, 157, 204, 0.8);
+
+  @media (max-width: 1024px) {
+    height: calc(100% - 220px);
+    padding: 20px;
+  }
+
+  @media (max-width: 768px) {
+    height: calc(100% - 200px);
+    padding: 18px;
+  }
 }
 
 .testCard:hover .testContent {
-  box-shadow:
-    1px -25px 64.3px rgba(157, 157, 204, 0.8);
+  box-shadow: 1px -25px 64.3px rgba(157, 157, 204, 0.8);
 }
 
 .testTitle {
@@ -116,6 +319,16 @@
   font-weight: 700;
   margin-bottom: 12px;
   color: #9D9DCC;
+  line-height: 1.3;
+
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
 }
 
 .testDescription {
@@ -123,6 +336,27 @@
   line-height: 1.5;
   margin-bottom: 16px;
   width: 300px;
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 13px;
+    line-height: 1.4;
+    margin-bottom: 14px;
+  }
+
+  @media (max-width: 432px) {
+    font-size: 12px;
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 360px) {
+    font-size: 11px;
+  }
 }
 
 .testMeta {
@@ -136,4 +370,52 @@
   padding: 4px 0px;
   font-size: 14px;
   color: #B3B3B3;
+
+  @media (max-width: 768px) {
+    font-size: 13px;
+  }
+
+
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .testCard:active {
+    transform: scale(0.98);
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+  }
+
+  .testCard:active .testContent {
+    box-shadow: 0px -15px 40px rgba(157, 157, 204, 0.6);
+  }
+}
+
+@media (max-width: 320px) {
+  .testsContainer {
+    padding: 12px 4px;
+  }
+
+  .testCard {
+    max-width: 290px;
+  }
+
+  .testImage {
+    height: 140px;
+  }
+
+  .testContent {
+    min-height: 140px;
+    padding: 12px;
+  }
+
+  .testTitle {
+    font-size: 14px;
+  }
+
+  .testDescription {
+    font-size: 10px;
+  }
+
+  .testTime {
+    font-size: 10px;
+  }
 }

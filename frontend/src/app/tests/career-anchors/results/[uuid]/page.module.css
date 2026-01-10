@@ -191,89 +191,284 @@
   transform: translateY(-2px);
 }
 
+.mobileChartSection {
+  display: none;
+}
+
 @media (max-width: 1024px) {
-  .scoresGrid {
-    grid-template-columns: repeat(2, 1fr);
+  .container {
+    padding: 90px 15px 40px;
+  }
+
+  .infoColumns {
+    margin-left: 30px;
+  }
+
+  .anchorCard {
+    width: 400px;
+  }
+
+  .messageCard {
+    width: 350px;
+    margin-left: 30px;
   }
 }
 
 @media (max-width: 768px) {
   .container {
-    padding: 90px 15px 40px;
+    padding: 80px 12px 30px;
+    margin-top: 60px;
   }
 
-  .chartTitle {
-    font-size: 22px;
+  .chartSection {
+    display: none;
   }
 
-  .chartContainer {
-    padding: 1.5rem 1rem 1.5rem 1.5rem;
+  .mobileChartSection {
+    display: block;
+    margin-bottom: 30px;
   }
 
-  .chartWrapper {
-    height: 400px;
+  .mobileChartContainer {
+    padding: 20px 15px;
+  }
+
+  .mobileChartItem {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+  }
+
+  .mobileChartHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .mobileChartName {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    flex: 1;
+  }
+
+  .mobileChartValue {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333333;
+    margin-left: 15px;
+  }
+
+  .mobileProgressBar {
+    height: 24px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .mobileProgressFill {
+    height: 100%;
+    border-radius: 12px;
+    background-color: #B2FFCC;
+    transition: width 0.5s ease;
+  }
+
+  .mobileProgressFill.primary {
+    background-color: #92A5FA;
+  }
+
+  .mobileProgressFill.secondary {
+    background-color: #DCE3FF;
+  }
+
+  .mobileProgressFill.equal {
+    background-color: #92A5FA;
   }
 
   .infoColumns {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+    margin-left: 0;
+    margin-bottom: 2rem;
+  }
+
+  .column {
+    width: 100%;
   }
 
   .anchorCard {
-    padding: 1.5rem;
+    width: 100%;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 0;
+  }
+
+  .anchorHeader {
+    margin-bottom: 1rem;
   }
 
   .anchorTitle {
-    font-size: 18px;
+    font-size: 16px;
+    margin-bottom: 0.8rem;
   }
 
   .anchorName {
-    font-size: 20px;
-  }
-
-  .scoreValue {
     font-size: 24px;
+    margin-bottom: 1.5rem;
   }
 
-  .scoresGrid {
-    grid-template-columns: 1fr;
+  .anchorDescription {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .specialMessage {
+    margin-bottom: 2rem;
+  }
+
+  .messageCard {
+    width: 100%;
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .messageText p {
+    font-size: 15px;
+    line-height: 1.5;
   }
 
   .actions {
     flex-direction: column;
     align-items: center;
+    gap: 12px;
+    padding: 1.5rem 0;
+    margin-top: 1.5rem;
   }
 
   .restartBtn, .saveBtn {
     width: 100%;
-    max-width: 300px;
+    max-width: 280px;
+    height: 48px;
+    font-size: 15px;
   }
 }
 
 @media (max-width: 480px) {
-  .chartWrapper {
-    height: 350px;
+  .container {
+    padding: 70px 10px 25px;
+    margin-top: 50px;
   }
 
-  .chartTitle {
-    font-size: 20px;
+  .mobileChartContainer {
+    padding: 15px 10px;
   }
 
-  .anchorTitle {
+  .mobileChartItem {
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+  }
+
+  .mobileChartName {
+    font-size: 15px;
+  }
+
+  .mobileChartValue {
     font-size: 16px;
   }
 
+  .mobileProgressBar {
+    height: 20px;
+  }
+
+  .anchorCard {
+    padding: 18px 15px;
+  }
+
+  .anchorTitle {
+    font-size: 15px;
+  }
+
   .anchorName {
-    font-size: 18px;
-  }
-
-  .scoreValue {
     font-size: 22px;
+    margin-bottom: 1.2rem;
   }
 
-  .scoreBadge {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
+  .anchorDescription {
+    font-size: 14px;
+  }
+
+  .messageCard {
+    padding: 18px 15px;
+  }
+
+  .messageText p {
+    font-size: 14px;
+  }
+
+  .restartBtn, .saveBtn {
+    max-width: 260px;
+    height: 46px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 320px) {
+  .container {
+    padding: 60px 8px 20px;
+  }
+
+  .mobileChartName {
+    font-size: 14px;
+  }
+
+  .mobileChartValue {
+    font-size: 15px;
+  }
+
+  .mobileProgressBar {
+    height: 18px;
+  }
+
+  .anchorCard {
+    padding: 15px 12px;
+  }
+
+  .anchorTitle {
+    font-size: 14px;
+  }
+
+  .anchorName {
+    font-size: 20px;
+  }
+
+  .anchorDescription {
+    font-size: 13px;
+  }
+
+  .messageCard {
+    padding: 15px 12px;
+  }
+
+  .messageText p {
+    font-size: 13px;
+  }
+
+  .restartBtn, .saveBtn {
+    max-width: 240px;
+    height: 44px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+  .infoColumns {
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+
+  .mobileChartContainer {
+    max-height: 300px;
+    overflow-y: auto;
   }
 }

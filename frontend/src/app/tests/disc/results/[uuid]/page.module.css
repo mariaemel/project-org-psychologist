@@ -1,0 +1,925 @@
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 80px;
+  font-family: 'Inter', sans-serif;
+  color: #333;
+}
+
+.main {
+  padding: 200px 0;
+}
+
+.diagramsSection {
+  display: flex;
+  justify-content: space-between;
+  gap: -20px;
+}
+
+.workDiagram,
+.stressDiagram {
+  flex: 1;
+  margin-right: -160px;
+}
+
+.stressDiagram {
+  margin-right: 0;
+}
+
+.diagramTitleWork {
+  font-size: 16px;
+  font-weight: 400;
+  color: #333333;
+  margin-bottom: 40px;
+  width: 140px;
+  line-height: 1.2;
+  text-align: end;
+  margin-left: 122px;
+}
+
+.diagramTitleStress {
+  font-size: 16px;
+  font-weight: 400;
+  color: #333333;
+  margin-bottom: 40px;
+  margin-left: 120px;
+}
+
+.stresstype {
+  color:#707CCD;
+  font-weight: 700;
+  font-size: 64px;
+  margin-left: 155px;
+  margin-top: -40px;
+}
+
+.worktype {
+  color:#707CCD;
+  font-weight: 700;
+  font-size: 64px;
+  margin-left: 147px;
+  margin-top: -55px;
+}
+
+.chartBlock {
+  margin: 0 130px 120px;
+  width: 450px;
+  height: 450px;
+}
+
+.singleDiagramSection .chartBlock {
+  width: 450px;
+  height: 450px;
+  margin: 0 130px 120px;
+}
+
+.singleDiagramSection .chartSvg {
+  width: 100%;
+  height: 110%;
+}
+
+.chartSvg {
+  width: 100%;
+  height: 110%;
+  margin-left: 0px;
+}
+
+.dimLetter {
+  font-size: 15px;
+  font-weight: 400;
+  fill: #333;
+  font-family: 'Inter', sans-serif;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  text-orientation: mixed;
+}
+
+.dimValue {
+  font-size: 14px;
+  font-weight: 400;
+  fill: #666666;
+  font-family: 'Inter', sans-serif;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+.chartTitle {
+  margin-top: -60px;
+  font-size: 16px;
+  text-align: center;
+  font-weight: 400;
+  color: #333;
+}
+
+.typeDescriptionWork {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  margin: 20px 0 12px;
+  width: 225px;
+  margin-top: -99px;
+  margin-left: 370px ;
+  margin-bottom: 50px;
+}
+
+.typeDescriptionStress {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  margin: 20px 0 12px;
+  width: 225px;
+  margin-top: -92px;
+  margin-left: 350px ;
+  margin-bottom: 52px;
+}
+
+.typeFullDescription {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333333;
+  width: 470px;
+  margin-left: 140px;
+}
+
+.typeFullDescription1 {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333333;
+  width: 465px;
+  margin-left: 120px;
+}
+
+.zeroMarker {
+  font-size: 14px;
+  font-weight: 400;
+  fill: #666666;
+  font-family: 'Inter', sans-serif;
+}
+
+.recommendationsSection {
+  padding: 60px;
+}
+
+.recommendationsTitle {
+  font-size: 32px;
+  font-weight: 800;
+  color: #575799;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.recommendationsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-left: 90px;
+}
+
+.workRecommendations,
+.stressRecommendations {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.recommendationItem {
+  padding: 5px;
+  font-size: 16px;
+  line-height: 1.4;
+  width: 450px;
+}
+
+.stressRecList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: left;
+  padding: 2rem 0;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.contactAction {
+  width: 1100px;
+  justify-content:end;
+  display: flex;
+  margin-top: -82px;
+}
+
+.restartBtn, .saveBtn, .contactBtn {
+  padding: 12px 24px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.2s;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 220px;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+.restartBtn {
+  background: #9D9DCC;
+  color: white;
+  border: 2px solid #9D9DCC;
+}
+
+.saveBtn {
+  background: #575799;
+  color: white;
+  border: 2px solid #575799;
+}
+
+.contactBtn {
+  background: #575799;
+  color: white;
+  border: 2px solid #575799;
+}
+
+.restartBtn:hover {
+  background: #8888b1;
+  border-color: #8888b1;
+  transform: translateY(-1px);
+}
+
+.saveBtn:hover {
+  background: #6969b6;
+  border-color: #6969b6;
+  transform: translateY(-1px);
+}
+
+.contactBtn:hover {
+  background: #6969b6;
+  border-color: #6969b6;
+  transform: translateY(-1px);
+}
+
+.dimD {
+  stroke: #FFE88C;
+}
+
+.dimI {
+  stroke: #6CCBFF;
+}
+
+.dimS {
+  stroke: #8CFFBE;
+}
+
+.dimC {
+  stroke: #707CCD;
+}
+.typeD {
+  color: #FFE88C;
+  font-weight: 700;
+}
+
+.typeI {
+  color: #6CCBFF;
+  font-weight: 700;
+}
+
+.typeS {
+  color: #8CFFBE;
+  font-weight: 700;
+}
+
+.typeC {
+  color: #707CCD;
+  font-weight: 700;
+}
+
+.loading {
+  padding: 80px;
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+}
+
+.error {
+  padding: 80px;
+  text-align: center;
+}
+
+.error h3 {
+  color: #dc3545;
+  margin-bottom: 16px;
+}
+
+.error p {
+  color: #666;
+}
+
+.singleDiagramSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-bottom: 60px;
+  align-items: start;
+}
+
+.diagramColumn {
+  text-align: center;
+}
+
+.diagram1 {
+  width: 300px;
+}
+
+.textColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  text-align: left;
+}
+
+.singleDiagramTitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  margin: 20px 0 15px;
+  width: 110px;
+  text-align: end;
+}
+
+.typeSubtitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333333;
+  margin-bottom: 40px;
+  text-align: center;
+  line-height: 1.2;
+  width: 200px;
+  margin-left: 230px;
+  margin-top: -101px;
+}
+
+.type {
+  font-weight: 700;
+  font-size: 64px;
+  margin-left: 140px;
+  margin-top: -55px;
+}
+
+.descriptionBlock {
+  width: 450px;
+}
+
+.descriptionBlock h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #9D9DCC;
+  margin-bottom: 12px;
+  text-transform: lowercase;
+}
+
+.descriptionBlock p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333333;
+  margin: 0;
+}
+
+.singleRecommendationsGrid {
+  display: grid;
+  margin-left: 100px;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.doubleRecommendationsGrid {
+  display: grid;
+  margin-left: 90px;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.recommendationColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 40px;
+  }
+
+  .main {
+    padding: 120px 0;
+  }
+
+  .diagramsSection {
+    flex-direction: column;
+    gap: 60px;
+  }
+
+  .workDiagram,
+  .stressDiagram {
+    margin-right: 0;
+    flex: none;
+    width: 100%;
+  }
+
+  .chartBlock {
+    margin: 0 auto 60px;
+    width: 400px;
+    height: 400px;
+  }
+
+  .singleDiagramSection {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .singleDiagramSection .chartBlock {
+    width: 400px;
+    height: 400px;
+    margin: 0 auto 40px;
+  }
+
+  .typeFullDescription,
+  .typeFullDescription1 {
+    width: 100%;
+    margin-left: 0;
+    padding: 0 20px;
+  }
+
+  .typeDescriptionWork,
+  .typeDescriptionStress {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  .recommendationsSection {
+    padding: 40px 20px;
+  }
+
+  .contactAction {
+    width: 100%;
+    justify-content: center;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .main {
+    padding: 80px 0;
+  }
+
+  .chartBlock {
+    width: 350px;
+    height: 350px;
+  }
+
+  .singleDiagramSection .chartBlock {
+    width: 350px;
+    height: 350px;
+  }
+
+  .chartSvg {
+    width: 100%;
+    height: auto;
+  }
+
+  .diagramTitleWork,
+  .diagramTitleStress {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+
+  .worktype,
+  .stresstype {
+    font-size: 48px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    display: block;
+  }
+
+  .typeDescriptionWork {
+    margin-top: -80px;
+    margin-bottom: 30px;
+  }
+
+  .typeDescriptionStress {
+    margin-top: -75px;
+    margin-bottom: 30px;
+  }
+
+  .recommendationsTitle {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  .singleRecommendationsGrid,
+  .doubleRecommendationsGrid {
+    margin-left: 0;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .recommendationItem {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .actions {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .restartBtn,
+  .saveBtn,
+  .contactBtn {
+    width: 280px;
+  }
+
+  .contactAction {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .main {
+    padding: 60px 0;
+  }
+
+  .chartBlock {
+    width: 300px;
+    height: 300px;
+  }
+
+  .singleDiagramSection .chartBlock {
+    width: 400px;
+    height: 400px;
+  }
+
+  .dimLetter {
+    font-size: 13px;
+  }
+
+  .dimValue {
+    font-size: 12px;
+  }
+
+  .zeroMarker {
+    font-size: 12px;
+  }
+
+  .chartTitle {
+    font-size: 14px;
+    margin-top: -40px;
+  }
+
+  .worktype,
+  .stresstype {
+    margin-left: 160px;
+    margin-top: -45px;
+    font-size: 50px;
+  }
+
+  .type,
+  .stress {
+    font-size: 50px;
+    margin-top: -50px;
+  }
+
+  .typeSubtitle {
+    margin-top: -95px;
+    margin-left: 215px;
+    font-size: 16px;
+    width: 180px;
+    text-align:left;
+  }
+
+  .typeFullDescription,
+  .typeFullDescription1 {
+    font-size: 14px;
+  }
+
+  .typeDescriptionWork,
+  .typeDescriptionStress {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+
+  .diagramTitleWork,
+  .diagramTitleStress {
+    font-size: 14px;
+    margin-bottom: 20px;
+    margin-top: -30px;
+    width: 150px;
+    text-align: end;
+    margin-left: -20px;
+  }
+
+  .typeDescriptionWork,
+  .typeDescriptionStress {
+    width: 200px;
+    text-align: start;
+    margin-top: -70px;
+    margin-left: 215px;
+  }
+
+  .diagramTitleStress {
+    font-size: 14px;
+    margin-bottom: 0px;
+  }
+
+  .descriptionBlock {
+    width: 100%;
+    max-width: 400px;
+    padding: 0 10px;
+  }
+
+  .descriptionBlock h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .descriptionBlock p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .recommendationsTitle {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .recommendationItem {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .restartBtn,
+  .saveBtn,
+  .contactBtn {
+    width: 260px;
+    font-size: 14px;
+    height: 46px;
+  }
+
+}
+
+@media (max-width: 377px) {
+  .container {
+    padding: 0 12px;
+  }
+
+  .main {
+    padding: 50px 0;
+  }
+
+  .chartBlock {
+    width: 320px;
+    height: 320px;
+  }
+
+  .singleDiagramSection .chartBlock {
+    width: 350px;
+    height: 350px;
+  }
+
+  .singleDiagramTitle {
+    margin-top: -10px;
+  }
+
+  .dimLetter {
+    font-size: 12px;
+  }
+
+  .dimValue {
+    font-size: 11px;
+  }
+
+  .worktype,
+  .stresstype {
+    margin-left: 160px;
+    margin-top: -45px;
+    font-size: 50px;
+  }
+
+  .typeDescriptionWork {
+    margin-top: -75px;
+    margin-bottom: 25px;
+    margin-left: 210px;
+    width: 150px;
+  }
+
+  .typeDescriptionStress {
+    margin-top: -50px;
+    margin-bottom: 25px;
+    width: 150px;
+  }
+
+  .typeFullDescription,
+  .typeFullDescription1 {
+    font-size: 13px;
+  }
+
+  .type {
+    font-size: 50px;
+    margin-top: -50px;
+  }
+
+  .typeSubtitle {
+    margin-top: -95px;
+    margin-left: 195px;
+    font-size: 16px;
+    width: 150px;
+    text-align:left;
+  }
+
+  .recommendationsSection {
+    padding: 30px 10px;
+  }
+
+  .recommendationItem {
+    font-size: 13px;
+  }
+
+  .descriptionBlock {
+    max-width: 350px;
+  }
+
+  .descriptionBlock h3 {
+    font-size: 16px;
+  }
+  .descriptionBlock p {
+    font-size: 13px;
+  }
+
+  .restartBtn,
+  .saveBtn,
+  .contactBtn {
+    width: 240px;
+    font-size: 13px;
+    height: 44px;
+  }
+}
+
+@media (max-width: 320px) {
+  .container {
+    padding: 0 10px;
+  }
+
+  .main {
+    padding: 40px 0;
+  }
+
+  .chartBlock {
+    width: 260px;
+    height: 260px;
+  }
+
+  .singleDiagramSection .chartBlock {
+    width: 260px;
+    height: 260px;
+  }
+
+  .dimLetter {
+    font-size: 11px;
+  }
+
+  .dimValue {
+    font-size: 10px;
+  }
+
+  .zeroMarker {
+    font-size: 10px;
+  }
+
+  .worktype {
+    margin-left: 160px;
+    margin-top: -38px;
+    font-size: 36px;
+  }
+
+  .stresstype{
+    margin-left: 160px;
+    margin-top: -25px;
+    font-size: 30px;
+  }
+
+  .type {
+    font-size: 45px;
+    margin-top: -45px;
+  }
+
+  .typeSubtitle {
+    margin-top: -95px;
+    margin-left: 195px;
+    font-size: 14px;
+    width: 100px;
+    text-align:left;
+  }
+
+  .chartTitle {
+    font-size: 13px;
+    margin-top: -30px;
+  }
+
+  .typeDescriptionWork {
+    font-size: 13px;
+    margin-top: -60px;
+    margin-left: 170px;
+    width: 150px;
+  }
+
+  .typeDescriptionStress {
+    font-size: 13px;
+    margin-top: -40px;
+    margin-left: 170px;
+  }
+
+  .diagramTitleWork,
+  .diagramTitleStress {
+    font-size: 13px;
+  }
+
+  .recommendationsTitle {
+    font-size: 22px;
+  }
+
+  .recommendationItem {
+    font-size: 12px;
+  }
+
+  .restartBtn,
+  .saveBtn,
+  .contactBtn {
+    width: 220px;
+    font-size: 12px;
+    height: 42px;
+  }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+  .diagramsSection {
+    flex-direction: row;
+    gap: 30px;
+  }
+
+  .chartBlock {
+    width: 280px;
+    height: 280px;
+  }
+
+  .singleDiagramSection {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+
+  .singleDiagramSection .chartBlock {
+    width: 280px;
+    height: 280px;
+  }
+
+  .typeFullDescription,
+  .typeFullDescription1 {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+@media (min-height: 800px) and (max-width: 768px) {
+  .main {
+    padding: 100px 0;
+  }
+
+  .chartBlock {
+    margin-bottom: 80px;
+  }
+
+  .singleDiagramSection .chartBlock {
+    margin-bottom: 60px;
+  }
+}

@@ -25,7 +25,7 @@
       padding: 40px 20px;
       min-height: 600px;
     }
-    @media (max-width: 427px) {
+    @media (max-width: 432px) {
       height: 400px;
     }
 }
@@ -156,7 +156,7 @@
   z-index: 1;
   pointer-events: none;
 
-  @media (max-width: 427px) {
+  @media (max-width: 432px) {
     max-width: 500px;
     width: 80%;
   }
@@ -207,7 +207,7 @@
     font-style: italic;
     max-width: 520px;
   }
-  @media (max-width: 427px) {
+  @media (max-width: 432px) {
     display: none;
   }
 }

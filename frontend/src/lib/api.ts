@@ -203,3 +203,13 @@ export async function fetchTestDetailCareer(slug: string): Promise<TestDetail> {
 
   return response.json();
 }
+
+export async function fetchTestDisc(slug: string): Promise<TestDetail> {
+  const response = await fetch(`${API_BASE_URL}/tests/${slug}`);
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch test data');
+  }
+
+  return response.json();
+}

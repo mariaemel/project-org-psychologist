@@ -17,8 +17,6 @@ import {
   FontSpec
 } from 'chart.js'
 import styles from './page.module.css'
-import { copyToClipboard } from "@/lib/clipboard";
-
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
@@ -31,7 +29,11 @@ interface Dimension {
   level: string
   explanation_md: string
 }
-
+interface AnchorConfig {
+  name: string;
+  description: string;
+  color: string;
+}
 interface ResultData {
   test: {
     slug: string
@@ -448,6 +450,69 @@ export default function CareerAnchorsResultPage() {
         </div>
       </div>
 
+      {/* мобильная версия диаграммы */}
+      <div className={styles.mobileChartSection}>
+        <div className={styles.mobileChartContainer}>
+          {sortedForChart.map((dimension, index) => {
+            let barColor;
+            if (displayCase === "case1") {
+              barColor = '#B2FFCC';
+            } else if (displayCase === "case2") {
+              if (dimension.score >= 5) {
+                const highScoreDimensions = result.dimensions.filter(dim => dim.score >= 5);
+                const scoreGroups: any = {};
+                highScoreDimensions.forEach(dim => {
+                  const roundedScore = dim.score.toFixed(1);
+                  scoreGroups[roundedScore] = (scoreGroups[roundedScore] || 0) + 1;
+                });
+
+                const duplicateScores = Object.keys(scoreGroups)
+                  .filter(score => scoreGroups[score] >= 2)
+                  .map(score => parseFloat(score));
+
+                if (duplicateScores.includes(dimension.score)) {
+                  barColor = '#92A5FA';
+                } else {
+                  barColor = '#B2FFCC';
+                }
+              } else {
+                barColor = '#B2FFCC';
+              }
+            } else if (displayCase === "case3") {
+              if (primary && dimension.code === primary.code) {
+                barColor = '#92A5FA';
+              } else if (secondary && dimension.code === secondary.code) {
+                barColor = '#DCE3FF';
+              } else {
+                barColor = '#B2FFCC';
+              }
+            }
+
+            return (
+              <div key={dimension.code} className={styles.mobileChartItem}>
+                <div className={styles.mobileChartHeader}>
+                  <div className={styles.mobileChartName}>
+                    {formatAnchorName(dimension.code)}
+                  </div>
+                  <div className={styles.mobileChartValue}>
+                    {dimension.score.toFixed(1)}
+                  </div>
+                </div>
+                <div className={styles.mobileProgressBar}>
+                  <div
+                    className={styles.mobileProgressFill}
+                    style={{
+                      width: `${(dimension.score / 10) * 100}%`,
+                      backgroundColor: barColor
+                    }}
+                  />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
       {/* нет якорей >= 5 */}
       {displayCase === "case1" && (
         <div className={styles.specialMessage}>
@@ -531,22 +596,173 @@ export default function CareerAnchorsResultPage() {
       )}
 
       <div className={styles.actions}>
-        <button
-          className={styles.saveBtn}
-          onClick={async () => {
-            const url = window.location.href;
-            const ok = await copyToClipboard(url);
+        <button className={styles.saveBtn} onClick={() => {
+          const currentUrl = window.location.href
 
-            if (ok) {
-              alert("Ссылка на результат скопирована в буфер обмена!");
-            } else {
-              window.prompt("Не получилось скопировать автоматически. Скопируйте вручную:", url);
+          const modal = document.createElement('div')
+          modal.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            font-family: 'Inter', sans-serif;
+          `
+
+          const modalContent = document.createElement('div')
+          modalContent.style.cssText = `
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+          `
+
+          const title = document.createElement('h3')
+          title.textContent = 'Копирование ссылки на результат'
+          title.style.cssText = `
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 18px;
+          `
+
+          const description = document.createElement('p')
+          description.textContent = 'Скопируйте ссылку ниже, чтобы сохранить результат теста:'
+          description.style.cssText = `
+            margin-bottom: 15px;
+            color: #666;
+            font-size: 14px;
+          `
+
+          const linkContainer = document.createElement('div')
+          linkContainer.style.cssText = `
+            display: flex;
+            margin-bottom: 25px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+          `
+
+          const linkInput = document.createElement('input')
+          linkInput.type = 'text'
+          linkInput.value = currentUrl
+          linkInput.readOnly = true
+          linkInput.style.cssText = `
+            flex-grow: 1;
+            padding: 10px 15px;
+            border: none;
+            font-size: 14px;
+            color: #333;
+            background-color: #f9f9f9;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          `
+
+          const copyButton = document.createElement('button')
+          copyButton.textContent = 'Копировать'
+          copyButton.style.cssText = `
+            background-color: #575799;
+            color: white;
+            border: none;
+            padding: 0 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+          `
+
+          copyButton.onmouseover = () => {
+            copyButton.style.backgroundColor = '#6969b6'
+          }
+          copyButton.onmouseout = () => {
+            copyButton.style.backgroundColor = '#575799'
+          }
+
+          copyButton.onclick = async () => {
+            try {
+              await navigator.clipboard.writeText(currentUrl)
+              const originalText = copyButton.textContent
+              copyButton.textContent = '✓ Скопировано!'
+              copyButton.style.backgroundColor = '#4CAF50'
+
+              setTimeout(() => {
+                copyButton.textContent = originalText
+                copyButton.style.backgroundColor = '#575799'
+              }, 2000)
+            } catch (err) {
+              console.error('Ошибка при копировании:', err)
+              copyButton.textContent = 'Ошибка!'
+              copyButton.style.backgroundColor = '#f44336'
+
+              setTimeout(() => {
+                copyButton.textContent = 'Копировать'
+                copyButton.style.backgroundColor = '#575799'
+              }, 2000)
             }
-          }}
-        >
+          }
+
+          const buttonContainer = document.createElement('div')
+          buttonContainer.style.cssText = `
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+          `
+
+          const closeButton = document.createElement('button')
+          closeButton.textContent = 'Закрыть'
+          closeButton.style.cssText = `
+            background-color: #9D9DCC;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+          `
+
+          closeButton.onmouseover = () => {
+            closeButton.style.backgroundColor = '#8888b1'
+          }
+          closeButton.onmouseout = () => {
+            closeButton.style.backgroundColor = '#9D9DCC'
+          }
+
+          closeButton.onclick = () => {
+            document.body.removeChild(modal)
+          }
+
+          linkContainer.appendChild(linkInput)
+          linkContainer.appendChild(copyButton)
+
+          buttonContainer.appendChild(closeButton)
+
+          modalContent.appendChild(title)
+          modalContent.appendChild(description)
+          modalContent.appendChild(linkContainer)
+          modalContent.appendChild(buttonContainer)
+
+          modal.appendChild(modalContent)
+          document.body.appendChild(modal)
+
+          modal.onclick = (e) => {
+            if (e.target === modal) {
+              document.body.removeChild(modal)
+            }
+          }
+
+          linkInput.select()
+        }}>
           Сохранить результат
         </button>
-
         <button className={styles.restartBtn} onClick={() => {
           window.location.href = result.actions.restart_url
         }}>

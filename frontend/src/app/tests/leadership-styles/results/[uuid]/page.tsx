@@ -14,8 +14,6 @@ import {
 } from 'chart.js'
 import styles from './page.module.css'
 
-
-
 ChartJS.register(ArcElement, Tooltip, Legend, Title)
 
 interface ResultFlags {
@@ -527,48 +525,6 @@ export default function ResultPage() {
     ? expressedStyles.slice(0, 2)
     : expressedStyles.slice(0, 1);
 
-  const copyUrlToClipboard = () => {
-    const currentUrl = window.location.href;
-  
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(currentUrl)
-        .then(() => {
-          alert('Ссылка скопирована в буфер обмена');
-        })
-        .catch(() => {
-          fallbackCopyTextToClipboard(currentUrl);
-        });
-    } else {
-      fallbackCopyTextToClipboard(currentUrl);
-    }
-  };
-  
-  const fallbackCopyTextToClipboard = (text: string) => {
-    const textArea = document.createElement('textarea');
-    textArea.value = text;
-    textArea.style.position = 'fixed';
-    textArea.style.left = '0';
-    textArea.style.top = '0';
-    textArea.style.opacity = '0';
-    
-    document.body.appendChild(textArea);
-    textArea.focus();
-    textArea.select();
-    
-    try {
-      const successful = document.execCommand('copy');
-      if (successful) {
-        alert('Ссылка скопирована в буфер обмена');
-      } else {
-        prompt('Скопируйте ссылку вручную:', text);
-      }
-    } catch (err) {
-      prompt('Скопируйте ссылку вручную:', text);
-    }
-    
-    document.body.removeChild(textArea);
-  };
-  
   return (
     <div className={styles.container}>
       {/* круговая диаграмма */}
@@ -724,13 +680,173 @@ export default function ResultPage() {
 
       {/* кнопки */}
       <div className={styles.actions}>
-        <button 
-          className={styles.saveBtn} 
-          onClick={copyUrlToClipboard}
-        >
+        <button className={styles.saveBtn} onClick={() => {
+          const currentUrl = window.location.href
+
+          const modal = document.createElement('div')
+          modal.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            font-family: 'Inter', sans-serif;
+          `
+
+          const modalContent = document.createElement('div')
+          modalContent.style.cssText = `
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+          `
+
+          const title = document.createElement('h3')
+          title.textContent = 'Копирование ссылки на результат'
+          title.style.cssText = `
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 18px;
+          `
+
+          const description = document.createElement('p')
+          description.textContent = 'Скопируйте ссылку ниже, чтобы сохранить результат теста:'
+          description.style.cssText = `
+            margin-bottom: 15px;
+            color: #666;
+            font-size: 14px;
+          `
+
+          const linkContainer = document.createElement('div')
+          linkContainer.style.cssText = `
+            display: flex;
+            margin-bottom: 25px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+          `
+
+          const linkInput = document.createElement('input')
+          linkInput.type = 'text'
+          linkInput.value = currentUrl
+          linkInput.readOnly = true
+          linkInput.style.cssText = `
+            flex-grow: 1;
+            padding: 10px 15px;
+            border: none;
+            font-size: 14px;
+            color: #333;
+            background-color: #f9f9f9;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          `
+
+          const copyButton = document.createElement('button')
+          copyButton.textContent = 'Копировать'
+          copyButton.style.cssText = `
+            background-color: #575799;
+            color: white;
+            border: none;
+            padding: 0 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+          `
+
+          copyButton.onmouseover = () => {
+            copyButton.style.backgroundColor = '#6969b6'
+          }
+          copyButton.onmouseout = () => {
+            copyButton.style.backgroundColor = '#575799'
+          }
+
+          copyButton.onclick = async () => {
+            try {
+              await navigator.clipboard.writeText(currentUrl)
+              const originalText = copyButton.textContent
+              copyButton.textContent = '✓ Скопировано!'
+              copyButton.style.backgroundColor = '#4CAF50'
+
+              setTimeout(() => {
+                copyButton.textContent = originalText
+                copyButton.style.backgroundColor = '#575799'
+              }, 2000)
+            } catch (err) {
+              console.error('Ошибка при копировании:', err)
+              copyButton.textContent = 'Ошибка!'
+              copyButton.style.backgroundColor = '#f44336'
+
+              setTimeout(() => {
+                copyButton.textContent = 'Копировать'
+                copyButton.style.backgroundColor = '#575799'
+              }, 2000)
+            }
+          }
+
+          const buttonContainer = document.createElement('div')
+          buttonContainer.style.cssText = `
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+          `
+
+          const closeButton = document.createElement('button')
+          closeButton.textContent = 'Закрыть'
+          closeButton.style.cssText = `
+            background-color: #9D9DCC;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+          `
+
+          closeButton.onmouseover = () => {
+            closeButton.style.backgroundColor = '#8888b1'
+          }
+          closeButton.onmouseout = () => {
+            closeButton.style.backgroundColor = '#9D9DCC'
+          }
+
+          closeButton.onclick = () => {
+            document.body.removeChild(modal)
+          }
+
+          linkContainer.appendChild(linkInput)
+          linkContainer.appendChild(copyButton)
+
+          buttonContainer.appendChild(closeButton)
+
+          modalContent.appendChild(title)
+          modalContent.appendChild(description)
+          modalContent.appendChild(linkContainer)
+          modalContent.appendChild(buttonContainer)
+
+          modal.appendChild(modalContent)
+          document.body.appendChild(modal)
+
+          modal.onclick = (e) => {
+            if (e.target === modal) {
+              document.body.removeChild(modal)
+            }
+          }
+
+          linkInput.select()
+        }}>
           Сохранить результат
         </button>
-
         <button className={styles.restartBtn} onClick={() => {
           window.location.href = result.actions.restart_url;
         }}>

@@ -26,7 +26,7 @@ export default function Breadcrumbs() {
     <nav className={styles.breadcrumbs}>
       <Link href="/">Главная</Link>
       {segments.map((slug, index) => (
-        <span key={index}> {'->'} {getPageName(slug)}</span>
+        <span key={index}> {'>'} {getPageName(slug)}</span>
       ))}
     </nav>
   );

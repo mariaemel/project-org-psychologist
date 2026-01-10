@@ -179,7 +179,7 @@
   }
 }
 
-@media (max-width: 427px) {
+@media (max-width: 432px) {
 .orgPsychology {
   padding: 60px 16px;
   background: #ffffff;
@@ -193,9 +193,8 @@
   width: fit-content;
   max-width: 55%;
   height: 70px;
-  font-size: 14px;
+  font-size: 16px;
   border-radius: 5px;
-  text-transform: lowercase;
   font-weight: 400;
   margin: 0 auto 40px;
   font-family: var(--font-nunito);
