@@ -3,7 +3,7 @@
   display: none;
 }
 
-@media (max-width: 432px) {
+@media (max-width: 444px) {
   .burgerButton {
     position: fixed;
     top: 24px;

@@ -4,8 +4,8 @@
   padding: 60px 20px;
   margin-top: 80px;
 
-  @media (max-width: 432px) {
-    max-width: 432px;
+  @media (max-width: 444px) {
+    max-width: 444px;
   }
 }
 
@@ -261,7 +261,7 @@
   }
 }
 
-@media (max-width: 432px) {
+@media (max-width: 444px) {
   .container {
     padding: 20px 12px;
     margin-top: 30px;

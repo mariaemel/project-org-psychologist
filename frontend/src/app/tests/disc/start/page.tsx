@@ -1,6 +1,6 @@
 'use client'
 export const dynamic = 'force-dynamic'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, TouchEvent } from 'react'
 import { useRouter } from 'next/navigation'
 import styles from './page.module.css'
 import Link from 'next/link'
@@ -22,8 +22,14 @@ export default function DISCtestPage() {
   const [isLoading, setIsLoading] = useState(true)
   const [isTransitioning, setIsTransitioning] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [isDragging, setIsDragging] = useState(false)
+  const [touchStartY, setTouchStartY] = useState<number>(0)
+  const [currentDragIndex, setCurrentDragIndex] = useState<number | null>(null)
+
   const router = useRouter()
   const listRef = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const dragItemRef = useRef<HTMLDivElement | null>(null)
 
   const initialOrder = [0, 1, 2, 3]
 
@@ -59,6 +65,8 @@ export default function DISCtestPage() {
         setOptionsOrder(initialOrder)
         setDraggedItem(null)
         setDragOverIndex(null)
+        setIsDragging(false)
+        setCurrentDragIndex(null)
       } catch (err: any) {
         setError('Ошибка загрузки вопроса')
       } finally {
@@ -71,6 +79,7 @@ export default function DISCtestPage() {
     }
   }, [attemptId, currentQuestionIndex])
 
+  // Desktop drag handlers
   const handleDragStart = (e: React.DragEvent, index: number) => {
     const item = e.currentTarget as HTMLElement
     setDraggedItem({
@@ -135,12 +144,103 @@ export default function DISCtestPage() {
       setDragOverIndex(null)
 
       if (listRef.current) {
-        const items = listRef.current.querySelectorAll(`.${styles.optionItem}`)
+        const items = listRef.current.querySelectorAll(`.${styles.optionBlock}`)
         items.forEach(item => {
           item.classList.remove(styles.dropTop, styles.dropBottom)
         })
       }
     }
+  }
+
+  const handleTouchStart = (e: React.TouchEvent, index: number) => {
+    const item = e.currentTarget as HTMLDivElement
+    const touch = e.touches[0]
+
+    setCurrentDragIndex(index)
+    setIsDragging(true)
+    setTouchStartY(touch.clientY)
+    dragItemRef.current = item
+
+    item.classList.add(styles.dragging)
+  }
+
+  const handleTouchMove = (e: TouchEvent) => {
+    if (!isDragging || currentDragIndex === null || !dragItemRef.current) return
+
+    e.preventDefault()
+    const touch = e.touches[0]
+    const clientY = touch.clientY
+
+    const elements = document.elementsFromPoint(touch.clientX, touch.clientY)
+    const optionElement = elements.find(el =>
+      el.classList.contains(styles.optionBlock) && el !== dragItemRef.current
+    )
+
+    if (optionElement) {
+      const allOptions = Array.from(document.querySelectorAll(`.${styles.optionBlock}`))
+      const hoverIndex = allOptions.indexOf(optionElement)
+
+      if (hoverIndex !== -1 && hoverIndex !== currentDragIndex) {
+        setDragOverIndex(hoverIndex)
+
+        const rect = optionElement.getBoundingClientRect()
+        const middleY = rect.top + rect.height / 2
+
+        optionElement.classList.remove(styles.dropTop, styles.dropBottom)
+        if (clientY < middleY) {
+          optionElement.classList.add(styles.dropTop)
+        } else {
+          optionElement.classList.add(styles.dropBottom)
+        }
+      }
+    } else {
+      setDragOverIndex(null)
+    }
+  }
+
+  const handleTouchEnd = () => {
+    if (!isDragging || currentDragIndex === null || dragOverIndex === null) {
+      setIsDragging(false)
+      setCurrentDragIndex(null)
+      setDragOverIndex(null)
+
+      if (dragItemRef.current) {
+        dragItemRef.current.classList.remove(styles.dragging)
+      }
+
+      const items = document.querySelectorAll(`.${styles.optionBlock}`)
+      items.forEach(item => {
+        item.classList.remove(styles.dropTop, styles.dropBottom)
+      })
+
+      return
+    }
+
+    const dragIndex = currentDragIndex
+    const dropIndex = dragOverIndex
+
+    if (dragIndex !== dropIndex) {
+      const newOrder = [...optionsOrder]
+      const draggedOptionIndex = optionsOrder[dragIndex]
+
+      newOrder.splice(dragIndex, 1)
+      newOrder.splice(dropIndex, 0, draggedOptionIndex)
+
+      setOptionsOrder(newOrder)
+    }
+
+    setIsDragging(false)
+    setCurrentDragIndex(null)
+    setDragOverIndex(null)
+
+    if (dragItemRef.current) {
+      dragItemRef.current.classList.remove(styles.dragging)
+    }
+
+    const items = document.querySelectorAll(`.${styles.optionBlock}`)
+    items.forEach(item => {
+      item.classList.remove(styles.dropTop, styles.dropBottom)
+    })
   }
 
   const handleNext = async () => {
@@ -287,7 +387,12 @@ export default function DISCtestPage() {
   const isLastQuestion = currentQuestionIndex === totalQuestions
 
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      ref={containerRef}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       <div className={styles.header}>
         <div className={styles.breadcrumbs}>
           <Link href="/">Главная</Link> &gt; <Link href="/tests">Тесты</Link> &gt; <Link href="/tests/disc">DISC</Link>
@@ -321,7 +426,6 @@ export default function DISCtestPage() {
         </div>
 
         <div className={styles.sortableList} ref={listRef}>
-
           {optionsOrder.map((optionIndex, position) => {
             const option = currentQuestion.options[optionIndex]
             return (
@@ -334,11 +438,12 @@ export default function DISCtestPage() {
                 onDragLeave={handleDragLeave}
                 onDrop={(e) => handleDrop(e, position)}
                 onDragEnd={handleDragEnd}
+                onTouchStart={(e) => handleTouchStart(e, position)}
               >
                 <div className={styles.optionContent}>
                   <div className={styles.optionText}>{option.text}</div>
                   <div className={styles.dragHandle}>
-                    <img src='/disc.svg' className={styles.disc} />
+                    <img src='/disc.svg' className={styles.disc} alt="Перетащить" />
                   </div>
                 </div>
               </div>

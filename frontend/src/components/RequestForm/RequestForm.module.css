@@ -200,7 +200,7 @@
   background-color: #7a44e0;
 }
 
-@media (max-width: 432px) {
+@media (max-width: 444px) {
   .modal {
     width: 85vw;
     padding: 16px;

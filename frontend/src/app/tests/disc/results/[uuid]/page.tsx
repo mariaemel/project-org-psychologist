@@ -314,7 +314,7 @@ export default function DiscResultPage() {
                 values={stress.percent}
               />
               <h2 className={styles.diagramTitleStress}>
-                Ваш STRESS-тип: <div className={styles.stresstype}>{stress.type}</div>
+                Ваш STRESS-тип: <p className={styles.stresstype}><ColoredTypeDisplay type={stress.type} /></p>
               </h2>
               <div className={styles.typeDescriptionStress}>
                 {stressDesc.subtitle}
