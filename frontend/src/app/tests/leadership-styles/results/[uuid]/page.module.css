@@ -370,7 +370,6 @@
   margin-bottom: 15px;
   font-size: 1.5rem;
 }
-
 @media (max-width: 968px) {
   .retryContainer {
     grid-template-columns: 1fr;
@@ -389,6 +388,16 @@
     text-align: center;
   }
 
+  .retryTitle {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .retryText {
+    text-align: center;
+    font-size: 1rem;
+  }
+
   .container {
     padding: 2rem 1.5rem;
   }
@@ -402,6 +411,8 @@
   .chartContainer {
     padding: 1.5rem;
     order: 1;
+    max-width: 500px;
+    margin: 0 auto;
   }
 
   .chart {
@@ -415,6 +426,8 @@
     margin-top: 0;
     order: 2;
     padding: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
   }
 
   .title {
@@ -422,35 +435,41 @@
     margin-bottom: 1.5rem;
     text-align: center;
     border-bottom: none;
+    line-height: 1.3;
   }
 
   .summaryContent {
     width: 100%;
     font-size: 15px;
-    text-align: justify;
+    line-height: 1.5;
   }
 
   .stylesRow {
     grid-template-columns: 1fr;
     gap: 1.5rem;
     margin-bottom: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
   }
 
   .styleCard {
     padding: 1.5rem;
   }
 
-  .styleCard h2 {
+  .styleCardTitle {
     font-size: 1.5rem;
     text-align: center;
   }
 
   .styleContent {
     font-size: 15px;
+    line-height: 1.5;
   }
 
   .styleSection {
     margin-bottom: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
   }
 
   .styleTitle {
@@ -464,6 +483,7 @@
 
   .sectionTitle {
     font-size: 18px;
+    line-height: 1.3;
   }
 
   .sectionContent {
@@ -471,12 +491,19 @@
   }
 
   .description,
+  .descriptionText {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
   .conclusion {
     font-size: 15px;
+    line-height: 1.5;
   }
 
   .sectionList li {
     font-size: 15px;
+    line-height: 1.4;
     padding: 0.75rem 0;
     padding-left: 1.75rem;
   }
@@ -492,13 +519,14 @@
     margin: 80px auto;
   }
 
-  .retryContent h1 {
-    font-size: 1.8rem;
+  .retryTitle {
+    font-size: 1.6rem;
     margin-bottom: 1rem;
   }
 
-  .retryContent p {
-    font-size: 1rem;
+  .retryText {
+    font-size: 0.95rem;
+    line-height: 1.5;
   }
 
   .chartContainer {
@@ -518,22 +546,64 @@
   .title {
     font-size: 2rem;
     margin-bottom: 1.25rem;
+    line-height: 1.2;
   }
 
   .summaryContent {
     font-size: 14px;
+    line-height: 1.4;
   }
 
   .styleCard {
     padding: 1.25rem;
   }
 
-  .styleCard h2 {
+  .styleCardTitle {
     font-size: 1.3rem;
   }
 
   .styleContent {
     font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .styleTitle {
+    font-size: 1.6rem;
+  }
+
+  .sectionHeader {
+    padding: 1rem 1.25rem;
+  }
+
+  .sectionTitle {
+    font-size: 16px;
+    line-height: 1.3;
+  }
+
+  .arrow {
+    font-size: 1rem;
+  }
+
+  .sectionContent {
+    padding: 1.25rem;
+  }
+
+  .description,
+  .descriptionText {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .conclusion {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .sectionList li {
+    font-size: 14px;
+    line-height: 1.4;
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
   }
 
   .actions {
@@ -548,6 +618,8 @@
     max-width: 300px;
     padding: 14px 20px;
     font-size: 15px;
+    height: auto;
+    min-height: 48px;
   }
 }
 
@@ -564,15 +636,16 @@
   .sadImagePlaceholder {
     height: 250px;
     max-width: 300px;
+    font-size: 12px;
   }
 
-  .retryContent h1 {
-    font-size: 1.5rem;
+  .retryTitle {
+    font-size: 1.4rem;
   }
 
-  .retryContent p {
+  .retryText {
     font-size: 0.9rem;
-    text-align: justify;
+    line-height: 1.5;
   }
 
   .chartContainer {
@@ -592,22 +665,26 @@
   .title {
     font-size: 1.75rem;
     margin-bottom: 1rem;
+    line-height: 1.2;
   }
 
   .summaryContent {
     font-size: 13px;
+    line-height: 1.4;
+    text-align: justify;
   }
 
   .styleCard {
     padding: 1rem;
   }
 
-  .styleCard h2 {
+  .styleCardTitle {
     font-size: 1.2rem;
   }
 
   .styleContent {
     font-size: 13px;
+    line-height: 1.4;
   }
 
   .styleTitle {
@@ -615,36 +692,45 @@
   }
 
   .sectionHeader {
-    padding: 1rem 1.25rem;
+    padding: 1rem;
   }
 
   .sectionTitle {
-    font-size: 16px;
+    font-size: 15px;
+    line-height: 1.2;
   }
 
   .arrow {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   .sectionContent {
-    padding: 1.25rem;
+    padding: 1rem;
   }
 
   .description,
+  .descriptionText {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
   .conclusion {
     font-size: 13px;
+    line-height: 1.4;
   }
 
   .sectionList li {
     font-size: 13px;
+    line-height: 1.4;
     padding: 0.5rem 0;
-    padding-left: 1.5rem;
+    padding-left: 1.25rem;
   }
 
   .restartBtn, .saveBtn {
     font-size: 14px;
     padding: 12px 16px;
     max-width: 280px;
+    min-height: 44px;
   }
 }
 
@@ -660,14 +746,16 @@
 
   .summaryContent {
     font-size: 12px;
+    line-height: 1.3;
   }
 
-  .styleCard h2 {
+  .styleCardTitle {
     font-size: 1.1rem;
   }
 
   .styleContent {
     font-size: 12px;
+    line-height: 1.3;
   }
 
   .styleTitle {
@@ -675,30 +763,40 @@
   }
 
   .sectionHeader {
-    padding: 0.875rem 1rem;
+    padding: 0.875rem 0.75rem;
   }
 
   .sectionTitle {
-    font-size: 15px;
+    font-size: 14px;
   }
 
   .sectionContent {
-    padding: 1rem;
+    padding: 0.875rem;
   }
 
   .description,
+  .descriptionText {
+    font-size: 12px;
+    line-height: 1.3;
+  }
+
   .conclusion {
     font-size: 12px;
+    line-height: 1.3;
   }
 
   .sectionList li {
     font-size: 12px;
+    line-height: 1.3;
+    padding: 0.4rem 0;
+    padding-left: 1rem;
   }
 
   .restartBtn, .saveBtn {
     font-size: 13px;
     padding: 10px 14px;
     max-width: 260px;
+    min-height: 42px;
   }
 }
 
@@ -727,5 +825,36 @@
   .summary {
     order: 1;
     margin-top: 0;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .summaryContent {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 320px) {
+  .chart {
+    height: 250px;
+    max-width: 250px;
+  }
+
+  .title {
+    font-size: 1.3rem;
+  }
+
+  .summaryContent {
+    font-size: 11px;
+  }
+
+  .sectionTitle {
+    font-size: 13px;
+  }
+
+  .sectionList li {
+    font-size: 11px;
   }
 }

@@ -459,21 +459,21 @@ export default function ResultPage() {
     ]
   };
 
+
   const chartOptions = {
     plugins: {
       legend: {
         position: 'bottom' as const,
         labels: {
-          boxWidth: 14,
-          boxHeight: 14,
-          padding: 10,
-          margin: 12,
+          boxWidth: window.innerWidth < 768 ? 10 : 14,
+          boxHeight: window.innerWidth < 768 ? 10 : 14,
+          padding: window.innerWidth < 768 ? 5 : 10,
+          margin: window.innerWidth < 768 ? 6 : 12,
           usePointStyle: false,
           font: {
-            size: 13,
+            size: window.innerWidth < 768 ? 10 : 13,
             family: "'Nunito Sans', sans-serif"
           },
-
           generateLabels: function(chart: any) {
             const data = chart.data;
             if (data.labels.length && data.datasets.length) {
@@ -481,8 +481,17 @@ export default function ResultPage() {
                 const value = data.datasets[0].data[i];
                 const percentage = totalScore > 0 ? Math.round((value / totalScore) * 100) : 0;
 
+                let displayLabel = label;
+                if (window.innerWidth < 768) {
+                  displayLabel = label
+                    .replace('ИНФОРМИРОВАНИЕ', 'ИНФОРМ.')
+                    .replace('ОБУЧЕНИЕ', 'ОБУЧ.')
+                    .replace('ПОДДЕРЖКА', 'ПОДДЕРЖ.')
+                    .replace('ДЕЛЕГИРОВАНИЕ', 'ДЕЛЕГ.');
+                }
+
                 return {
-                  text: `${label}`,
+                  text: displayLabel,
                   fillStyle: data.datasets[0].backgroundColor[i],
                   strokeStyle: data.datasets[0].borderColor,
                   lineWidth: data.datasets[0].borderWidth,
