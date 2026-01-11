@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import styles from './page.module.css'
 import Link from 'next/link'
 import { startTest, getQuestion, saveAnswer, finishTest, type Question } from '@/lib/api'
+import Breadcrumbs from '@/components/Header/Breadcrumbs';
 
 export default function LeadershipStartPage() {
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null)
@@ -239,6 +240,8 @@ export default function LeadershipStartPage() {
   const isLastQuestion = currentQuestionIndex === totalQuestions
 
   return (
+    <>
+    <Breadcrumbs />
     <div className={styles.container}>
       <div className={styles.header}>
         <div className={styles.breadcrumbs}>
@@ -254,13 +257,13 @@ export default function LeadershipStartPage() {
               style={{ width: `${progress}%` }}
             >
               <div style={{marginLeft: '15px', paddingTop: '2px', color: 'white'}}>
-                {currentQuestion.progress?.index || currentQuestionIndex} из {currentQuestion.progress?.total || 12}
+                {currentQuestionIndex} из {currentQuestion.progress?.total || 12}
               </div>
             </div>
           </div>
 
           <div className={styles.progressText}>
-            {currentQuestion.progress?.index || currentQuestionIndex} из {currentQuestion.progress?.total || 12}
+            {currentQuestionIndex} из {currentQuestion.progress?.total || 12}
           </div>
         </div>
 
@@ -272,6 +275,15 @@ export default function LeadershipStartPage() {
           {currentQuestion.options.map((option) => (
             <div key={option.id} className={styles.optionWithScale}>
               <div className={styles.optionText}>{option.text}</div>
+
+              <div className={styles.scaleNumber}>
+                <span className={styles.scaleDescription}>
+                  {'0'}
+                </span>
+                <span className={styles.scaleDescription}>
+                  {'9'}
+                </span>
+              </div>
 
               <div className={styles.scaleContainer}>
                 <div
@@ -326,5 +338,6 @@ export default function LeadershipStartPage() {
         </div>
       </div>
     </div>
+    </>
   )
 }

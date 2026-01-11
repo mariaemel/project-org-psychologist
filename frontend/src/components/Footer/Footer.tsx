@@ -36,6 +36,7 @@ const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.sections}>
+          <h4>Разделы</h4>
           <ul>
             <li><a href="/">Главная</a></li>
             <li><a href="/about">Обо мне</a></li>

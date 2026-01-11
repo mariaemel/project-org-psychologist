@@ -50,7 +50,7 @@
   align-items: center;
   justify-content: left;
   font-weight: 500;
-  min-width: 60px;
+  min-width: 70px;
 }
 
 .questionCard {
@@ -138,7 +138,6 @@
   font-size: 16px;
   font-weight: bold;
   box-shadow: 0 4px 12px rgba(157, 157, 204, 0.4);
-  border: 2px solid white;
 }
 
 .scaleLabel {
@@ -416,9 +415,7 @@
   }
 
   .breadcrumbs {
-    font-size: 12px;
-    margin-bottom: 15px;
-    line-height: 1.4;
+    display: none;
   }
 
   .questionCard {
@@ -522,8 +519,7 @@
   }
 
   .breadcrumbs {
-    font-size: 11px;
-    margin-bottom: 12px;
+    display: none;
   }
 
   .questionCard {
@@ -543,7 +539,7 @@
 
   .progressText {
     display: block !important;
-    font-size: 15px;
+    font-size: 18px;
     color: #9D9DCC;
     font-weight: 600;
     margin-bottom: 20px;
@@ -590,7 +586,9 @@
     margin-top: 40px;
     padding: 12px 8px;
   }
-
+  .breadcrumbs {
+    display: none;
+  }
   .questionCard {
     padding: 18px 12px;
     box-shadow: none;

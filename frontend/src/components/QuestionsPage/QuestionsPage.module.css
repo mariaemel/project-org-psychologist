@@ -74,7 +74,7 @@
 .answerWrapper {
   margin-left: 56px;
   padding: 22px 26px;
-  background-color: #eeffcaa7;
+  background-color: #F7ECE1;
   border-radius: 5px;
   animation: fadeIn 0.2s ease-in-out;
 }
@@ -175,7 +175,7 @@
   .answerWrapper {
     margin: 0 0 0 0;
     padding: 12px 20px;
-    background-color: #eeffcaa3;
+    background-color: #F7ECE1;
     animation: fadeIn 0.2s ease-in-out;
   }
 

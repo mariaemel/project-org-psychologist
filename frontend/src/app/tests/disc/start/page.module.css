@@ -13,12 +13,12 @@
 
   @media (max-width: 444px) {
     padding: 16px 12px;
-    margin-top: 70px;
+    margin-top: 20px;
   }
 
   @media (max-width: 360px) {
     padding: 14px 10px;
-    margin-top: 60px;
+    margin-top: 20px;
   }
 }
 
@@ -34,13 +34,11 @@
   }
 
   @media (max-width: 444px) {
-    font-size: 12px;
-    margin-bottom: 16px;
+    display: none;
   }
 
   @media (max-width: 360px) {
-    font-size: 11px;
-    margin-bottom: 14px;
+    display: none;
   }
 }
 
@@ -96,7 +94,7 @@
   align-items: center;
   justify-content: left;
   font-weight: 500;
-  min-width: 60px;
+  min-width: 70px;
 
   @media (max-width: 768px) {
     font-size: 12px;
@@ -408,6 +406,7 @@
     padding: 10px 20px;
     font-size: 14px;
     min-height: 42px;
+    max-width: 20px;
   }
 
   @media (max-width: 360px) {
@@ -446,9 +445,10 @@
   }
 
   @media (max-width: 444px) {
-    padding: 10px 20px;
+    padding: 10px 0px;
     font-size: 14px;
     min-height: 42px;
+    max-width: 20px;
   }
 
   @media (max-width: 360px) {
@@ -459,8 +459,8 @@
 }
 
 .nextButton:hover:not(:disabled) {
-  background: #8a8ac4;
-  border-color: #8a8ac4;
+  background: #575799;
+  border-color: #555592;
   transform: translateY(-1px);
 }
 

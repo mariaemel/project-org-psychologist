@@ -3,11 +3,14 @@ export const dynamic = 'force-dynamic'
 import Link from 'next/link'
 import styles from './page.module.css'
 import { fetchTestDetail } from '@/lib/api'
+import Breadcrumbs from '@/components/Header/Breadcrumbs';
 
 export default async function LeadershipTestPage() {
   const testData = await fetchTestDetail('leadership-styles')
 
   return (
+    <>
+    <Breadcrumbs />
     <div className={styles.container}>
       <div className={styles.breadcrumbs}>
         <Link href="/" className={styles.breadcrumbLink}>Главная</Link> &gt;
@@ -45,5 +48,6 @@ export default async function LeadershipTestPage() {
         </div>
       </div>
     </div>
+    </>
   )
 }

@@ -122,7 +122,7 @@
   margin-top: 300px;
 }
 .bookTitleArt {
-  font-size: 26px;
+  font-size: 20px;
   text-align: justify;
   width: 560px;
   gap: 10px;
@@ -131,7 +131,7 @@
 }
 
 .bookAuthor {
-  font-size: 16px;
+  font-size: 14px;
   text-decoration-line: underline;
   color: #333333;
   margin-bottom: 26px;
@@ -666,6 +666,7 @@
     width: 90vw;
     margin-left: -30px;
   }
+
   .articlesTitle {
     font-size: 24px;
     font-weight: 600;
@@ -687,7 +688,7 @@
   }
 
   .bookTitleArt {
-    font-size: 18px;
+    font-size: 14px;
     text-align: justify;
     font-weight: 500;
     margin-bottom: 10px;
@@ -695,7 +696,7 @@
   }
 
   .opisanieArt {
-    font-size: 14px;
+    font-size: 12px;
     text-align: justify;
     line-height: 1.5;
     color: #666;

@@ -213,8 +213,7 @@
   }
 
   .breadcrumbs {
-    font-size: 13px;
-    margin-bottom: 20px;
+    display: none;
   }
 
   .image {
@@ -268,8 +267,7 @@
   }
 
   .breadcrumbs {
-    font-size: 12px;
-    margin-bottom: 15px;
+    display: none;
   }
 
   .image {
@@ -310,7 +308,9 @@
   .container {
     padding: 15px 10px;
   }
-
+  .breadcrumbs {
+    display: none;
+  }
   .image {
     height: 150px;
   }
@@ -343,7 +343,9 @@
   .container {
     padding: 20px 15px;
   }
-
+  .breadcrumbs {
+    display: none;
+  }
   .image {
     height: 200px;
   }

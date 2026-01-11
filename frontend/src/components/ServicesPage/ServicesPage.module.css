@@ -6,7 +6,7 @@
   padding-bottom: 70px;
   @media (max-width: 444px){
     background: #fff;
-    margin-top: -40px;
+    margin-top: -50px;
   }
 }
 
@@ -42,13 +42,23 @@
 
 .tabs button {
   padding: 12px 44px;
-  font-size: 16px;
+  font-size: 14px;
   border-radius: 5px;
   border: 1px solid black;
   background: white;
   cursor: pointer;
   transition: 0.3s ease;
   font-family: var(--font-nunito);
+
+  @media (max-width: 444px) {
+    font-size: 14px;
+  }
+  @media (max-width: 377px) {
+    font-size: 13px;
+  }
+  @media (max-width: 322px) {
+    font-size: 12px;
+  }
 }
 
 .tabs .active {

@@ -25,6 +25,16 @@
   font-weight: 400;
 }
 
+.sections h4 {
+  margin-bottom: 1rem;
+  font-weight: 600;
+  font-size: 18px;
+  color: #ffffff;
+
+  @media (max-width: 444px){
+    font-size: 16px;
+  }
+}
 .contacts {
   margin-left: 100px;
 

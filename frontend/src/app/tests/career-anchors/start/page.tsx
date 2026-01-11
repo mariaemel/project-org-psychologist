@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import styles from './page.module.css'
 import Link from 'next/link'
 import { startTest, getQuestion, saveAnswer, finishTest, type Question } from '@/lib/api'
+import Breadcrumbs from '@/components/Header/Breadcrumbs';
 
 export default function CareerAnchorsTestPage() {
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null)
@@ -208,6 +209,8 @@ export default function CareerAnchorsTestPage() {
     : "Насколько вы согласны с этим утверждением?"
 
   return (
+    <>
+    <Breadcrumbs />
     <div className={styles.container}>
       <div className={styles.header}>
         <div className={styles.breadcrumbs}>
@@ -223,13 +226,13 @@ export default function CareerAnchorsTestPage() {
               style={{ width: `${progress}%` }}
             >
               <div style={{marginLeft: '15px', paddingTop: '2px', color: 'white'}}>
-                {currentQuestion.progress?.index || currentQuestionIndex} из {currentQuestion.progress?.total || 12}
+                {currentQuestionIndex} из {currentQuestion.progress?.total || 41}
               </div>
             </div>
           </div>
 
           <div className={styles.progressText}>
-            {currentQuestion.progress?.index || currentQuestionIndex} из {currentQuestion.progress?.total || 12}
+            {currentQuestionIndex} из {currentQuestion.progress?.total || 41}
           </div>
         </div>
 
@@ -314,5 +317,6 @@ export default function CareerAnchorsTestPage() {
         </div>
       </div>
     </div>
+    </>
   )
 }

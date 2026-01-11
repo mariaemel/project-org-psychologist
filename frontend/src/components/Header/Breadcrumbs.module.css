@@ -19,6 +19,7 @@
 @media (max-width: 320px) {
   .breadcrumbs {
     display: block;
+    font-size: 12px;
   }
 }
 
@@ -29,7 +30,7 @@
 }
 
 
-@media (min-width: 426px) {
+@media (min-width: 444px) {
   .breadcrumbs {
     display: flex;
   }

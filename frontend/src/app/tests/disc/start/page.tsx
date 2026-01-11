@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import styles from './page.module.css'
 import Link from 'next/link'
 import { startTest, getQuestion, saveAnswer, finishTest, type Question } from '@/lib/api'
+import Breadcrumbs from '@/components/Header/Breadcrumbs';
 
 type DraggedItem = {
   index: number
@@ -79,7 +80,6 @@ export default function DISCtestPage() {
     }
   }, [attemptId, currentQuestionIndex])
 
-  // Desktop drag handlers
   const handleDragStart = (e: React.DragEvent, index: number) => {
     const item = e.currentTarget as HTMLElement
     setDraggedItem({
@@ -387,6 +387,8 @@ export default function DISCtestPage() {
   const isLastQuestion = currentQuestionIndex === totalQuestions
 
   return (
+    <>
+    <Breadcrumbs />
     <div
       className={styles.container}
       ref={containerRef}
@@ -407,13 +409,13 @@ export default function DISCtestPage() {
               style={{ width: `${progress}%` }}
             >
               <div style={{marginLeft: '15px', paddingTop: '2px', color: 'white'}}>
-                {currentQuestion.progress?.index || currentQuestionIndex} из {currentQuestion.progress?.total || 40}
+                {currentQuestionIndex} из {currentQuestion.progress?.total || 40}
               </div>
             </div>
           </div>
 
           <div className={styles.progressText}>
-            {currentQuestion.progress?.index || currentQuestionIndex} из {currentQuestion.progress?.total || 40}
+            {currentQuestionIndex} из {currentQuestion.progress?.total || 40}
           </div>
         </div>
 
@@ -488,5 +490,6 @@ export default function DISCtestPage() {
         </div>
       </div>
     </div>
+    </>
   )
 }

@@ -32,13 +32,11 @@
   }
 
   @media (max-width: 444px) {
-    font-size: 12px;
-    margin-bottom: 16px;
+    display: none;
   }
 
   @media (max-width: 360px) {
-    font-size: 11px;
-    margin-bottom: 14px;
+    display: none;
   }
 }
 
@@ -323,7 +321,9 @@
     width: 100%;
     height: 300px;
   }
-
+  .breadcrumbs {
+    display: none;
+  }
   .textContent {
     padding-top: 20px;
   }
@@ -343,7 +343,9 @@
   .image {
     height: 150px;
   }
-
+  .breadcrumbs {
+    display: none;
+  }
   .title {
     font-size: 18px;
   }

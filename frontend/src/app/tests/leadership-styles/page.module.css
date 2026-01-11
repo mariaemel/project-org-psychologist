@@ -32,13 +32,11 @@
   }
 
   @media (max-width: 444px) {
-    font-size: 12px;
-    margin-bottom: 20px;
+    display: none;
   }
 
   @media (max-width: 360px) {
-    font-size: 11px;
-    margin-bottom: 16px;
+    display: none;
   }
 }
 
